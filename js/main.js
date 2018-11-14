@@ -2,15 +2,7 @@
 
 const main = document.querySelector(`#main`);
 const body = document.body;
-const tmpl = [];
-
-const intro = document.querySelector(`#intro`);
-const greeting = document.querySelector(`#greeting`);
-const rules = document.querySelector(`#rules`);
-const game1 = document.querySelector(`#game-1`);
-const game2 = document.querySelector(`#game-2`);
-const game3 = document.querySelector(`#game-3`);
-const stats = document.querySelector(`#stats`);
+const tmpl = [...document.querySelectorAll(`template:not([id*="modal"])`)];
 
 let currentScreen = 0;
 
@@ -32,17 +24,8 @@ body.insertAdjacentHTML(`beforeend`, `<div class="arrows__wrap">
 <button class="arrows__btn arrows__btn--right">-></button>
 </div>`);
 
-// ??? Добавил свои классы для кнопок  - это норм?
 const btnLeft = body.querySelector(`.arrows__btn--left`);
 const btnRight = body.querySelector(`.arrows__btn--right`);
-
-tmpl.push(intro);
-tmpl.push(greeting);
-tmpl.push(rules);
-tmpl.push(game1);
-tmpl.push(game2);
-tmpl.push(game3);
-tmpl.push(stats);
 
 const fixedTmpl = tmpl.map((el) => {
   const shadow = document.createElement(`div`);
@@ -56,12 +39,26 @@ const showScreen = (n) => {
   main.appendChild(fixedTmpl[n]);
 };
 
+const increaseCurrentScreen = () => {
+  currentScreen += 1;
+  if (currentScreen >= fixedTmpl.length) {
+    currentScreen = fixedTmpl.length - 1;
+  }
+};
+
+const decreaseCurrentScreen = () => {
+  currentScreen -= 1;
+  if (currentScreen < 0) {
+    currentScreen = 0;
+  }
+};
+
 const onArrowPress = (e) => {
   if (e.key === `ArrowLeft`) {
-    currentScreen -= 1;
+    decreaseCurrentScreen();
   }
   if (e.key === `ArrowRight`) {
-    currentScreen += 1;
+    increaseCurrentScreen();
   }
   showScreen(currentScreen);
 };
@@ -73,10 +70,10 @@ showScreen(currentScreen);
 
 document.addEventListener(`keydown`, onArrowPress);
 btnLeft.addEventListener(`click`, () => {
-  currentScreen -= 1;
+  decreaseCurrentScreen();
   showScreen(currentScreen);
 });
 btnRight.addEventListener(`click`, () => {
-  currentScreen += 1;
+  increaseCurrentScreen();
   showScreen(currentScreen);
 });
