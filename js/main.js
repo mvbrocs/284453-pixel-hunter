@@ -2,7 +2,15 @@
 
 const main = document.querySelector(`#main`);
 const body = document.body;
-const tmpl = [...document.querySelectorAll(`template:not([id*="modal"])`)];
+const tmpl = [
+  document.querySelector(`#intro`),
+  document.querySelector(`#greeting`),
+  document.querySelector(`#rules`),
+  document.querySelector(`#game-1`),
+  document.querySelector(`#game-2`),
+  document.querySelector(`#game-3`),
+  document.querySelector(`#stats`)
+];
 
 let currentScreen = 0;
 
