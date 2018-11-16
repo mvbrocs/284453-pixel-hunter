@@ -1,8 +1,12 @@
 import {showScreen} from "./utils";
 import intro from './intro';
+import greeting from './greeting';
 
-const main = document.querySelector(`#main`);
-const body = document.body;
+// const main = document.querySelector(`#main`);
+// const asterisk = document.querySelector(`.intro__asterisk`);
+// console.log(asterisk);
+
+// const body = document.body;
 // const tmpl = [
 //   document.querySelector(`#intro`),
 //   document.querySelector(`#greeting`),
@@ -87,4 +91,10 @@ const body = document.body;
 //   showScreen(currentScreen);
 // });
 
-showScreen(main, intro);
+showScreen(intro);
+
+const asterisk = document.querySelector(`.intro__asterisk`);
+console.log(asterisk);
+asterisk.addEventListener(`click`, () => {
+  showScreen(greeting);
+});

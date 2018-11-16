@@ -1,4 +1,3 @@
-//
 // const fixedTmpl = tmpl.map((el) => {
 //   const shadow = document.createElement(`div`);
 //   const content = el.content.cloneNode(true);
@@ -6,6 +5,7 @@
 //   return shadow.cloneNode(true);
 // });
 
+const main = document.querySelector(`#main`);
 
 const makeElement = (str) => {
   const div = document.createElement(`div`);
@@ -13,9 +13,9 @@ const makeElement = (str) => {
   return div;
 };
 
-const showScreen = (p, e) => {
-  p.innerHTML = ``;
-  p.appendChild(e);
+const showScreen = (e) => {
+  main.innerHTML = ``;
+  main.appendChild(e);
 };
 
 export {
