@@ -1,3 +1,5 @@
+// import {makeElement} from "./utils";
+
 const main = document.querySelector(`#main`);
 const body = document.body;
 const tmpl = [
@@ -7,7 +9,7 @@ const tmpl = [
   document.querySelector(`#game-1`),
   document.querySelector(`#game-2`),
   document.querySelector(`#game-3`),
-  document.querySelector(`#stats`)
+  document.querySelector(`#stats`),
 ];
 
 let currentScreen = 0;
