@@ -1,5 +1,3 @@
-'use strict';
-
 const main = document.querySelector(`#main`);
 const body = document.body;
 const tmpl = [
