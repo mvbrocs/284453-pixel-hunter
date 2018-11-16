@@ -1,4 +1,8 @@
-import {makeElement} from "./utils";
+import {
+  makeElement,
+  showScreen
+} from "./utils";
+import rules from "./rules";
 
 const greetingHtml = `<!-- Приветствие -->
   <section class="greeting central--blur">
@@ -23,5 +27,12 @@ const greetingHtml = `<!-- Приветствие -->
   </section>`;
 
 const greeting = makeElement(greetingHtml);
+// console.log(greeting);
+
+const arrowRight = greeting.querySelector(`.greeting__continue`);
+// console.log(arrowRight);
+arrowRight.addEventListener(`click`, () => {
+  showScreen(rules);
+});
 
 export default greeting;

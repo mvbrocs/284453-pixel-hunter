@@ -7,6 +7,5 @@ const introHtml = `<!-- Интро -->
 </section>`;
 
 const intro = makeElement(introHtml);
-console.log(intro);
 
 export default intro;

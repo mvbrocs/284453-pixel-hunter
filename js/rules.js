@@ -1,4 +1,8 @@
-import {makeElement} from "./utils";
+import {
+  makeElement,
+  showScreen
+} from "./utils";
+import game1 from "./game-1";
 
 const rulesHtml = `<!-- Правила игры -->
   <header class="header">
@@ -30,5 +34,16 @@ const rulesHtml = `<!-- Правила игры -->
   </section>`;
 
 const rules = makeElement(rulesHtml);
+
+const goButton = rules.querySelector(`.rules__button`);
+const inputName = rules.querySelector(`.rules__input`);
+
+inputName.addEventListener(`input`, () => {
+  (inputName.value) ? goButton.disabled = false : goButton.disabled = true;
+});
+
+goButton.addEventListener(`click`, ()=> {
+  showScreen(game1);
+});
 
 export default rules;

@@ -93,8 +93,8 @@ import greeting from './greeting';
 
 showScreen(intro);
 
-const asterisk = document.querySelector(`.intro__asterisk`);
-console.log(asterisk);
+const asterisk = intro.querySelector(`.intro__asterisk`);
+// console.log(asterisk);
 asterisk.addEventListener(`click`, () => {
   showScreen(greeting);
 });
