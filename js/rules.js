@@ -1,7 +1,6 @@
 import {makeElement} from "./utils";
 
 const rulesHtml = `<!-- Правила игры -->
-<template id="rules">
   <header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
@@ -28,8 +27,7 @@ const rulesHtml = `<!-- Правила игры -->
       <input class="rules__input" type="text" placeholder="Ваше Имя">
       <button class="rules__button  continue" type="submit" disabled>Go!</button>
     </form>
-  </section>
-</template>`;
+  </section>`;
 
 const rules = makeElement(rulesHtml);
 

@@ -1,7 +1,6 @@
 import {makeElement} from "./utils";
 
 const game3Html = `<!-- Игровой экран с двумя изображениями -->
-<template id="game-1">
   <header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
@@ -57,8 +56,7 @@ const game3Html = `<!-- Игровой экран с двумя изображе
       <li class="stats__result stats__result--unknown"></li>
       <li class="stats__result stats__result--unknown"></li>
     </ul>
-  </section>
-</template>`;
+  </section>`;
 
 const game3 = makeElement(game3Html);
 

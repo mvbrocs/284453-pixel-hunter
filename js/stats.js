@@ -1,8 +1,7 @@
 import {makeElement} from "./utils";
 
 const statsHtml = `<!-- Игровой экран с двумя изображениями -->
-<template id="game-1">
-  <header class="header">
+<header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
       <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
@@ -57,8 +56,7 @@ const statsHtml = `<!-- Игровой экран с двумя изображе
       <li class="stats__result stats__result--unknown"></li>
       <li class="stats__result stats__result--unknown"></li>
     </ul>
-  </section>
-</template>`;
+  </section>`;
 
 const stats = makeElement(statsHtml);
 
