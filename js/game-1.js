@@ -3,6 +3,8 @@ import {
   showScreen
 } from "./utils";
 
+import game2 from "./game-2";
+
 const game1Html = `<!-- Игровой экран с двумя изображениями -->
   <header class="header">
     <button class="back">
@@ -61,15 +63,34 @@ const game1Html = `<!-- Игровой экран с двумя изображе
     </ul>
   </section>`;
 
+let isLeftPictureSelected = false;
+let isRightPictureSelected = false;
 const game1 = makeElement(game1Html);
-// TODO: перепроверить селектор
-const gameOption = [...game1.querySelectorAll(`.game__option`)];
-const [q1Photo, q1Paint] = [...game1.querySelectorAll(`input[name=question1]`)];
-console.log(gameOption);
-// gameOption.map((el) => {
-//   el.addEventListener((`click`, () => {
-//     console.log(el);
-//   }));
-// });
+const leftRadioGroup = [...game1.querySelectorAll(`input[name=question1]`)];
+const rightRadioGroup = [...game1.querySelectorAll(`input[name=question2]`)];
+
+const compareChecked = () => {
+  if (isLeftPictureSelected && isRightPictureSelected) {
+    showScreen(game2);
+  }
+};
+
+leftRadioGroup.map((el) => {
+  el.addEventListener(`click`, () => {
+    if (el.checked) {
+      isLeftPictureSelected = true;
+    }
+    compareChecked();
+  });
+});
+
+rightRadioGroup.map((el) => {
+  el.addEventListener(`click`, () => {
+    if (el.checked) {
+      isRightPictureSelected = true;
+    }
+    compareChecked();
+  });
+});
 
 export default game1;
