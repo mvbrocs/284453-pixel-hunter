@@ -1,4 +1,9 @@
-import {makeElement} from "./utils";
+import {
+  makeElement, returnToScreen,
+  showScreen,
+} from "./utils";
+import game3 from "./game-3";
+// import greeting from "./greeting";
 
 const game2Html = `<!-- Игровой экран с одним изображением -->
   <header class="header">
@@ -48,5 +53,18 @@ const game2Html = `<!-- Игровой экран с одним изображе
   </section>`;
 
 const game2 = makeElement(game2Html);
+const radioGroup = [...game2.querySelectorAll(`input[name=question1]`)];
+const backBtn = game2.querySelector(`.back`);
+
+radioGroup.map((el) => {
+  el.addEventListener(`click`, () => {
+    if (el.checked) {
+      showScreen(game3);
+    }
+  });
+});
+
+// returnToScreen(backBtn);
+
 
 export default game2;

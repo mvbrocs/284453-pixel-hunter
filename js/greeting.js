@@ -1,6 +1,7 @@
 import {
   makeElement,
-  showScreen
+  showScreen,
+  returnToScreen
 } from "./utils";
 import rules from "./rules";
 
@@ -34,5 +35,9 @@ const arrowRight = greeting.querySelector(`.greeting__continue`);
 arrowRight.addEventListener(`click`, () => {
   showScreen(rules);
 });
+
+const backBtn = rules.querySelector(`.back`);
+
+returnToScreen(backBtn);
 
 export default greeting;

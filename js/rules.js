@@ -1,6 +1,7 @@
 import {
   makeElement,
-  showScreen
+  showScreen,
+  returnToScreen
 } from "./utils";
 import game1 from "./game-1";
 
@@ -34,16 +35,22 @@ const rulesHtml = `<!-- Правила игры -->
   </section>`;
 
 const rules = makeElement(rulesHtml);
-
 const goButton = rules.querySelector(`.rules__button`);
 const inputName = rules.querySelector(`.rules__input`);
+const backBtn = rules.querySelector(`.back`);
 
 inputName.addEventListener(`input`, () => {
-  (inputName.value) ? goButton.disabled = false : goButton.disabled = true;
+  if (inputName.value) {
+    goButton.disabled = false;
+  } else {
+    goButton.disabled = true;
+  }
 });
 
-goButton.addEventListener(`click`, ()=> {
+goButton.addEventListener(`click`, () => {
   showScreen(game1);
 });
+
+// returnToScreen(backBtn);
 
 export default rules;

@@ -1,9 +1,4 @@
-// const fixedTmpl = tmpl.map((el) => {
-//   const shadow = document.createElement(`div`);
-//   const content = el.content.cloneNode(true);
-//   shadow.appendChild(content);
-//   return shadow.cloneNode(true);
-// });
+// import greeting from "./greeting";
 
 const main = document.querySelector(`#main`);
 
@@ -18,7 +13,14 @@ const showScreen = (e) => {
   main.appendChild(e);
 };
 
+const returnToScreen = (el, screen) => {
+  el.addEventListener(`click`, () => {
+    showScreen(screen);
+  });
+};
+
 export {
   makeElement,
-  showScreen
+  showScreen,
+  returnToScreen
 };

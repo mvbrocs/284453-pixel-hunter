@@ -1,9 +1,10 @@
 import {
-  makeElement,
-  showScreen
+  makeElement, returnToScreen,
+  showScreen,
 } from "./utils";
 
 import game2 from "./game-2";
+// import greeting from "./greeting";
 
 const game1Html = `<!-- Игровой экран с двумя изображениями -->
   <header class="header">
@@ -63,11 +64,13 @@ const game1Html = `<!-- Игровой экран с двумя изображе
     </ul>
   </section>`;
 
-let isLeftPictureSelected = false;
-let isRightPictureSelected = false;
 const game1 = makeElement(game1Html);
 const leftRadioGroup = [...game1.querySelectorAll(`input[name=question1]`)];
 const rightRadioGroup = [...game1.querySelectorAll(`input[name=question2]`)];
+const backBtn = game1.querySelector(`.back`);
+
+let isLeftPictureSelected = false;
+let isRightPictureSelected = false;
 
 const compareChecked = () => {
   if (isLeftPictureSelected && isRightPictureSelected) {
@@ -92,5 +95,7 @@ rightRadioGroup.map((el) => {
     compareChecked();
   });
 });
+
+// returnToScreen(backBtn);
 
 export default game1;
