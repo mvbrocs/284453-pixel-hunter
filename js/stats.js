@@ -1,7 +1,7 @@
 import {
-  makeElement, returnToScreen,
+  backBtns,
+  makeElement
 } from "./utils";
-// import greeting from "./greeting";
 
 const statsHtml = `<!-- Общая статистика по всем игрокам -->
   <header class="header">
@@ -120,6 +120,6 @@ const statsHtml = `<!-- Общая статистика по всем игрок
 const stats = makeElement(statsHtml);
 const backBtn = stats.querySelector(`.back`);
 
-// returnToScreen(backBtn, greeting);
+backBtns.push(backBtn);
 
 export default stats;

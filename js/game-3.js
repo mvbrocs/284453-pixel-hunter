@@ -1,9 +1,9 @@
 import {
-  makeElement, returnToScreen,
+  backBtns,
+  makeElement,
   showScreen,
 } from "./utils";
 import stats from "./stats";
-// import greeting from "./greeting";
 
 const game3Html = `<!-- Игровой экран с тремя изображениями -->
   <header class="header">
@@ -55,13 +55,12 @@ const game3 = makeElement(game3Html);
 const backBtn = game3.querySelector(`.back`);
 const gameOptions = [...game3.querySelectorAll(`.game__option`)];
 
+backBtns.push(backBtn);
+
 gameOptions.map((el) => {
   el.addEventListener(`click`, () => {
     showScreen(stats);
   });
 });
-
-// returnToScreen(backBtn, greeting);
-
 
 export default game3;

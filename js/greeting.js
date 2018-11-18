@@ -1,7 +1,8 @@
 import {
   makeElement,
   showScreen,
-  returnToScreen
+  returnToScreen,
+  backBtns
 } from "./utils";
 import rules from "./rules";
 
@@ -27,17 +28,20 @@ const greetingHtml = `<!-- Приветствие -->
     </button>
   </section>`;
 
+const backBtn = rules.querySelector(`.back`);
 const greeting = makeElement(greetingHtml);
-// console.log(greeting);
 
 const arrowRight = greeting.querySelector(`.greeting__continue`);
-// console.log(arrowRight);
 arrowRight.addEventListener(`click`, () => {
   showScreen(rules);
 });
 
-const backBtn = rules.querySelector(`.back`);
-
 returnToScreen(backBtn);
+
+backBtns.map((el) => {
+  el.addEventListener(`click`, () => {
+    showScreen(greeting);
+  });
+});
 
 export default greeting;

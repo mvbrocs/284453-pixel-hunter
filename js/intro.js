@@ -1,4 +1,6 @@
-import {makeElement} from "./utils";
+import {
+  makeElement
+} from "./utils";
 
 const introHtml = `<!-- Интро -->
   <section class="intro">

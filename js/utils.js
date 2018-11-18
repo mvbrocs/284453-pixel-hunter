@@ -1,5 +1,7 @@
 // import greeting from "./greeting";
 
+// Массив стрелок назад
+const backBtns = [];
 const main = document.querySelector(`#main`);
 
 const makeElement = (str) => {
@@ -22,5 +24,6 @@ const returnToScreen = (el, screen) => {
 export {
   makeElement,
   showScreen,
-  returnToScreen
+  returnToScreen,
+  backBtns
 };

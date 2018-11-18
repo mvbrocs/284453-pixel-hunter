@@ -1,7 +1,7 @@
 import {
   makeElement,
   showScreen,
-  returnToScreen
+  backBtns
 } from "./utils";
 import game1 from "./game-1";
 
@@ -38,6 +38,7 @@ const rules = makeElement(rulesHtml);
 const goButton = rules.querySelector(`.rules__button`);
 const inputName = rules.querySelector(`.rules__input`);
 const backBtn = rules.querySelector(`.back`);
+backBtns.push(backBtn);
 
 inputName.addEventListener(`input`, () => {
   if (inputName.value) {
@@ -50,7 +51,5 @@ inputName.addEventListener(`input`, () => {
 goButton.addEventListener(`click`, () => {
   showScreen(game1);
 });
-
-// returnToScreen(backBtn);
 
 export default rules;
