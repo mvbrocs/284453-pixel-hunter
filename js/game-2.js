@@ -1,12 +1,10 @@
 import {
-  backBtns,
   makeElement,
   showScreen,
 } from "./utils";
 import game3 from "./game-3";
 
-const game2Html = `<!-- Игровой экран с одним изображением -->
-  <header class="header">
+const game2Html = `<header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
       <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
@@ -53,16 +51,11 @@ const game2Html = `<!-- Игровой экран с одним изображе
   </section>`;
 
 const game2 = makeElement(game2Html);
-const radioGroup = [...game2.querySelectorAll(`input[name=question1]`)];
+const form = game2.querySelector(`.game__content`);
 const backBtn = game2.querySelector(`.back`);
-backBtns.push(backBtn);
 
-radioGroup.map((el) => {
-  el.addEventListener(`click`, () => {
-    if (el.checked) {
-      showScreen(game3);
-    }
-  });
+form.addEventListener(`change`, () => {
+  showScreen(game3);
 });
 
 export default game2;

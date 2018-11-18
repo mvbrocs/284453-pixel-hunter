@@ -1,5 +1,4 @@
 import {
-  backBtns,
   makeElement,
   showScreen,
 } from "./utils";
@@ -55,9 +54,7 @@ const game3 = makeElement(game3Html);
 const backBtn = game3.querySelector(`.back`);
 const gameOptions = [...game3.querySelectorAll(`.game__option`)];
 
-backBtns.push(backBtn);
-
-gameOptions.map((el) => {
+gameOptions.forEach((el) => {
   el.addEventListener(`click`, () => {
     showScreen(stats);
   });

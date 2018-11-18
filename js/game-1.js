@@ -1,13 +1,11 @@
 import {
   makeElement,
   showScreen,
-  backBtns
 } from "./utils";
 
 import game2 from "./game-2";
 
-const game1Html = `<!-- Игровой экран с двумя изображениями -->
-  <header class="header">
+const game1Html = `<header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
       <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
@@ -68,7 +66,6 @@ const game1 = makeElement(game1Html);
 const leftRadioGroup = [...game1.querySelectorAll(`input[name=question1]`)];
 const rightRadioGroup = [...game1.querySelectorAll(`input[name=question2]`)];
 const backBtn = game1.querySelector(`.back`);
-backBtns.push(backBtn);
 
 let isLeftPictureSelected = false;
 let isRightPictureSelected = false;
@@ -88,7 +85,7 @@ leftRadioGroup.map((el) => {
   });
 });
 
-rightRadioGroup.map((el) => {
+rightRadioGroup.forEach((el) => {
   el.addEventListener(`click`, () => {
     if (el.checked) {
       isRightPictureSelected = true;

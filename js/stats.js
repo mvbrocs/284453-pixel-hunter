@@ -1,10 +1,8 @@
 import {
-  backBtns,
   makeElement
 } from "./utils";
 
-const statsHtml = `<!-- Общая статистика по всем игрокам -->
-  <header class="header">
+const statsHtml = `<header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
       <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
@@ -119,7 +117,5 @@ const statsHtml = `<!-- Общая статистика по всем игрок
 
 const stats = makeElement(statsHtml);
 const backBtn = stats.querySelector(`.back`);
-
-backBtns.push(backBtn);
 
 export default stats;

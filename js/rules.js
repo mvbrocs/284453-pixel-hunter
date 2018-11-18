@@ -1,12 +1,10 @@
 import {
   makeElement,
   showScreen,
-  backBtns
 } from "./utils";
 import game1 from "./game-1";
 
-const rulesHtml = `<!-- Правила игры -->
-  <header class="header">
+const rulesHtml = `<header class="header">
     <button class="back">
       <span class="visually-hidden">Вернуться к началу</span>
       <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
@@ -38,7 +36,6 @@ const rules = makeElement(rulesHtml);
 const goButton = rules.querySelector(`.rules__button`);
 const inputName = rules.querySelector(`.rules__input`);
 const backBtn = rules.querySelector(`.back`);
-backBtns.push(backBtn);
 
 inputName.addEventListener(`input`, () => {
   if (inputName.value) {
