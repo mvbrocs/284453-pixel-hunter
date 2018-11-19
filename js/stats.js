@@ -1,6 +1,7 @@
 import {
-  makeElement
+  makeElement, showScreen,
 } from "./utils";
+import greeting from "./greeting";
 
 const statsHtml = `<header class="header">
     <button class="back">
@@ -117,5 +118,7 @@ const statsHtml = `<header class="header">
 
 const stats = makeElement(statsHtml);
 const backBtn = stats.querySelector(`.back`);
+
+backBtn.addEventListener(`click`, () => showScreen(greeting));
 
 export default stats;

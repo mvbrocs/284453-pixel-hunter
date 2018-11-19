@@ -3,6 +3,7 @@ import {
   showScreen,
 } from "./utils";
 import game3 from "./game-3";
+import greeting from "./greeting";
 
 const game2Html = `<header class="header">
     <button class="back">
@@ -54,8 +55,7 @@ const game2 = makeElement(game2Html);
 const form = game2.querySelector(`.game__content`);
 const backBtn = game2.querySelector(`.back`);
 
-form.addEventListener(`change`, () => {
-  showScreen(game3);
-});
+form.addEventListener(`change`, () => showScreen(game3));
+backBtn.addEventListener(`click`, () => showScreen(greeting));
 
 export default game2;

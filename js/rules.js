@@ -3,6 +3,7 @@ import {
   showScreen,
 } from "./utils";
 import game1 from "./game-1";
+import greeting from "./greeting";
 
 const rulesHtml = `<header class="header">
     <button class="back">
@@ -33,20 +34,15 @@ const rulesHtml = `<header class="header">
   </section>`;
 
 const rules = makeElement(rulesHtml);
-const goButton = rules.querySelector(`.rules__button`);
+const goBtn = rules.querySelector(`.rules__button`);
 const inputName = rules.querySelector(`.rules__input`);
 const backBtn = rules.querySelector(`.back`);
 
 inputName.addEventListener(`input`, () => {
-  if (inputName.value) {
-    goButton.disabled = false;
-  } else {
-    goButton.disabled = true;
-  }
+  goBtn.disabled = (inputName.value < 1);
 });
 
-goButton.addEventListener(`click`, () => {
-  showScreen(game1);
-});
+goBtn.addEventListener(`click`, () => showScreen(game1));
+backBtn.addEventListener(`click`, () => showScreen(greeting));
 
 export default rules;

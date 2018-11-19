@@ -1,7 +1,6 @@
 import {
   makeElement,
-  showScreen,
-  returnToScreen
+  showScreen
 } from "./utils";
 import rules from "./rules";
 
@@ -26,14 +25,9 @@ const greetingHtml = `<section class="greeting central--blur">
     </button>
   </section>`;
 
-const backBtn = rules.querySelector(`.back`);
 const greeting = makeElement(greetingHtml);
-
 const arrowRight = greeting.querySelector(`.greeting__continue`);
-arrowRight.addEventListener(`click`, () => {
-  showScreen(rules);
-});
 
-returnToScreen(backBtn);
+arrowRight.addEventListener(`click`, () => showScreen(rules));
 
 export default greeting;

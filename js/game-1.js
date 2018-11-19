@@ -4,6 +4,7 @@ import {
 } from "./utils";
 
 import game2 from "./game-2";
+import greeting from "./greeting";
 
 const game1Html = `<header class="header">
     <button class="back">
@@ -93,5 +94,7 @@ rightRadioGroup.forEach((el) => {
     compareChecked();
   });
 });
+
+backBtn.addEventListener(`click`, () => showScreen(greeting));
 
 export default game1;

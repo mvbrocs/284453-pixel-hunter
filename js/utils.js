@@ -11,14 +11,7 @@ const showScreen = (e) => {
   main.appendChild(e);
 };
 
-const returnToScreen = (el, screen) => {
-  el.addEventListener(`click`, () => {
-    showScreen(screen);
-  });
-};
-
 export {
   makeElement,
-  showScreen,
-  returnToScreen
+  showScreen
 };

@@ -11,8 +11,6 @@ const introHtml = `<section class="intro">
 const intro = makeElement(introHtml);
 const asterisk = intro.querySelector(`.intro__asterisk`);
 
-asterisk.addEventListener(`click`, () => {
-  showScreen(greeting);
-});
+asterisk.addEventListener(`click`, () => showScreen(greeting));
 
 export default intro;

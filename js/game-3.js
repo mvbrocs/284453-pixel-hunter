@@ -3,6 +3,7 @@ import {
   showScreen,
 } from "./utils";
 import stats from "./stats";
+import greeting from "./greeting";
 
 const game3Html = `<!-- Игровой экран с тремя изображениями -->
   <header class="header">
@@ -55,9 +56,9 @@ const backBtn = game3.querySelector(`.back`);
 const gameOptions = [...game3.querySelectorAll(`.game__option`)];
 
 gameOptions.forEach((el) => {
-  el.addEventListener(`click`, () => {
-    showScreen(stats);
-  });
+  el.addEventListener(`click`, () => showScreen(stats));
 });
+
+backBtn.addEventListener(`click`, () => showScreen(greeting));
 
 export default game3;
