@@ -119,8 +119,9 @@ gulp.task(`build`, [`assemble`], () => {
 gulp.task(`test`, () => {
   return gulp.src([`js/**/*.test.js`])
     .pipe(rollup({
+      external: [`chai`],
       plugins: [
-        commonjs() // Сообщает Rollup, что модули можно загружать из node_modules
+        commonjs(), // Сообщает Rollup, что модули можно загружать из node_modules
       ]}, `cjs`)) // Выходной формат тестов — `CommonJS` модуль
     .pipe(gulp.dest(`build/test`))
     .pipe(mocha({
