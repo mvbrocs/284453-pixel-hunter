@@ -1,6 +1,7 @@
 import {
   assert
 } from 'chai';
+import checkLives from './check-lives';
 
 // генератор массива ответов
 const generateAnswers = (right = 10, time = 15000) => {
@@ -18,18 +19,6 @@ const generateAnswers = (right = 10, time = 15000) => {
   }
 
   return arr;
-};
-
-const checkLives = (a) => {
-  let lives = 3;
-
-  a.forEach((el) => {
-    if (!el[0] && lives > 0) {
-      lives -= 1;
-    }
-  });
-
-  return lives;
 };
 
 describe(`Проверка функции подсчета жизней`, () => {
