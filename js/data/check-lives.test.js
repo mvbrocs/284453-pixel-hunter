@@ -23,18 +23,18 @@ const generateAnswers = (right = 10, time = 15000) => {
 
 describe(`Проверка функции подсчета жизней`, () => {
   it(`Если все ответы правильные, то возвращается 3`, () => {
-    assert.equal(3, checkLives(generateAnswers()));
+    assert.equal(checkLives(generateAnswers()), 3);
   });
 
   it(`Если один ответ неправильный, то возвращается 2`, () => {
-    assert.equal(2, checkLives(generateAnswers(9)));
+    assert.equal(checkLives(generateAnswers(9)), 2);
   });
 
   it(`Если три ответа неправильные, то возвращается 0`, () => {
-    assert.equal(0, checkLives(generateAnswers(7)));
+    assert.equal(checkLives(generateAnswers(7)), 0);
   });
 
   it(`Если девять ответов неправильные, то возвращается 0`, () => {
-    assert.equal(0, checkLives(generateAnswers(1)));
+    assert.equal(checkLives(generateAnswers(1)), 0);
   });
 });
