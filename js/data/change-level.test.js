@@ -2,9 +2,9 @@ import {
   assert
 } from 'chai';
 import {
-  changeLvl,
-  GAME_SETUP
+  changeLvl
 } from './change-level';
+import {GAME_SETUP} from './game-data';
 
 describe(`Проверка функции смены уровней`, () => {
   it(`Уровень игры должен совпадать с переданным значением`, () => {

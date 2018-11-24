@@ -2,7 +2,9 @@ import {
   assert
 } from 'chai';
 
-import gameData from './game-data';
+import {
+  gameData
+} from './game-data';
 
 // генератор массива ответов
 const generateAnswers = (right = 10, time = 15000) => {

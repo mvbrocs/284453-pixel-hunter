@@ -8,6 +8,12 @@ const Answer = {
   bonusForLives: 50
 };
 
+const GAME_SETUP = {
+  level: 0,
+  lives: 2,
+  time: 999
+};
+
 const gameData = (a, lives) => {
   let acc = 0;
   let scores = 0;
@@ -35,4 +41,7 @@ const gameData = (a, lives) => {
   return scores + livesBonus;
 };
 
-export default gameData;
+export {
+  gameData,
+  GAME_SETUP
+};

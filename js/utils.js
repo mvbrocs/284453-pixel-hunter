@@ -12,6 +12,7 @@ const showScreen = (e) => {
 };
 
 export {
+  main,
   makeElement,
   showScreen
 };

@@ -2,27 +2,15 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
+import headerTemplate from './header/header-template';
+import statsTemplate from './stats-template';
 import stats from "./stats";
 import greeting from "./greeting";
+import {
+  GAME_SETUP
+} from './data/game-data';
 
-const game3Html = `<!-- Игровой экран с тремя изображениями -->
-  <header class="header">
-    <button class="back">
-      <span class="visually-hidden">Вернуться к началу</span>
-      <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
-        <use xlink:href="img/sprite.svg#arrow-left"></use>
-      </svg>
-      <svg class="icon" width="101" height="44" viewBox="0 0 101 44" fill="#000000">
-        <use xlink:href="img/sprite.svg#logo-small"></use>
-      </svg>
-    </button>
-    <div class="game__timer">NN</div>
-    <div class="game__lives">
-      <img src="img/heart__empty.svg" class="game__heart" alt="Life" width="31" height="27">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="31" height="27">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="31" height="27">
-    </div>
-  </header>
+const game3Html = `
   <section class="game">
     <p class="game__task">Найдите рисунок среди изображений</p>
     <form class="game__content  game__content--triple">
@@ -36,24 +24,17 @@ const game3Html = `<!-- Игровой экран с тремя изображе
         <img src="http://placehold.it/304x455" alt="Option 3" width="304" height="455">
       </div>
     </form>
-    <ul class="stats">
-      <li class="stats__result stats__result--wrong"></li>
-      <li class="stats__result stats__result--slow"></li>
-      <li class="stats__result stats__result--fast"></li>
-      <li class="stats__result stats__result--correct"></li>
-      <li class="stats__result stats__result--wrong"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--slow"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--fast"></li>
-      <li class="stats__result stats__result--unknown"></li>
-    </ul>
   </section>
 `;
 
 const game3 = makeElement(game3Html);
-const backBtn = game3.querySelector(`.back`);
+const gameSection = game3.querySelector(`.game`);
 const gameOptions = [...game3.querySelectorAll(`.game__option`)];
+
+gameSection.insertAdjacentElement(`beforebegin`, makeElement(headerTemplate(GAME_SETUP)));
+gameSection.insertAdjacentElement(`beforeend`, makeElement(statsTemplate));
+
+const backBtn = game3.querySelector(`.back`);
 
 gameOptions.forEach((el) => {
   el.addEventListener(`click`, () => showScreen(stats));

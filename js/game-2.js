@@ -2,26 +2,15 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
+import headerTemplate from './header/header-template';
+import statsTemplate from './stats-template';
 import game3 from "./game-3";
 import greeting from "./greeting";
+import {
+  GAME_SETUP
+} from './data/game-data';
 
-const game2Html = `<header class="header">
-    <button class="back">
-      <span class="visually-hidden">Вернуться к началу</span>
-      <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
-        <use xlink:href="img/sprite.svg#arrow-left"></use>
-      </svg>
-      <svg class="icon" width="101" height="44" viewBox="0 0 101 44" fill="#000000">
-        <use xlink:href="img/sprite.svg#logo-small"></use>
-      </svg>
-    </button>
-    <div class="game__timer">NN</div>
-    <div class="game__lives">
-      <img src="img/heart__empty.svg" class="game__heart" alt="Life" width="31" height="27">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="31" height="27">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="31" height="27">
-    </div>
-  </header>
+const game2Html = `
   <section class="game">
     <p class="game__task">Угадай, фото или рисунок?</p>
     <form class="game__content  game__content--wide">
@@ -37,22 +26,15 @@ const game2Html = `<header class="header">
         </label>
       </div>
     </form>
-    <ul class="stats">
-      <li class="stats__result stats__result--wrong"></li>
-      <li class="stats__result stats__result--slow"></li>
-      <li class="stats__result stats__result--fast"></li>
-      <li class="stats__result stats__result--correct"></li>
-      <li class="stats__result stats__result--wrong"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--slow"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--fast"></li>
-      <li class="stats__result stats__result--unknown"></li>
-    </ul>
   </section>`;
 
 const game2 = makeElement(game2Html);
+const gameSection = game2.querySelector(`.game`);
 const form = game2.querySelector(`.game__content`);
+
+gameSection.insertAdjacentElement(`beforebegin`, makeElement(headerTemplate(GAME_SETUP)));
+gameSection.insertAdjacentElement(`beforeend`, makeElement(statsTemplate));
+
 const backBtn = game2.querySelector(`.back`);
 
 form.addEventListener(`change`, () => showScreen(game3));

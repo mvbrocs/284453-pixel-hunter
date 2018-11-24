@@ -2,27 +2,16 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
+import headerTemplate from './header/header-template';
+import statsTemplate from './stats-template';
+import {
+  GAME_SETUP
+} from './data/game-data';
 
 import game2 from "./game-2";
 import greeting from "./greeting";
 
-const game1Html = `<header class="header">
-    <button class="back">
-      <span class="visually-hidden">Вернуться к началу</span>
-      <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
-        <use xlink:href="img/sprite.svg#arrow-left"></use>
-      </svg>
-      <svg class="icon" width="101" height="44" viewBox="0 0 101 44" fill="#000000">
-        <use xlink:href="img/sprite.svg#logo-small"></use>
-      </svg>
-    </button>
-    <div class="game__timer">NN</div>
-    <div class="game__lives">
-      <img src="img/heart__empty.svg" class="game__heart" alt=" Missed Life" width="31" height="27">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="31" height="27">
-      <img src="img/heart__full.svg" class="game__heart" alt="Life" width="31" height="27">
-    </div>
-  </header>
+const game1Html = `
   <section class="game">
     <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
     <form class="game__content">
@@ -49,25 +38,19 @@ const game1Html = `<header class="header">
         </label>
       </div>
     </form>
-    <ul class="stats">
-      <li class="stats__result stats__result--wrong"></li>
-      <li class="stats__result stats__result--slow"></li>
-      <li class="stats__result stats__result--fast"></li>
-      <li class="stats__result stats__result--correct"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--unknown"></li>
-      <li class="stats__result stats__result--unknown"></li>
-    </ul>
   </section>`;
 
 const game1 = makeElement(game1Html);
+const gameSection = game1.querySelector(`.game`);
 const leftRadioGroup = [...game1.querySelectorAll(`input[name=question1]`)];
 const rightRadioGroup = [...game1.querySelectorAll(`input[name=question2]`)];
-const backBtn = game1.querySelector(`.back`);
 
+
+// console.log(headerTemplate(GAME_SETUP));
+gameSection.insertAdjacentElement(`beforebegin`, makeElement(headerTemplate(GAME_SETUP)));
+gameSection.insertAdjacentElement(`beforeend`, makeElement(statsTemplate));
+
+const backBtn = game1.querySelector(`.back`);
 let isLeftPictureSelected = false;
 let isRightPictureSelected = false;
 

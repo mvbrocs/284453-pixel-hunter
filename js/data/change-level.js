@@ -1,8 +1,6 @@
-const GAME_SETUP = {
-  level: 0,
-  lives: 3,
-  time: 0
-};
+// import {
+//   GAME_SETUP
+// } from './game-data';
 
 const changeLvl = (game, level) => {
   if (typeof level !== `number`) {
@@ -21,6 +19,5 @@ const changeLvl = (game, level) => {
 };
 
 export {
-  GAME_SETUP,
   changeLvl
 };
