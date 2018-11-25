@@ -2,11 +2,11 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
-import headerTemplate from './header/header-template';
-import statsTemplate from './stats-template';
-import {
-  GAME_SETUP
-} from './data/game-data';
+import header from './header/header-template';
+import stats from './stats-template';
+// import {
+//   GAME_SETUP
+// } from './data/game-data';
 
 import game2 from "./game-2";
 import greeting from "./greeting";
@@ -46,9 +46,8 @@ const leftRadioGroup = [...game1.querySelectorAll(`input[name=question1]`)];
 const rightRadioGroup = [...game1.querySelectorAll(`input[name=question2]`)];
 
 
-// console.log(headerTemplate(GAME_SETUP));
-gameSection.insertAdjacentElement(`beforebegin`, makeElement(headerTemplate(GAME_SETUP)));
-gameSection.insertAdjacentElement(`beforeend`, makeElement(statsTemplate));
+gameSection.insertAdjacentElement(`beforebegin`, header);
+gameSection.insertAdjacentElement(`beforeend`, stats);
 
 const backBtn = game1.querySelector(`.back`);
 let isLeftPictureSelected = false;

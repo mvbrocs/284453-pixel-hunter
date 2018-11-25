@@ -1,6 +1,9 @@
 import {
   GAME_SETUP
 } from '../data/game-data';
+import {
+  makeElement
+} from '../utils';
 
 // const GAME_SETUP = {
 //   level: 0,
@@ -30,4 +33,6 @@ const headerTemplate = (state) => `
     </div>
   </header>`;
 
-export default headerTemplate;
+const header = makeElement(headerTemplate(GAME_SETUP));
+
+export default header;

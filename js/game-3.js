@@ -2,9 +2,8 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
-import headerTemplate from './header/header-template';
-import statsTemplate from './stats-template';
-import stats from "./stats";
+import header from './header/header-template';
+import stats from './stats-template';
 import greeting from "./greeting";
 import {
   GAME_SETUP
@@ -31,8 +30,8 @@ const game3 = makeElement(game3Html);
 const gameSection = game3.querySelector(`.game`);
 const gameOptions = [...game3.querySelectorAll(`.game__option`)];
 
-gameSection.insertAdjacentElement(`beforebegin`, makeElement(headerTemplate(GAME_SETUP)));
-gameSection.insertAdjacentElement(`beforeend`, makeElement(statsTemplate));
+gameSection.insertAdjacentElement(`beforebegin`, header);
+gameSection.insertAdjacentElement(`beforeend`, stats);
 
 const backBtn = game3.querySelector(`.back`);
 

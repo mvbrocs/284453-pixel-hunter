@@ -2,8 +2,8 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
-import headerTemplate from './header/header-template';
-import statsTemplate from './stats-template';
+import header from './header/header-template';
+import stats from './stats-template';
 import game3 from "./game-3";
 import greeting from "./greeting";
 import {
@@ -32,8 +32,8 @@ const game2 = makeElement(game2Html);
 const gameSection = game2.querySelector(`.game`);
 const form = game2.querySelector(`.game__content`);
 
-gameSection.insertAdjacentElement(`beforebegin`, makeElement(headerTemplate(GAME_SETUP)));
-gameSection.insertAdjacentElement(`beforeend`, makeElement(statsTemplate));
+gameSection.insertAdjacentElement(`beforebegin`, header);
+gameSection.insertAdjacentElement(`beforeend`, stats);
 
 const backBtn = game2.querySelector(`.back`);
 
