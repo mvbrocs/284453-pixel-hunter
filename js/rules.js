@@ -37,6 +37,6 @@ inputName.addEventListener(`input`, () => {
 });
 
 goBtn.addEventListener(`click`, () => showScreen(game1));
-backBtn.addEventListener(`click`, () => showScreen(greeting));
+backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
 export default rules;

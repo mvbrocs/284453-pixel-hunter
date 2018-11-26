@@ -15,7 +15,7 @@ const intro = () => {
   const introEl = makeElement(introHtml);
   const asterisk = introEl.querySelector(`.intro__asterisk`);
 
-  asterisk.addEventListener(`click`, () => showScreen(greeting));
+  asterisk.addEventListener(`click`, () => showScreen(greeting()));
   return introEl;
 };
 

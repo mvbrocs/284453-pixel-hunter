@@ -38,6 +38,6 @@ const form = game2.querySelector(`.game__content`);
 const backBtn = game2.querySelector(`.back`);
 
 form.addEventListener(`change`, () => showScreen(game3));
-backBtn.addEventListener(`click`, () => showScreen(greeting));
+backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
 export default game2;

@@ -84,6 +84,6 @@ const statsHtml = (state) => `
 const stats = makeElement(statsHtml(Answer));
 const backBtn = stats.querySelector(`.back`);
 
-backBtn.addEventListener(`click`, () => showScreen(greeting));
+backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
 export default stats;

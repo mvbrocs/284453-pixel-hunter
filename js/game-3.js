@@ -40,6 +40,6 @@ gameOptions.forEach((el) => {
   el.addEventListener(`click`, () => showScreen(stats));
 });
 
-backBtn.addEventListener(`click`, () => showScreen(greeting));
+backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
 export default game3;

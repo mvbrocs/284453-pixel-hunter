@@ -4,7 +4,9 @@ import {
 } from "./utils";
 import rules from "./rules";
 
-const greetingHtml = `<section class="greeting central--blur">
+const greeting = () => {
+  const greetingHtml = `
+  <section class="greeting central--blur">
     <img class="greeting__logo" src="img/logo_ph-big.svg" width="201" height="89" alt="Pixel Hunter">
     <div class="greeting__asterisk asterisk"><span class="visually-hidden">Я просто красивая звёздочка</span>*</div>
     <div class="greeting__challenge">
@@ -25,9 +27,11 @@ const greetingHtml = `<section class="greeting central--blur">
     </button>
   </section>`;
 
-const greeting = makeElement(greetingHtml);
-const arrowRight = greeting.querySelector(`.greeting__continue`);
+  const greetingEl = makeElement(greetingHtml);
+  const arrowRight = greetingEl.querySelector(`.greeting__continue`);
 
-arrowRight.addEventListener(`click`, () => showScreen(rules));
+  arrowRight.addEventListener(`click`, () => showScreen(rules));
+  return greetingEl;
+};
 
 export default greeting;
