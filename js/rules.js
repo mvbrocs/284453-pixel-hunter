@@ -5,6 +5,7 @@ import {
 import game1 from "./game-1";
 import greeting from "./greeting";
 import backBtnTemplate from "./back-btn-template";
+import renderScreen from "./screen";
 
 const rules = (state) => {
   const rulesHtml = `
@@ -37,7 +38,8 @@ const rules = (state) => {
     goBtn.disabled = (inputName.value < 1);
   });
 
-  goBtn.addEventListener(`click`, () => showScreen(game1(state)));
+  // goBtn.addEventListener(`click`, () => showScreen(game1(state)));
+  goBtn.addEventListener(`click`, () => showScreen(renderScreen));
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
   return rulesEl;

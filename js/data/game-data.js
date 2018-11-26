@@ -1,3 +1,7 @@
+import game1 from "../game-1";
+import game2 from "../game-2";
+import game3 from "../game-3";
+
 /*
 1. Описание игры
   Игра содержит:
@@ -56,7 +60,23 @@ const gamePlay = {
       `http://i.imgur.com/DKR1HtB.jpg`
     ]
   },
+  set level(value) {
+    this.GAME_SETUP.level = value;
+  }
 };
+
+const screens = [
+  [game1(gamePlay)],
+  [game2(gamePlay)],
+  [game3(gamePlay)],
+  [game1(gamePlay)],
+  [game2(gamePlay)],
+  [game3(gamePlay)],
+  [game1(gamePlay)],
+  [game2(gamePlay)],
+  [game3(gamePlay)],
+  [game1(gamePlay)]
+];
 
 // const Answer = {
 //   RIGHT: 100,
@@ -109,5 +129,6 @@ export {
   // GAME_SETUP,
   // GAME_TASKS,
   // Answer,
-  gamePlay
+  gamePlay,
+  screens
 };
