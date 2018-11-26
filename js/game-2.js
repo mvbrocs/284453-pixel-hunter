@@ -34,7 +34,7 @@ const game2 = (state) => {
   const form = game2El.querySelector(`.game__content`);
   const backBtn = game2El.querySelector(`.back`);
 
-  form.addEventListener(`change`, () => showScreen(game3));
+  form.addEventListener(`change`, () => showScreen(game3(state)));
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
   return game2El;
