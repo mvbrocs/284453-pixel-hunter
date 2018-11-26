@@ -14,6 +14,12 @@ const GAME_SETUP = {
   time: 999
 };
 
+const GAME_TASKS = {
+  twoPic: `Угадайте для каждого изображения фото или рисунок?`,
+  onePic: `Угадай, фото или рисунок?`,
+  threePic: `Найдите рисунок среди изображений`
+};
+
 const gameData = (a, lives) => {
   let acc = 0;
   let scores = 0;
@@ -43,5 +49,6 @@ const gameData = (a, lives) => {
 
 export {
   gameData,
-  GAME_SETUP
+  GAME_SETUP,
+  GAME_TASKS
 };

@@ -1,16 +1,3 @@
-import {
-  GAME_SETUP
-} from '../data/game-data';
-import {
-  makeElement
-} from '../utils';
-
-// const GAME_SETUP = {
-//   level: 0,
-//   lives: 3,
-//   time: 0
-// };
-
 const headerTemplate = (state) => `
 <header class="header">
     <button class="back">
@@ -33,6 +20,4 @@ const headerTemplate = (state) => `
     </div>
   </header>`;
 
-const header = makeElement(headerTemplate(GAME_SETUP));
-
-export default header;
+export default headerTemplate;

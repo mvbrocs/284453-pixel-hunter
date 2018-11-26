@@ -2,17 +2,21 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
-import header from './header/header-template';
-import stats from './stats-template';
 import game3 from "./game-3";
 import greeting from "./greeting";
 import {
-  GAME_SETUP
+  GAME_SETUP,
+  GAME_TASKS
 } from './data/game-data';
+import headerTemplate from "./header/header-template";
+import statsTemplate from "./stats-template";
+
+const gameTask = (task) => `<p class="game__task">${task.onePic}</p>`;
 
 const game2Html = `
+  ${headerTemplate(GAME_SETUP)}
   <section class="game">
-    <p class="game__task">Угадай, фото или рисунок?</p>
+    ${gameTask(GAME_TASKS)}
     <form class="game__content  game__content--wide">
       <div class="game__option">
         <img src="http://placehold.it/705x455" alt="Option 1" width="705" height="455">
@@ -26,15 +30,11 @@ const game2Html = `
         </label>
       </div>
     </form>
+    ${statsTemplate}
   </section>`;
 
 const game2 = makeElement(game2Html);
-const gameSection = game2.querySelector(`.game`);
 const form = game2.querySelector(`.game__content`);
-
-gameSection.insertAdjacentElement(`beforebegin`, header);
-gameSection.insertAdjacentElement(`beforeend`, stats);
-
 const backBtn = game2.querySelector(`.back`);
 
 form.addEventListener(`change`, () => showScreen(game3));

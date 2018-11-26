@@ -2,18 +2,22 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
-import header from './header/header-template';
-import stats from './stats-template';
-// import {
-//   GAME_SETUP
-// } from './data/game-data';
+import headerTemplate from './header/header-template';
+import statsTemplate from './stats-template';
+import {
+  GAME_SETUP,
+  GAME_TASKS
+} from './data/game-data';
 
 import game2 from "./game-2";
 import greeting from "./greeting";
 
+const gameTask = (task) => `<p class="game__task">${task.twoPic}</p>`;
+
 const game1Html = `
+  ${headerTemplate(GAME_SETUP)}
   <section class="game">
-    <p class="game__task">Угадайте для каждого изображения фото или рисунок?</p>
+  ${gameTask(GAME_TASKS)}
     <form class="game__content">
       <div class="game__option">
         <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
@@ -38,17 +42,12 @@ const game1Html = `
         </label>
       </div>
     </form>
+    ${statsTemplate}
   </section>`;
 
 const game1 = makeElement(game1Html);
-const gameSection = game1.querySelector(`.game`);
 const leftRadioGroup = [...game1.querySelectorAll(`input[name=question1]`)];
 const rightRadioGroup = [...game1.querySelectorAll(`input[name=question2]`)];
-
-
-gameSection.insertAdjacentElement(`beforebegin`, header);
-gameSection.insertAdjacentElement(`beforeend`, stats);
-
 const backBtn = game1.querySelector(`.back`);
 let isLeftPictureSelected = false;
 let isRightPictureSelected = false;
