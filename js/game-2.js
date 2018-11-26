@@ -5,8 +5,9 @@ import {
 import game3 from "./game-3";
 import greeting from "./greeting";
 import {
-  GAME_SETUP,
-  GAME_TASKS
+  gamePlay
+  // GAME_SETUP,
+  // GAME_TASKS
 } from './data/game-data';
 import headerTemplate from "./header/header-template";
 import statsTemplate from "./stats-template";
@@ -14,9 +15,9 @@ import statsTemplate from "./stats-template";
 const gameTask = (task) => `<p class="game__task">${task.onePic}</p>`;
 
 const game2Html = `
-  ${headerTemplate(GAME_SETUP)}
+  ${headerTemplate(gamePlay.GAME_SETUP)}
   <section class="game">
-    ${gameTask(GAME_TASKS)}
+    ${gameTask(gamePlay.GAME_TASKS)}
     <form class="game__content  game__content--wide">
       <div class="game__option">
         <img src="http://placehold.it/705x455" alt="Option 1" width="705" height="455">

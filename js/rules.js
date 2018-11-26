@@ -9,7 +9,7 @@ import backBtnTemplate from "./back-btn-template";
 const rules = () => {
   const rulesHtml = `
   <header class="header">
-  ${backBtnTemplate}
+    ${backBtnTemplate}
   </header>
   <section class="rules">
     <h2 class="rules__title">Правила</h2>

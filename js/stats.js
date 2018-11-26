@@ -6,7 +6,7 @@ import greeting from "./greeting";
 import statsTemplate from "./stats-template";
 import backBtnTemplate from "./back-btn-template";
 import {
-  Answer
+  gamePlay
 } from "./data/game-data";
 
 const statsHtml = (state) => `
@@ -28,21 +28,21 @@ const statsHtml = (state) => `
         <td></td>
         <td class="result__extra">Бонус за скорость:</td>
         <td class="result__extra">1 <span class="stats__result stats__result--fast"></span></td>
-        <td class="result__points">× ${state.QUICK}</td>
+        <td class="result__points">× ${state.Answer.QUICK}</td>
         <td class="result__total">50</td>
       </tr>
       <tr>
         <td></td>
         <td class="result__extra">Бонус за жизни:</td>
         <td class="result__extra">2 <span class="stats__result stats__result--alive"></span></td>
-        <td class="result__points">× ${state.BONUS_FOR_LIVES}</td>
+        <td class="result__points">× ${state.Answer.BONUS_FOR_LIVES}</td>
         <td class="result__total">100</td>
       </tr>
       <tr>
         <td></td>
         <td class="result__extra">Штраф за медлительность:</td>
         <td class="result__extra">2 <span class="stats__result stats__result--slow"></span></td>
-        <td class="result__points">× ${state.SLOW}</td>
+        <td class="result__points">× ${state.Answer.SLOW}</td>
         <td class="result__total">-100</td>
       </tr>
       <tr>
@@ -72,7 +72,7 @@ const statsHtml = (state) => `
         <td></td>
         <td class="result__extra">Бонус за жизни:</td>
         <td class="result__extra">2 <span class="stats__result stats__result--alive"></span></td>
-        <td class="result__points">× ${state.BONUS_FOR_LIVES}</td>
+        <td class="result__points">× ${state.Answer.BONUS_FOR_LIVES}</td>
         <td class="result__total">100</td>
       </tr>
       <tr>
@@ -81,7 +81,7 @@ const statsHtml = (state) => `
     </table>
   </section>`;
 
-const stats = makeElement(statsHtml(Answer));
+const stats = makeElement(statsHtml(gamePlay));
 const backBtn = stats.querySelector(`.back`);
 
 backBtn.addEventListener(`click`, () => showScreen(greeting()));

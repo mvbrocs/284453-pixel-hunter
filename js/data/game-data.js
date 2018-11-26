@@ -14,46 +14,64 @@
   - время ответа
 */
 
-
 const QUICK_ANSWER = 10000;
 const SLOW_ANSWER = 20000;
 
-const Answer = {
-  RIGHT: 100,
-  QUICK: 50,
-  SLOW: 50,
-  BONUS_FOR_LIVES: 50
+const gamePlay = {
+  GAME_SETUP: {
+    level: 0,
+    lives: 2,
+    time: 999
+  },
+  GAME_TASKS: {
+    twoPic: `Угадайте для каждого изображения фото или рисунок?`,
+    onePic: `Угадай, фото или рисунок?`,
+    threePic: `Найдите рисунок среди изображений`
+  },
+  Answer: {
+    RIGHT: 100,
+    QUICK: 50,
+    SLOW: 50,
+    BONUS_FOR_LIVES: 50
+  },
 };
 
-const GAME_SETUP = {
-  level: 0,
-  lives: 2,
-  time: 999
-};
+// const Answer = {
+//   RIGHT: 100,
+//   QUICK: 50,
+//   SLOW: 50,
+//   BONUS_FOR_LIVES: 50
+// };
 
-const GAME_TASKS = {
-  twoPic: `Угадайте для каждого изображения фото или рисунок?`,
-  onePic: `Угадай, фото или рисунок?`,
-  threePic: `Найдите рисунок среди изображений`
-};
+// const GAME_SETUP = {
+//   level: 0,
+//   lives: 2,
+//   time: 999
+// };
+
+// const GAME_TASKS = {
+//   twoPic: `Угадайте для каждого изображения фото или рисунок?`,
+//   onePic: `Угадай, фото или рисунок?`,
+//   threePic: `Найдите рисунок среди изображений`
+// };
 
 const gameData = (a, lives) => {
   let acc = 0;
   let scores = 0;
-  const livesBonus = Answer.BONUS_FOR_LIVES * lives;
+  const livesBonus = gamePlay.Answer.BONUS_FOR_LIVES * lives;
 
   a.forEach((el) => {
     const [answer, time] = el;
 
     if (answer) {
       acc += 1;
-      scores += Answer.RIGHT;
+      scores += gamePlay.Answer.RIGHT;
 
       if (time < QUICK_ANSWER) {
-        scores += Answer.QUICK;
+        scores += gamePlay.Answer.QUICK;
       }
       if (time > SLOW_ANSWER) {
-        scores -= Answer.SLOW;
+        scores -= gamePlay.Answer.SLOW;
       }
     }
   });
@@ -66,7 +84,8 @@ const gameData = (a, lives) => {
 
 export {
   gameData,
-  GAME_SETUP,
-  GAME_TASKS,
-  Answer
+  // GAME_SETUP,
+  // GAME_TASKS,
+  // Answer,
+  gamePlay
 };

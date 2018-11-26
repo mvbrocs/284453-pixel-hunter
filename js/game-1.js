@@ -2,22 +2,22 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
+import {
+  gamePlay
+  // GAME_SETUP,
+  // GAME_TASKS
+} from './data/game-data';
 import headerTemplate from './header/header-template';
 import statsTemplate from './stats-template';
-import {
-  GAME_SETUP,
-  GAME_TASKS
-} from './data/game-data';
-
 import game2 from "./game-2";
 import greeting from "./greeting";
 
 const gameTask = (task) => `<p class="game__task">${task.twoPic}</p>`;
 
 const game1Html = `
-  ${headerTemplate(GAME_SETUP)}
+  ${headerTemplate(gamePlay.GAME_SETUP)}
   <section class="game">
-  ${gameTask(GAME_TASKS)}
+  ${gameTask(gamePlay.GAME_TASKS)}
     <form class="game__content">
       <div class="game__option">
         <img src="http://placehold.it/468x458" alt="Option 1" width="468" height="458">
