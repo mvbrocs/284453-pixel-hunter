@@ -16,7 +16,7 @@ const game2 = (state) => {
       ${gameTask}
       <form class="game__content  game__content--wide">
         <div class="game__option">
-          <img src="http://placehold.it/705x455" alt="Option 1" width="705" height="455">
+          <img src="${state.images.paintings[1]}" alt="Option 1" width="705" height="455">
           <label class="game__answer  game__answer--photo">
             <input class="visually-hidden" name="question1" type="radio" value="photo">
             <span>Фото</span>
