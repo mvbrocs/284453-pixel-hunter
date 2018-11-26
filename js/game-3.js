@@ -38,7 +38,7 @@ const gameOptions = [...game3.querySelectorAll(`.game__option`)];
 const backBtn = game3.querySelector(`.back`);
 
 gameOptions.forEach((el) => {
-  el.addEventListener(`click`, () => showScreen(stats));
+  el.addEventListener(`click`, () => showScreen(stats(gamePlay)));
 });
 
 backBtn.addEventListener(`click`, () => showScreen(greeting()));

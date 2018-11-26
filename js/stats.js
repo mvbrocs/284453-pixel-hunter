@@ -5,11 +5,9 @@ import {
 import greeting from "./greeting";
 import statsTemplate from "./stats-template";
 import backBtnTemplate from "./back-btn-template";
-import {
-  gamePlay
-} from "./data/game-data";
 
-const statsHtml = (state) => `
+const stats = (state) => {
+  const statsHtml = `
   <header class="header">
     ${backBtnTemplate}
   </header>
@@ -81,9 +79,12 @@ const statsHtml = (state) => `
     </table>
   </section>`;
 
-const stats = makeElement(statsHtml(gamePlay));
-const backBtn = stats.querySelector(`.back`);
+  const statsEl = makeElement(statsHtml);
+  const backBtn = statsEl.querySelector(`.back`);
 
-backBtn.addEventListener(`click`, () => showScreen(greeting()));
+  backBtn.addEventListener(`click`, () => showScreen(greeting()));
+
+  return statsEl;
+};
 
 export default stats;
