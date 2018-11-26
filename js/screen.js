@@ -9,6 +9,6 @@ import game2 from './game-2';
 import stats from './stats';
 import game3 from './game-3';
 
-const renderScreen = game2(gamePlay);
+const renderScreen = screens[gamePlay.GAME_SETUP.level];
 
 export default renderScreen;

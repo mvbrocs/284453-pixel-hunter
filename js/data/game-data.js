@@ -61,21 +61,21 @@ const gamePlay = {
     ]
   },
   set level(value) {
-    this.GAME_SETUP.level = value;
+    this.GAME_SETUP.level += value;
   }
 };
 
 const screens = [
-  [game1(gamePlay)],
-  [game2(gamePlay)],
-  [game3(gamePlay)],
-  [game1(gamePlay)],
-  [game2(gamePlay)],
-  [game3(gamePlay)],
-  [game1(gamePlay)],
-  [game2(gamePlay)],
-  [game3(gamePlay)],
-  [game1(gamePlay)]
+  game1(gamePlay),
+  game2(gamePlay),
+  game3(gamePlay),
+  game1(gamePlay),
+  game2(gamePlay),
+  game3(gamePlay),
+  game1(gamePlay),
+  game2(gamePlay),
+  game3(gamePlay),
+  game1(gamePlay)
 ];
 
 // const Answer = {
