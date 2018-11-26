@@ -2,9 +2,6 @@ import {
   makeElement,
   showScreen,
 } from "./utils";
-import {
-  gamePlay
-} from './data/game-data';
 import headerTemplate from './header/header-template';
 import statsTemplate from './stats-template';
 import game2 from "./game-2";
@@ -53,7 +50,7 @@ const game1 = (state) => {
 
   const compareChecked = () => {
     if (isLeftPictureSelected && isRightPictureSelected) {
-      showScreen(game2);
+      showScreen(game2(state));
     }
   };
 
