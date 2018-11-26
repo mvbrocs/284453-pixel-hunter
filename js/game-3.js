@@ -15,7 +15,7 @@ import headerTemplate from "./header/header-template";
 const gameTask = (task) => `<p class="game__task">${task.threePic}</p>`;
 
 const game3Html = `
-  ${headerTemplate(gamePlay.GAME_SETUP)}
+  ${headerTemplate(gamePlay)}
   <section class="game">
     ${gameTask(gamePlay.GAME_TASKS)}
     <form class="game__content  game__content--triple">

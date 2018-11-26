@@ -15,7 +15,7 @@ import statsTemplate from "./stats-template";
 const gameTask = (task) => `<p class="game__task">${task.onePic}</p>`;
 
 const game2Html = `
-  ${headerTemplate(gamePlay.GAME_SETUP)}
+  ${headerTemplate(gamePlay)}
   <section class="game">
     ${gameTask(gamePlay.GAME_TASKS)}
     <form class="game__content  game__content--wide">

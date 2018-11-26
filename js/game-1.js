@@ -15,7 +15,7 @@ import greeting from "./greeting";
 const gameTask = (task) => `<p class="game__task">${task.twoPic}</p>`;
 
 const game1Html = `
-  ${headerTemplate(gamePlay.GAME_SETUP)}
+  ${headerTemplate(gamePlay)}
   <section class="game">
   ${gameTask(gamePlay.GAME_TASKS)}
     <form class="game__content">
