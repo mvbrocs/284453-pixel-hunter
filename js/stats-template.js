@@ -1,7 +1,3 @@
-import {
-  makeElement
-} from './utils';
-
 const statsTemplate = `
   <ul class="stats">
     <li class="stats__result stats__result--wrong"></li>
@@ -16,5 +12,4 @@ const statsTemplate = `
     <li class="stats__result stats__result--unknown"></li>
   </ul>`;
 
-const stats = makeElement(statsTemplate)
 export default statsTemplate;

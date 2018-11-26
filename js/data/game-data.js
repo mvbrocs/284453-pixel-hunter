@@ -1,11 +1,18 @@
+/*
+Игра:
+
+
+*/
+
+
 const QUICK_ANSWER = 10000;
 const SLOW_ANSWER = 20000;
 
 const Answer = {
-  right: 100,
-  quick: 50,
-  slow: 50,
-  bonusForLives: 50
+  RIGHT: 100,
+  QUICK: 50,
+  SLOW: 50,
+  BONUS_FOR_LIVES: 50
 };
 
 const GAME_SETUP = {
@@ -23,20 +30,20 @@ const GAME_TASKS = {
 const gameData = (a, lives) => {
   let acc = 0;
   let scores = 0;
-  const livesBonus = Answer.bonusForLives * lives;
+  const livesBonus = Answer.BONUS_FOR_LIVES * lives;
 
   a.forEach((el) => {
     const [answer, time] = el;
 
     if (answer) {
       acc += 1;
-      scores += Answer.right;
+      scores += Answer.RIGHT;
 
       if (time < QUICK_ANSWER) {
-        scores += Answer.quick;
+        scores += Answer.QUICK;
       }
       if (time > SLOW_ANSWER) {
-        scores -= Answer.slow;
+        scores -= Answer.SLOW;
       }
     }
   });
@@ -50,5 +57,6 @@ const gameData = (a, lives) => {
 export {
   gameData,
   GAME_SETUP,
-  GAME_TASKS
+  GAME_TASKS,
+  Answer
 };
