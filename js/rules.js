@@ -6,7 +6,8 @@ import game1 from "./game-1";
 import greeting from "./greeting";
 import backBtnTemplate from "./back-btn-template";
 
-const rulesHtml = `
+const rules = () => {
+  const rulesHtml = `
   <header class="header">
   ${backBtnTemplate}
   </header>
@@ -27,16 +28,19 @@ const rulesHtml = `
     </form>
   </section>`;
 
-const rules = makeElement(rulesHtml);
-const goBtn = rules.querySelector(`.rules__button`);
-const inputName = rules.querySelector(`.rules__input`);
-const backBtn = rules.querySelector(`.back`);
+  const rulesEl = makeElement(rulesHtml);
+  const goBtn = rulesEl.querySelector(`.rules__button`);
+  const inputName = rulesEl.querySelector(`.rules__input`);
+  const backBtn = rulesEl.querySelector(`.back`);
 
-inputName.addEventListener(`input`, () => {
-  goBtn.disabled = (inputName.value < 1);
-});
+  inputName.addEventListener(`input`, () => {
+    goBtn.disabled = (inputName.value < 1);
+  });
 
-goBtn.addEventListener(`click`, () => showScreen(game1));
-backBtn.addEventListener(`click`, () => showScreen(greeting()));
+  goBtn.addEventListener(`click`, () => showScreen(game1));
+  backBtn.addEventListener(`click`, () => showScreen(greeting()));
+
+  return rulesEl;
+};
 
 export default rules;

@@ -30,7 +30,7 @@ const greeting = () => {
   const greetingEl = makeElement(greetingHtml);
   const arrowRight = greetingEl.querySelector(`.greeting__continue`);
 
-  arrowRight.addEventListener(`click`, () => showScreen(rules));
+  arrowRight.addEventListener(`click`, () => showScreen(rules()));
   return greetingEl;
 };
 
