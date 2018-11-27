@@ -1,6 +1,6 @@
-import game1 from "../game-1";
-import game2 from "../game-2";
-import game3 from "../game-3";
+import game1 from "../screens/game-1";
+import game2 from "../screens/game-2";
+import game3 from "../screens/game-3";
 
 /*
 1. Описание игры

@@ -1,7 +1,7 @@
 import {
   makeElement,
   showScreen
-} from "./utils";
+} from "../utils";
 import rules from "./rules";
 
 const greeting = (state) => {

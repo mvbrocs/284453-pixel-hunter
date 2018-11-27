@@ -1,10 +1,10 @@
 import {
   makeElement,
   showScreen,
-} from "./utils";
+} from "../utils";
 import greeting from "./greeting";
-import statsTemplate from "./stats-template";
-import backBtnTemplate from "./back-btn-template";
+import statsTemplate from "../templates/stats-template";
+import backBtnTemplate from "../templates/back-btn-template";
 
 const stats = (state) => {
   const statsHtml = `

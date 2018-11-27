@@ -1,7 +1,7 @@
 import {
   showScreen
 } from "./utils";
-import intro from './intro';
+import intro from './screens/intro';
 import {
   gamePlay
 } from "./data/game-data";

@@ -1,11 +1,11 @@
 import {
   makeElement,
   showScreen,
-} from "./utils";
+} from "../utils";
 import game3 from "./game-3";
 import greeting from "./greeting";
-import headerTemplate from "./header/header-template";
-import statsTemplate from "./stats-template";
+import headerTemplate from "../templates/header-template";
+import statsTemplate from "../templates/stats-template";
 
 const game2 = (state) => {
   const gameTask = `<p class="game__task">${state.GAME_TASKS.onePic}</p>`;

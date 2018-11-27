@@ -1,9 +1,9 @@
 import {
   makeElement,
   showScreen,
-} from "./utils";
-import headerTemplate from './header/header-template';
-import statsTemplate from './stats-template';
+} from "../utils";
+import headerTemplate from '../templates/header-template';
+import statsTemplate from '../templates/stats-template';
 import game2 from "./game-2";
 import greeting from "./greeting";
 

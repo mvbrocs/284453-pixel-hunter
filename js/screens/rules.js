@@ -1,13 +1,13 @@
 import {
   makeElement,
   showScreen,
-} from "./utils";
-import game1 from "./game-1";
+} from "../utils";
+// import game1 from "./game-1";
 import greeting from "./greeting";
-import backBtnTemplate from "./back-btn-template";
-import renderScreen from "./screen";
+import backBtnTemplate from "../templates/back-btn-template";
+import renderScreen from "../screen";
 
-const rules = (state) => {
+const rules = () => {
   const rulesHtml = `
   <header class="header">
     ${backBtnTemplate}

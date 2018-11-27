@@ -1,13 +1,13 @@
 import {
   screens, gamePlay
 } from './data/game-data';
-import {
-  showScreen
-} from './utils';
-import game1 from './game-1';
-import game2 from './game-2';
-import stats from './stats';
-import game3 from './game-3';
+// import {
+//   showScreen
+// } from './utils';
+// import game1 from './screens/game-1';
+// import game2 from './screens/game-2';
+// import stats from './screens/stats';
+// import game3 from './screens/game-3';
 
 const renderScreen = screens[gamePlay.GAME_SETUP.level];
 

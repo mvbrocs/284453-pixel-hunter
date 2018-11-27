@@ -1,4 +1,4 @@
-import backBtnTemplate from "../back-btn-template";
+import backBtnTemplate from "./back-btn-template";
 
 const headerTemplate = (state) => `
   <header class="header">
