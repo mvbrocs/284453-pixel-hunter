@@ -78,6 +78,8 @@ const screens = [
   game1(gamePlay)
 ];
 
+console.log(screens[0]);
+
 // const Answer = {
 //   RIGHT: 100,
 //   QUICK: 50,

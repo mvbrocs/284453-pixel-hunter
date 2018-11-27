@@ -39,7 +39,7 @@ const rules = () => {
   });
 
   // goBtn.addEventListener(`click`, () => showScreen(game1(state)));
-  goBtn.addEventListener(`click`, () => showScreen(renderScreen));
+  goBtn.addEventListener(`click`, () => renderScreen());
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
   return rulesEl;
