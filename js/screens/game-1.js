@@ -6,6 +6,7 @@ import headerTemplate from '../templates/header-template';
 import statsTemplate from '../templates/stats-template';
 import greeting from "./greeting";
 import renderScreen from "../render-screen";
+import { answers } from "../data/game-data";
 
 const game1 = (state) => {
   const gameTask = `<p class="game__task">${state.GAME_TASKS.twoPic}</p>`;
@@ -51,6 +52,7 @@ const game1 = (state) => {
   const compareChecked = () => {
     if (isLeftPictureSelected && isRightPictureSelected) {
       state.levelUp();
+      answers.push([true, 1500]);
       renderScreen();
       // showScreen(game2(state));
     }

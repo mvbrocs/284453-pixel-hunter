@@ -79,24 +79,7 @@ const screens = [
   game1(gamePlay)
 ];
 
-// const Answer = {
-//   RIGHT: 100,
-//   QUICK: 50,
-//   SLOW: 50,
-//   BONUS_FOR_LIVES: 50
-// };
-
-// const GAME_SETUP = {
-//   level: 0,
-//   lives: 2,
-//   time: 999
-// };
-
-// const GAME_TASKS = {
-//   twoPic: `Угадайте для каждого изображения фото или рисунок?`,
-//   onePic: `Угадай, фото или рисунок?`,
-//   threePic: `Найдите рисунок среди изображений`
-// };
+const answers = [];
 
 const gameData = (a, lives) => {
   let acc = 0;
@@ -131,5 +114,6 @@ export {
   // GAME_TASKS,
   // Answer,
   gamePlay,
-  screens
+  screens,
+  answers
 };

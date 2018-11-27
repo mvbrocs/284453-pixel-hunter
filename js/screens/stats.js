@@ -5,6 +5,7 @@ import {
 import greeting from "./greeting";
 import statsTemplate from "../templates/stats-template";
 import backBtnTemplate from "../templates/back-btn-template";
+import { gameData, answers, gamePlay } from "../data/game-data";
 
 const stats = (state) => {
   const statsHtml = `
@@ -44,7 +45,7 @@ const stats = (state) => {
         <td class="result__total">-100</td>
       </tr>
       <tr>
-        <td colspan="5" class="result__total  result__total--final">950</td>
+        <td colspan="5" class="result__total  result__total--final">${gameData(answers, gamePlay.GAME_SETUP.lives)}</td>
       </tr>
     </table>
     <table class="result__table">
