@@ -60,6 +60,7 @@ const gamePlay = {
       `http://i.imgur.com/DKR1HtB.jpg`
     ]
   },
+  // finalScreen: stats
   levelUp() {
     this.GAME_SETUP.level += 1;
   }
