@@ -2,10 +2,10 @@ import {
   makeElement,
   showScreen,
 } from "../utils";
-import game3 from "./game-3";
 import greeting from "./greeting";
 import headerTemplate from "../templates/header-template";
 import statsTemplate from "../templates/stats-template";
+import renderScreen from "../render-screen";
 
 const game2 = (state) => {
   const gameTask = `<p class="game__task">${state.GAME_TASKS.onePic}</p>`;
@@ -34,7 +34,10 @@ const game2 = (state) => {
   const form = game2El.querySelector(`.game__content`);
   const backBtn = game2El.querySelector(`.back`);
 
-  form.addEventListener(`change`, () => showScreen(game3(state)));
+  form.addEventListener(`change`, () => {
+    state.levelUp();
+    renderScreen();
+  });
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
   return game2El;

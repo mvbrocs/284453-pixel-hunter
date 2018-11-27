@@ -60,8 +60,8 @@ const gamePlay = {
       `http://i.imgur.com/DKR1HtB.jpg`
     ]
   },
-  set level(value) {
-    this.GAME_SETUP.level += value;
+  levelUp() {
+    this.GAME_SETUP.level += 1;
   }
 };
 
@@ -77,8 +77,6 @@ const screens = [
   game3(gamePlay),
   game1(gamePlay)
 ];
-
-console.log(screens[0]);
 
 // const Answer = {
 //   RIGHT: 100,

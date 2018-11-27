@@ -5,7 +5,7 @@ import {
 // import game1 from "./game-1";
 import greeting from "./greeting";
 import backBtnTemplate from "../templates/back-btn-template";
-import renderScreen from "../screen";
+import renderScreen from "../render-screen";
 
 const rules = () => {
   const rulesHtml = `
