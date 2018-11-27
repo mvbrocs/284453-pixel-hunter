@@ -4,7 +4,9 @@ import {
 import {
   changeLvl
 } from './change-level';
-import {gamePlay} from './game-data';
+import {
+  gamePlay
+} from './game-data';
 
 describe(`Проверка функции смены уровней`, () => {
   it(`Уровень игры должен совпадать с переданным значением`, () => {

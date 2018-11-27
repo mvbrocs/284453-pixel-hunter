@@ -5,7 +5,11 @@ import {
 import greeting from "./greeting";
 import statsTemplate from "../templates/stats-template";
 import backBtnTemplate from "../templates/back-btn-template";
-import { gameData, answers, gamePlay } from "../data/game-data";
+import {
+  gameData,
+  answers,
+  gamePlay
+} from "../data/game-data";
 
 const stats = (state) => {
   const statsHtml = `

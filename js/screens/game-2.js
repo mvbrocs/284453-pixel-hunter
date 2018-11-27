@@ -6,7 +6,9 @@ import greeting from "./greeting";
 import headerTemplate from "../templates/header-template";
 import statsTemplate from "../templates/stats-template";
 import renderScreen from "../render-screen";
-import { answers } from "../data/game-data";
+import {
+  answers
+} from "../data/game-data";
 
 const game2 = (state) => {
   const gameTask = `<p class="game__task">${state.GAME_TASKS.onePic}</p>`;
