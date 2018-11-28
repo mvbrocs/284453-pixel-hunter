@@ -6,9 +6,6 @@ import headerTemplate from '../templates/header-template';
 import statsTemplate from '../templates/stats-template';
 import greeting from "./greeting";
 import renderScreen from "../render-screen";
-import {
-  answers
-} from "../data/game-data";
 
 const game1 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;

@@ -19,7 +19,7 @@ import gameScreens from "./game-screens";
 const QUICK_ANSWER = 10000;
 const SLOW_ANSWER = 20000;
 
-const initialState = {
+const INITIAL_STATE = {
   level: gameScreens[0],
   lives: 3,
   time: 30
@@ -118,8 +118,8 @@ export {
   // GAME_SETUP,
   // GAME_TASKS,
   // Answer,
-  gamePlay,
+  // gamePlay,
   // screens,
   // answers,
-  initialState
+  INITIAL_STATE
 };

@@ -1,13 +1,14 @@
 import {
-  screens, gamePlay, answers
+  INITIAL_STATE
 } from './data/game-data';
-import {
-  showScreen
-} from './utils';
-import stats from './screens/stats';
-import checkLives from './data/check-lives';
+import game1 from './screens/game-1';
 
+
+let game;
 const renderScreen = () => {
+  game = Object.assign({}, INITIAL_STATE);
+  console.log(game);
+  debugger;
   // let lives = checkLives(answers);
   // if (!lives) {
   //   return showScreen(stats(gamePlay));
