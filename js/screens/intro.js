@@ -4,7 +4,7 @@ import {
 } from "../utils";
 import greeting from "./greeting";
 
-const intro = (state) => {
+const intro = () => {
   const introHtml = `
   <section class="intro">
     <button class="intro__asterisk asterisk" type="button">
@@ -15,7 +15,7 @@ const intro = (state) => {
   const introEl = makeElement(introHtml);
   const asterisk = introEl.querySelector(`.intro__asterisk`);
 
-  asterisk.addEventListener(`click`, () => showScreen(greeting(state)));
+  asterisk.addEventListener(`click`, () => showScreen(greeting()));
   return introEl;
 };
 

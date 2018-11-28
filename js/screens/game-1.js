@@ -11,7 +11,7 @@ import {
 } from "../data/game-data";
 
 const game1 = (state) => {
-  const gameTask = `<p class="game__task">${state.GAME_TASKS.twoPic}</p>`;
+  const gameTask = `<p class="game__task">${state.question}</p>`;
 
   const game1Html = `
     ${headerTemplate(state)}

@@ -1,7 +1,3 @@
-// import {
-//   GAME_SETUP
-// } from './game-data';
-
 const changeLvl = (game, level) => {
   if (typeof level !== `number`) {
     throw new Error(`Уровень должен быть числом`);

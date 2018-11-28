@@ -21,65 +21,211 @@ import game3 from "../screens/game-3";
 const QUICK_ANSWER = 10000;
 const SLOW_ANSWER = 20000;
 
-const gamePlay = {
-  GAME_SETUP: {
-    level: 0,
-    lives: 2,
-    time: 999
-  },
-  GAME_TASKS: {
-    twoPic: `Угадайте для каждого изображения фото или рисунок?`,
-    onePic: `Угадай, фото или рисунок?`,
-    threePic: `Найдите рисунок среди изображений`
-  },
-  Answer: {
-    RIGHT: 100,
-    QUICK: 50,
-    SLOW: 50,
-    BONUS_FOR_LIVES: 50
-  },
-  images: {
-    paintings: [
-      // People
-      `https://k42.kn3.net/CF42609C8.jpg`,
-
-      // Animals
-      `https://k42.kn3.net/D2F0370D6.jpg`,
-
-      // Nature
-      `https://k32.kn3.net/5C7060EC5.jpg`
-    ],
-    photos: [
-      // People
-      `http://i.imgur.com/1KegWPz.jpg`,
-
-      // Animals
-      `https://i.imgur.com/DiHM5Zb.jpg`,
-
-      // Nature
-      `http://i.imgur.com/DKR1HtB.jpg`
-    ]
-  },
-  // finalScreen: stats
-  levelUp() {
-    this.GAME_SETUP.level += 1;
-  }
+const initialState = {
+  level: gameScreens[0],
+  lives: 3,
+  time: 30
 };
 
-const screens = [
-  game1(gamePlay),
-  game2(gamePlay),
-  game3(gamePlay),
-  game1(gamePlay),
-  game2(gamePlay),
-  game3(gamePlay),
-  game1(gamePlay),
-  game2(gamePlay),
-  game3(gamePlay),
-  game1(gamePlay)
-];
+const gameScreens = [{
+  type: `tinder-like`,
+  question: `Угадай, фото или рисунок?`,
+  answers: [{
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `painting`
+  }]
+}, {
+  type: `two-of-two`,
+  question: `Угадайте для каждого изображения фото или рисунок?`,
+  answers: [{
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `photo`
+    },
+    {
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `photo`
+    }
+  ]
+}, {
+  type: `tinder-like`,
+  question: `Угадай, фото или рисунок?`,
+  answers: [{
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `photo`
+  }]
+}, {
+  type: `one-of-three`,
+  question: `Найдите рисунок среди изображений`,
+  answers: [{
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `painting`
+    },
+    {
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `painting`
+    },
+    {
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `painting`
+    }
+  ]
+}, {
+  type: `tinder-like`,
+  question: `Угадай, фото или рисунок?`,
+  answers: [{
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `painting`
+  }]
+}, {
+  type: `one-of-three`,
+  question: `Найдите рисунок среди изображений`,
+  answers: [{
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `painting`
+    },
+    {
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `painting`
+    },
+    {
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `painting`
+    }
+  ]
+}, {
+  type: `two-of-two`,
+  question: `Угадайте для каждого изображения фото или рисунок?`,
+  answers: [{
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `photo`
+    },
+    {
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `photo`
+    }
+  ]
+}, {
+  type: `tinder-like`,
+  question: `Угадай, фото или рисунок?`,
+  answers: [{
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `painting`
+  }]
+}, {
+  type: `two-of-two`,
+  question: `Угадайте для каждого изображения фото или рисунок?`,
+  answers: [{
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `photo`
+    },
+    {
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `photo`
+    }
+  ]
+}, {
+  type: `tinder-like`,
+  question: `Угадай, фото или рисунок?`,
+  answers: [{
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `painting`
+  }]
+}];
 
-const answers = [];
+// const gamePlay = {
+//   GAME_SETUP: {
+//     level: 0,
+//     lives: 2,
+//     time: 999
+//   },
+//   GAME_TASKS: {
+//     twoPic: `Угадайте для каждого изображения фото или рисунок?`,
+//     onePic: `Угадай, фото или рисунок?`,
+//     threePic: `Найдите рисунок среди изображений`
+//   },
+//   Answer: {
+//     RIGHT: 100,
+//     QUICK: 50,
+//     SLOW: 50,
+//     BONUS_FOR_LIVES: 50
+//   },
+//   images: {
+//     paintings: [
+//       // People
+//       `https://k42.kn3.net/CF42609C8.jpg`,
+
+//       // Animals
+//       `https://k42.kn3.net/D2F0370D6.jpg`,
+
+//       // Nature
+//       `https://k32.kn3.net/5C7060EC5.jpg`
+//     ],
+//     photos: [
+//       // People
+//       `http://i.imgur.com/1KegWPz.jpg`,
+
+//       // Animals
+//       `https://i.imgur.com/DiHM5Zb.jpg`,
+
+//       // Nature
+//       `http://i.imgur.com/DKR1HtB.jpg`
+//     ]
+//   },
+//   // finalScreen: stats
+//   levelUp() {
+//     this.GAME_SETUP.level += 1;
+//   }
+// };
+
+// const screens = [
+//   game1(gamePlay),
+//   game2(gamePlay),
+//   game3(gamePlay),
+//   game1(gamePlay),
+//   game2(gamePlay),
+//   game3(gamePlay),
+//   game1(gamePlay),
+//   game2(gamePlay),
+//   game3(gamePlay),
+//   game1(gamePlay)
+// ];
+
+
+// const answers = [];
 
 const gameData = (a, lives) => {
   let acc = 0;
@@ -114,6 +260,7 @@ export {
   // GAME_TASKS,
   // Answer,
   gamePlay,
-  screens,
-  answers
+  // screens,
+  // answers,
+  initialState
 };

@@ -6,4 +6,4 @@ import {
   gamePlay
 } from "./data/game-data";
 
-showScreen(intro(gamePlay));
+showScreen(intro());
