@@ -27,8 +27,10 @@ const Answer = {
   RIGHT: 100,
   QUICK: 50,
   SLOW: 50,
-  BONUS_FOR_LIVES: 50
+  BONUS_FOR_LIVES: 50,
 };
+
+let answers = [];
 
 // const gamePlay = {
 //   GAME_SETUP: {
@@ -119,7 +121,10 @@ const gameData = (a, lives) => {
 };
 
 export {
+  QUICK_ANSWER,
+  SLOW_ANSWER,
   gameData,
   INITIAL_STATE,
-  Answer
+  Answer,
+  answers
 };

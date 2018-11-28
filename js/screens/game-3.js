@@ -8,6 +8,9 @@ import headerTemplate from "../templates/header-template";
 import {
   switchScreens
 } from "../switch-screens";
+import {
+  answers
+} from "../data/game-data";
 
 const game3 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;
@@ -27,17 +30,19 @@ const game3 = (state) => {
         <img src="${state.answers[2].image.url}" alt="Option 3" width="304" height="455">
       </div>
     </form>
-    ${statsTemplate}
   </section>
 `;
 
   const game3El = makeElement(game3Html);
   const gameOptions = [...game3El.querySelectorAll(`.game__option`)];
   const backBtn = game3El.querySelector(`.back`);
+  const gameSection = game3El.querySelector(`.game`);
+
+  gameSection.appendChild(statsTemplate());
 
   gameOptions.forEach((el) => {
     el.addEventListener(`click`, () => {
-      // answers.push([true, 1500]);
+      answers.push([true, 150000]);
       switchScreens();
     });
   });

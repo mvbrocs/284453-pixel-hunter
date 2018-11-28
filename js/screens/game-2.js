@@ -5,8 +5,12 @@ import {
 import greeting from "./greeting";
 import headerTemplate from "../templates/header-template";
 import statsTemplate from "../templates/stats-template";
-import startGame from "../start-game";
-import { switchScreens } from "../switch-screens";
+import {
+  switchScreens
+} from "../switch-screens";
+import {
+  answers
+} from "../data/game-data";
 
 const game2 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;
@@ -28,15 +32,17 @@ const game2 = (state) => {
           </label>
         </div>
       </form>
-      ${statsTemplate}
     </section>`;
 
   const game2El = makeElement(game2Html);
   const form = game2El.querySelector(`.game__content`);
   const backBtn = game2El.querySelector(`.back`);
+  const gameSection = game2El.querySelector(`.game`);
+
+  gameSection.appendChild(statsTemplate());
 
   form.addEventListener(`change`, () => {
-    // answers.push([true, 1500]);
+    answers.push([true, 1500]);
     switchScreens();
   });
   backBtn.addEventListener(`click`, () => showScreen(greeting()));

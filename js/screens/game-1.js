@@ -8,6 +8,9 @@ import greeting from "./greeting";
 import {
   switchScreens
 } from "../switch-screens";
+import {
+  answers
+} from '../data/game-data';
 
 const game1 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;
@@ -40,19 +43,22 @@ const game1 = (state) => {
           </label>
         </div>
       </form>
-      ${statsTemplate}
+
     </section>`;
 
   const game1El = makeElement(game1Html);
   const leftRadioGroup = [...game1El.querySelectorAll(`input[name=question1]`)];
   const rightRadioGroup = [...game1El.querySelectorAll(`input[name=question2]`)];
   const backBtn = game1El.querySelector(`.back`);
+  const gameSection = game1El.querySelector(`.game`);
   let isLeftPictureSelected = false;
   let isRightPictureSelected = false;
 
+  gameSection.appendChild(statsTemplate());
+
   const compareChecked = () => {
     if (isLeftPictureSelected && isRightPictureSelected) {
-      // answers.push([true, 1500]);
+      answers.push([true, 15000]);
       switchScreens();
     }
   };
