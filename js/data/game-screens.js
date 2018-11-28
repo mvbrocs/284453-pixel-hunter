@@ -1,3 +1,10 @@
+import game1 from "../screens/game-1";
+import game2 from "../screens/game-2";
+import game3 from "../screens/game-3";
+import {
+  showScreen
+} from "../utils";
+
 const gameScreens = [{
   type: `tinder-like`,
   question: `Угадай, фото или рисунок?`,
@@ -137,4 +144,19 @@ const gameScreens = [{
   }]
 }];
 
-export default gameScreens;
+const makeScreenWithData = (data) => {
+  if (data.type === `two-of-two`) {
+    return showScreen(game1(data));
+  }
+  if (data.type === `tinder-like`) {
+    return showScreen(game2(data));
+  }
+  if (data.type === `one-of-three`) {
+    return showScreen(game3(data));
+  } return null;
+};
+
+export {
+  gameScreens,
+  makeScreenWithData
+};

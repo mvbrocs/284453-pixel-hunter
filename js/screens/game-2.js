@@ -5,7 +5,7 @@ import {
 import greeting from "./greeting";
 import headerTemplate from "../templates/header-template";
 import statsTemplate from "../templates/stats-template";
-import renderScreen from "../render-screen";
+import startGame from "../start-game";
 
 const game2 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;
@@ -35,9 +35,8 @@ const game2 = (state) => {
   const backBtn = game2El.querySelector(`.back`);
 
   form.addEventListener(`change`, () => {
-    answers.push([true, 1500]);
-    state.levelUp();
-    renderScreen();
+    // answers.push([true, 1500]);
+    startGame();
   });
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 

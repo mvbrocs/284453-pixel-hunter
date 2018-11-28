@@ -1,4 +1,6 @@
-import gameScreens from "./game-screens";
+import {
+  gameScreens
+} from "./game-screens";
 
 /*
 1. Описание игры
@@ -20,9 +22,9 @@ const QUICK_ANSWER = 10000;
 const SLOW_ANSWER = 20000;
 
 const INITIAL_STATE = Object.freeze({
-  level: gameScreens[0],
+  level: 0,
   lives: 3,
-  time: 30
+  time: 30,
 });
 
 // const gamePlay = {

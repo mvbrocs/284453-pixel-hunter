@@ -5,7 +5,7 @@ import {
 // import game1 from "./game-1";
 import greeting from "./greeting";
 import backBtnTemplate from "../templates/back-btn-template";
-import renderScreen from "../render-screen";
+import startGame from "../start-game";
 
 const rules = () => {
   const rulesHtml = `
@@ -39,7 +39,7 @@ const rules = () => {
   });
 
   // goBtn.addEventListener(`click`, () => showScreen(game1(state)));
-  goBtn.addEventListener(`click`, () => renderScreen());
+  goBtn.addEventListener(`click`, () => startGame());
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
   return rulesEl;
