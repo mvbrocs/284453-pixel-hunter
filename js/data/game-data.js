@@ -32,6 +32,7 @@ const Answer = {
 
 let answers = [];
 
+
 // const gamePlay = {
 //   GAME_SETUP: {
 //     level: 0,
@@ -96,20 +97,20 @@ let answers = [];
 const gameData = (a, lives) => {
   let acc = 0;
   let scores = 0;
-  const livesBonus = gamePlay.Answer.BONUS_FOR_LIVES * lives;
+  const livesBonus = Answer.BONUS_FOR_LIVES * lives;
 
   a.forEach((el) => {
     const [answer, time] = el;
 
     if (answer) {
       acc += 1;
-      scores += gamePlay.Answer.RIGHT;
+      scores += Answer.RIGHT;
 
       if (time < QUICK_ANSWER) {
-        scores += gamePlay.Answer.QUICK;
+        scores += Answer.QUICK;
       }
       if (time > SLOW_ANSWER) {
-        scores -= gamePlay.Answer.SLOW;
+        scores -= Answer.SLOW;
       }
     }
   });

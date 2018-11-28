@@ -32,6 +32,9 @@ const addClassOfResult = () => {
       if (answers[i][0] && answers[i][1] < QUICK_ANSWER) {
         results[i] = `stats__result--fast`;
       }
+      if (!answers[i][0]) {
+        results[i] = `stats__result--wrong`;
+      }
     }
   } return results;
 };
