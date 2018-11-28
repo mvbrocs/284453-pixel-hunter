@@ -11,7 +11,7 @@ import {
 } from "../data/game-data";
 
 const game3 = (state) => {
-  const gameTask = `<p class="game__task">${state.GAME_TASKS.threePic}</p>`;
+  const gameTask = `<p class="game__task">${state.question}</p>`;
 
   const game3Html = `
   ${headerTemplate(state)}
@@ -19,13 +19,13 @@ const game3 = (state) => {
     ${gameTask}
     <form class="game__content  game__content--triple">
       <div class="game__option">
-        <img src="${state.images.paintings[2]}" alt="Option 1" width="304" height="455">
+        <img src="${state.answers[0].image.url}" alt="Option 1" width="304" height="455">
       </div>
       <div class="game__option  game__option--selected">
-        <img src="${state.images.photos[1]}" alt="Option 2" width="304" height="455">
+        <img src="${state.answers[0].image.url}" alt="Option 2" width="304" height="455">
       </div>
       <div class="game__option">
-        <img src="${state.images.photos[2]}" alt="Option 3" width="304" height="455">
+        <img src="${state.answers[0].image.url}" alt="Option 3" width="304" height="455">
       </div>
     </form>
     ${statsTemplate}
