@@ -144,15 +144,15 @@ const gameScreens = [{
   }]
 }];
 
-const makeScreenWithData = (data) => {
+const makeScreenWithData = (data, gameStatus) => {
   if (data.type === `two-of-two`) {
-    return showScreen(game1(data));
+    return showScreen(game1(data, gameStatus));
   }
   if (data.type === `tinder-like`) {
-    return showScreen(game2(data));
+    return showScreen(game2(data, gameStatus));
   }
   if (data.type === `one-of-three`) {
-    return showScreen(game3(data));
+    return showScreen(game3(data, gameStatus));
   } return null;
 };
 

@@ -1,6 +1,7 @@
 import {
   INITIAL_STATE,
-  Answer
+  Answer,
+  gameData
 } from './data/game-data';
 import {
   makeScreenWithData,
@@ -19,9 +20,11 @@ const switchScreens = () => {
   } else {
     return showScreen(stats(Answer));
   }
-  return makeScreenWithData(gameScreens[game.level]);
+
+  return makeScreenWithData(gameScreens[game.level], game);
 };
 
 export {
   switchScreens,
+  game
 };

@@ -12,11 +12,11 @@ import {
   answers
 } from "../data/game-data";
 
-const game2 = (state) => {
+const game2 = (state, gameStatus) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;
 
   const game2Html = `
-    ${headerTemplate(state)}
+    ${headerTemplate(gameStatus)}
     <section class="game">
       ${gameTask}
       <form class="game__content  game__content--wide">

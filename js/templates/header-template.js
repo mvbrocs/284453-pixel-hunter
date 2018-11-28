@@ -2,12 +2,17 @@ import backBtnTemplate from "./back-btn-template";
 
 
 const text = `text`
-const headerTemplate = (state) => `
+const headerTemplate = (gameStatus) => `
   <header class="header">
     ${backBtnTemplate}
-    <div class="game__timer">${text}</div>
+    <div class="game__timer">${gameStatus.time}</div>
     <div class="game__lives">
-      <img src="img/heart__empty.svg" class="game__heart" alt=" Missed Life" width="31" height="27">
+    ${new Array(3 - gameStatus.lives)
+      .fill(`<img src="img/heart__empty.svg" class="game__heart" alt=" Missed Life" width="31" height="27">`)
+      .join(``)}
+     ${new Array(gameStatus.lives)
+      .fill(`<img src="img/heart__full.svg" class="game__heart" alt="Life" width="31" height="27">`)
+      .join(``)}
     </div>
   </header>`;
 
