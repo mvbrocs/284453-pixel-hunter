@@ -6,6 +6,7 @@ import greeting from "./greeting";
 import statsTemplate from '../templates/stats-template';
 import headerTemplate from "../templates/header-template";
 import startGame from "../start-game";
+import { switchScreens } from "../switch-screens";
 
 const game3 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;
@@ -19,10 +20,10 @@ const game3 = (state) => {
         <img src="${state.answers[0].image.url}" alt="Option 1" width="304" height="455">
       </div>
       <div class="game__option  game__option--selected">
-        <img src="${state.answers[0].image.url}" alt="Option 2" width="304" height="455">
+        <img src="${state.answers[1].image.url}" alt="Option 2" width="304" height="455">
       </div>
       <div class="game__option">
-        <img src="${state.answers[0].image.url}" alt="Option 3" width="304" height="455">
+        <img src="${state.answers[2].image.url}" alt="Option 3" width="304" height="455">
       </div>
     </form>
     ${statsTemplate}
@@ -36,7 +37,7 @@ const game3 = (state) => {
   gameOptions.forEach((el) => {
     el.addEventListener(`click`, () => {
       // answers.push([true, 1500]);
-      startGame();
+      switchScreens();
     });
   });
 

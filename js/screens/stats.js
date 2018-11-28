@@ -26,21 +26,21 @@ const stats = (state) => {
         <td></td>
         <td class="result__extra">Бонус за скорость:</td>
         <td class="result__extra">1 <span class="stats__result stats__result--fast"></span></td>
-        <td class="result__points">× ${state.Answer.QUICK}</td>
+        <td class="result__points">× ${state.QUICK}</td>
         <td class="result__total">50</td>
       </tr>
       <tr>
         <td></td>
         <td class="result__extra">Бонус за жизни:</td>
         <td class="result__extra">2 <span class="stats__result stats__result--alive"></span></td>
-        <td class="result__points">× ${state.Answer.BONUS_FOR_LIVES}</td>
+        <td class="result__points">× ${state.BONUS_FOR_LIVES}</td>
         <td class="result__total">100</td>
       </tr>
       <tr>
         <td></td>
         <td class="result__extra">Штраф за медлительность:</td>
         <td class="result__extra">2 <span class="stats__result stats__result--slow"></span></td>
-        <td class="result__points">× ${state.Answer.SLOW}</td>
+        <td class="result__points">× ${state.SLOW}</td>
         <td class="result__total">-100</td>
       </tr>
       <tr>
@@ -70,7 +70,7 @@ const stats = (state) => {
         <td></td>
         <td class="result__extra">Бонус за жизни:</td>
         <td class="result__extra">2 <span class="stats__result stats__result--alive"></span></td>
-        <td class="result__points">× ${state.Answer.BONUS_FOR_LIVES}</td>
+        <td class="result__points">× ${state.BONUS_FOR_LIVES}</td>
         <td class="result__total">100</td>
       </tr>
       <tr>

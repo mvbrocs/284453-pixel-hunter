@@ -9,9 +9,5 @@ import {
 const startGame = () => {
   makeScreenWithData(gameScreens[INITIAL_STATE.level]);
 };
-startGame();
 
 export default startGame;
-
-// let game;
-  // game = Object.assign({}, INITIAL_STATE);

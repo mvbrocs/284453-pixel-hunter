@@ -6,6 +6,7 @@ import greeting from "./greeting";
 import headerTemplate from "../templates/header-template";
 import statsTemplate from "../templates/stats-template";
 import startGame from "../start-game";
+import { switchScreens } from "../switch-screens";
 
 const game2 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;
@@ -36,7 +37,7 @@ const game2 = (state) => {
 
   form.addEventListener(`change`, () => {
     // answers.push([true, 1500]);
-    startGame();
+    switchScreens();
   });
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 

@@ -1,7 +1,3 @@
-import {
-  gameScreens
-} from "./game-screens";
-
 /*
 1. Описание игры
   Игра содержит:
@@ -26,6 +22,13 @@ const INITIAL_STATE = Object.freeze({
   lives: 3,
   time: 30,
 });
+
+const Answer = {
+  RIGHT: 100,
+  QUICK: 50,
+  SLOW: 50,
+  BONUS_FOR_LIVES: 50
+};
 
 // const gamePlay = {
 //   GAME_SETUP: {
@@ -117,11 +120,6 @@ const gameData = (a, lives) => {
 
 export {
   gameData,
-  // GAME_SETUP,
-  // GAME_TASKS,
-  // Answer,
-  // gamePlay,
-  // screens,
-  // answers,
-  INITIAL_STATE
+  INITIAL_STATE,
+  Answer
 };
