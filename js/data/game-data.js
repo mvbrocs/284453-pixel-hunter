@@ -19,11 +19,11 @@ import gameScreens from "./game-screens";
 const QUICK_ANSWER = 10000;
 const SLOW_ANSWER = 20000;
 
-const INITIAL_STATE = {
+const INITIAL_STATE = Object.freeze({
   level: gameScreens[0],
   lives: 3,
   time: 30
-};
+});
 
 // const gamePlay = {
 //   GAME_SETUP: {
