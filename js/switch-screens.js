@@ -17,9 +17,9 @@ let game = Object.assign({}, INITIAL_STATE);
 
 
 const switchScreens = () => {
-  const lives = checkLives(game, answers);
-  console.log("​lives", lives);
-  if (lives < 0) {
+  game.lives = checkLives(INITIAL_STATE, answers);
+  console.log("​lives", game.lives);
+  if (game.lives < 0) {
     return showScreen(stats(Answer));
   }
   if (game.level < gameScreens.length - 1) {
