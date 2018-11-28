@@ -1,8 +1,8 @@
 import backBtnTemplate from "./back-btn-template";
 
 
-const text = `text`
-const headerTemplate = (gameStatus) => `
+const headerTemplate = (gameStatus) => {
+  const headerHtml = `
   <header class="header">
     ${backBtnTemplate}
     <div class="game__timer">${gameStatus.time}</div>
@@ -15,6 +15,8 @@ const headerTemplate = (gameStatus) => `
       .join(``)}
     </div>
   </header>`;
+  return headerHtml;
+};
 
 export default headerTemplate;
 

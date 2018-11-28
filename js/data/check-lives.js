@@ -1,8 +1,8 @@
-const checkLives = (a) => {
-  let lives = 4;
+const checkLives = (game, a) => {
+  let lives = game.lives;
 
   a.forEach((el) => {
-    if (!el[0] && lives > 0) {
+    if (!el[0] && lives >= 0) {
       lives -= 1;
     }
   });
