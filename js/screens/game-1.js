@@ -5,8 +5,9 @@ import {
 import headerTemplate from '../templates/header-template';
 import statsTemplate from '../templates/stats-template';
 import greeting from "./greeting";
-import startGame from "../start-game";
-import { switchScreens } from "../switch-screens";
+import {
+  switchScreens
+} from "../switch-screens";
 
 const game1 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;
@@ -53,7 +54,6 @@ const game1 = (state) => {
     if (isLeftPictureSelected && isRightPictureSelected) {
       // answers.push([true, 1500]);
       switchScreens();
-      // showScreen(game2(state));
     }
   };
 

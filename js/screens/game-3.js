@@ -5,8 +5,9 @@ import {
 import greeting from "./greeting";
 import statsTemplate from '../templates/stats-template';
 import headerTemplate from "../templates/header-template";
-import startGame from "../start-game";
-import { switchScreens } from "../switch-screens";
+import {
+  switchScreens
+} from "../switch-screens";
 
 const game3 = (state) => {
   const gameTask = `<p class="game__task">${state.question}</p>`;

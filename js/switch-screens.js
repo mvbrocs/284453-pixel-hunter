@@ -11,16 +11,7 @@ import {
 } from './utils';
 import stats from './screens/stats';
 
-// let game = Object.assign({}, INITIAL_STATE);
-// console.log("​game", game);
-
-console.log(INITIAL_STATE);
-
-let game = {
-  level: 0,
-  lives: 3,
-  time: 30
-};
+let game = Object.assign({}, INITIAL_STATE);
 
 const switchScreens = () => {
   if (game.level < gameScreens.length - 1) {
