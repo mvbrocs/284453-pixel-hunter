@@ -2,7 +2,9 @@ import {
   assert
 } from 'chai';
 import checkLives from './check-lives';
-import { INITIAL_STATE } from './game-data';
+import {
+  INITIAL_STATE
+} from './game-data';
 
 // генератор массива ответов
 const generateAnswers = (right = 10, time = 15000) => {
