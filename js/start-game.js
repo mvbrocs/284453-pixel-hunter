@@ -10,7 +10,10 @@ import {
   game
 } from './switch-screens';
 
+
 const startGame = () => {
+  answers.length = 0;
+  console.log("​startGame -> answers", answers);
   makeScreenWithData(gameScreens[INITIAL_STATE.level], game);
 };
 

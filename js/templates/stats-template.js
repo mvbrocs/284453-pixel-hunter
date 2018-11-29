@@ -20,19 +20,19 @@ const results = [
   `stats__result--unknown`
 ];
 
-const addClassOfResult = () => {
+const addClassOfResult = (arr) => {
   for (let i = 0; i < results.length; i += 1) {
-    if (answers[i]) {
-      if (answers[i][0] && (answers[i][1] > QUICK_ANSWER && answers[i][1] < SLOW_ANSWER)) {
+    if (arr[i]) {
+      if (arr[i][0] && (arr[i][1] > QUICK_ANSWER && arr[i][1] < SLOW_ANSWER)) {
         results[i] = `stats__result--correct`;
       }
-      if (answers[i][0] && answers[i][1] > SLOW_ANSWER) {
+      if (arr[i][0] && arr[i][1] > SLOW_ANSWER) {
         results[i] = `stats__result--slow`;
       }
-      if (answers[i][0] && answers[i][1] < QUICK_ANSWER) {
+      if (arr[i][0] && arr[i][1] < QUICK_ANSWER) {
         results[i] = `stats__result--fast`;
       }
-      if (!answers[i][0]) {
+      if (!arr[i][0]) {
         results[i] = `stats__result--wrong`;
       }
     }
@@ -40,7 +40,7 @@ const addClassOfResult = () => {
 };
 
 const statsTemplate = () => {
-  addClassOfResult();
+  addClassOfResult(answers);
 
   const statsHtml = `
   <ul class="stats">
