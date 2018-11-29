@@ -2,6 +2,7 @@ import {
   assert
 } from 'chai';
 import checkLives from './check-lives';
+import { INITIAL_STATE } from './game-data';
 
 // генератор массива ответов
 const generateAnswers = (right = 10, time = 15000) => {
@@ -22,19 +23,19 @@ const generateAnswers = (right = 10, time = 15000) => {
 };
 
 describe(`Проверка функции подсчета жизней`, () => {
-  it(`Если все ответы правильные, то возвращается 4`, () => {
-    assert.equal(checkLives(generateAnswers()), 4);
+  it(`Если все ответы правильные, то возвращается 3`, () => {
+    assert.equal(3, checkLives(INITIAL_STATE, generateAnswers()));
   });
 
   it(`Если один ответ неправильный, то возвращается 2`, () => {
-    assert.equal(checkLives(generateAnswers(9)), 3);
+    assert.equal(2, checkLives(INITIAL_STATE, generateAnswers(9)));
   });
 
   it(`Если три ответа неправильные, то возвращается 1`, () => {
-    assert.equal(checkLives(generateAnswers(7)), 1);
+    assert.equal(0, checkLives(INITIAL_STATE, generateAnswers(7)));
   });
 
-  it(`Если девять ответов неправильные, то возвращается 0`, () => {
-    assert.equal(checkLives(generateAnswers(1)), 0);
+  it(`Если девять ответов неправильные, то возвращается -1`, () => {
+    assert.equal(-1, checkLives(INITIAL_STATE, generateAnswers(1)));
   });
 });
