@@ -42,7 +42,7 @@ const game2 = (state, gameStatus) => {
   gameSection.appendChild(statsTemplate());
 
   form.addEventListener(`change`, () => {
-    answers.push([false, 1500]);
+    answers.push([true, 1500]);
     switchScreens();
   });
   backBtn.addEventListener(`click`, () => showScreen(greeting()));

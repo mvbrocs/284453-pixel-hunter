@@ -11,7 +11,6 @@ import {
 } from './switch-screens';
 
 const startGame = () => {
-  answers.length = 0;
   makeScreenWithData(gameScreens[INITIAL_STATE.level], game);
 };
 

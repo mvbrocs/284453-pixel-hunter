@@ -15,10 +15,8 @@ import checkLives from './data/check-lives';
 
 let game = Object.assign({}, INITIAL_STATE);
 
-
 const switchScreens = () => {
   game.lives = checkLives(INITIAL_STATE, answers);
-  console.log("​lives", game.lives);
   if (game.lives < 0) {
     return showScreen(stats(Answer));
   }
