@@ -39,11 +39,11 @@ const game3 = (data) => {
   const backBtn = game3El.querySelector(`.back`);
   const gameSection = game3El.querySelector(`.game`);
 
-  // gameSection.appendChild(statsTemplate());
+  gameSection.appendChild(statsTemplate(data));
 
   gameOptions.forEach((el) => {
     el.addEventListener(`click`, () => {
-      gameState.addAnswer(false, 1500);
+      gameState.addAnswer(false, 15000);
       gameState.checkLivesCount(data);
       gameState.changeGameLevel();
       gameState.showScreenWithData(data);

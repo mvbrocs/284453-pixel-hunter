@@ -56,11 +56,11 @@ const game1 = (data) => {
   let isLeftPictureSelected = false;
   let isRightPictureSelected = false;
 
-  // gameSection.appendChild(statsTemplate());
+  gameSection.appendChild(statsTemplate(data));
 
   const compareChecked = () => {
     if (isLeftPictureSelected && isRightPictureSelected) {
-      gameState.addAnswer(false, 1500);
+      gameState.addAnswer(true, 1500);
       gameState.checkLivesCount(data);
       gameState.changeGameLevel();
       gameState.showScreenWithData(data);

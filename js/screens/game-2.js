@@ -42,10 +42,10 @@ const game2 = (data) => {
   const backBtn = game2El.querySelector(`.back`);
   const gameSection = game2El.querySelector(`.game`);
 
-  // gameSection.appendChild(statsTemplate(data));
+  gameSection.appendChild(statsTemplate(data));
 
   form.addEventListener(`change`, () => {
-    gameState.addAnswer(false, 1500);
+    gameState.addAnswer(true, 150000);
     gameState.checkLivesCount(data);
     gameState.changeGameLevel();
     gameState.showScreenWithData(data);
