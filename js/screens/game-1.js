@@ -23,7 +23,7 @@ const game1 = (data) => {
     ${gameTask}
       <form class="game__content">
         <div class="game__option">
-          <img src="${data.gameScreens[data.level].question.answers[0].image.url}" alt="Option 1" width="468" height="458">
+          <img src="${data.gameScreens[data.level].answers[0].image.url}" alt="Option 1" width="468" height="458">
           <label class="game__answer game__answer--photo">
             <input class="visually-hidden" name="question1" type="radio" value="photo">
             <span>Фото</span>
@@ -34,7 +34,7 @@ const game1 = (data) => {
           </label>
         </div>
         <div class="game__option">
-          <img src="${data.gameScreens[data.level].question.answers[1].image.url}" alt="Option 2" width="468" height="458">
+          <img src="${data.gameScreens[data.level].answers[1].image.url}" alt="Option 2" width="468" height="458">
           <label class="game__answer  game__answer--photo">
             <input class="visually-hidden" name="question2" type="radio" value="photo">
             <span>Фото</span>
@@ -56,14 +56,13 @@ const game1 = (data) => {
   let isLeftPictureSelected = false;
   let isRightPictureSelected = false;
 
-  gameSection.appendChild(statsTemplate());
+  // gameSection.appendChild(statsTemplate());
 
   const compareChecked = () => {
     if (isLeftPictureSelected && isRightPictureSelected) {
-      console.log('первый экран')
-      // gameState.addAnswer(true, 15000);
-			// console.log("​compareChecked -> gameState.addAnswer", gameState.addAnswer);
-      // switchScreens();
+      gameState.addAnswer(true, 1500);
+      gameState.changeGameLevel();
+      gameState.showScreenWithData(data);
     }
   };
 

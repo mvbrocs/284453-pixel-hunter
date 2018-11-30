@@ -6,6 +6,7 @@ import {
 import {
   makeElement
 } from "../utils";
+import { gameState } from "../data/game-state";
 
 const results = [
   `stats__result--unknown`,
@@ -20,19 +21,22 @@ const results = [
   `stats__result--unknown`
 ];
 
-const addClassOfResult = (arr) => {
+const addClassOfResult = (data) => {
+  if (!data.answers.length) {
+    return results;
+  }
   for (let i = 0; i < results.length; i += 1) {
-    if (arr[i]) {
-      if (arr[i][0] && (arr[i][1] > QUICK_ANSWER && arr[i][1] < SLOW_ANSWER)) {
+    if (data.answers[i]) {
+      if (data.answers[i][0] && (data.answers[i][1] > QUICK_ANSWER && data.answers[i][1] < SLOW_ANSWER)) {
         results[i] = `stats__result--correct`;
       }
-      if (arr[i][0] && arr[i][1] > SLOW_ANSWER) {
+      if (data.answers[i][0] && data.answers[i][1] > SLOW_ANSWER) {
         results[i] = `stats__result--slow`;
       }
-      if (arr[i][0] && arr[i][1] < QUICK_ANSWER) {
+      if (data.answers[i][0] && data.answers[i][1] < QUICK_ANSWER) {
         results[i] = `stats__result--fast`;
       }
-      if (!arr[i][0]) {
+      if (!data.answers[i][0]) {
         results[i] = `stats__result--wrong`;
       }
     }
@@ -40,7 +44,7 @@ const addClassOfResult = (arr) => {
 };
 
 const statsTemplate = () => {
-  addClassOfResult(answers);
+  addClassOfResult(gameState);
 
   const statsHtml = `
   <ul class="stats">

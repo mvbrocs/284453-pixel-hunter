@@ -5,6 +5,9 @@ import {
 import greeting from "./greeting";
 import headerTemplate from "../templates/header-template";
 import statsTemplate from "../templates/stats-template";
+import {
+  gameState
+} from "../data/game-state";
 // import {
 //   switchScreens
 // } from "../switch-screens";
@@ -21,7 +24,7 @@ const game2 = (data) => {
       ${gameTask}
       <form class="game__content  game__content--wide">
         <div class="game__option">
-          <img src="${data.gameScreens[data.level].question.answers[0].image.url}" alt="Option 1" width="705" height="455">
+          <img src="${data.gameScreens[data.level].answers[0].image.url}" alt="Option 1" width="705" height="455">
           <label class="game__answer  game__answer--photo">
             <input class="visually-hidden" name="question1" type="radio" value="photo">
             <span>Фото</span>
@@ -39,11 +42,12 @@ const game2 = (data) => {
   const backBtn = game2El.querySelector(`.back`);
   const gameSection = game2El.querySelector(`.game`);
 
-  gameSection.appendChild(statsTemplate());
+  // gameSection.appendChild(statsTemplate(data));
 
   form.addEventListener(`change`, () => {
-    // answers.push([true, 1500]);
-    // switchScreens();
+    gameState.addAnswer(true, 1500);
+    gameState.changeGameLevel();
+    gameState.showScreenWithData(data);
   });
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
