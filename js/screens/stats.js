@@ -6,12 +6,9 @@ import greeting from "./greeting";
 import statsTemplate from "../templates/stats-template";
 import backBtnTemplate from "../templates/back-btn-template";
 import {
-  // answers,
-  gameData, Answer,
+  gameData,
+  Answer,
 } from "../data/game-data";
-// import {
-//   // game
-// } from "../switch-screens";
 import {
   gameState
 } from "../data/game-state";
@@ -23,7 +20,6 @@ const result = (data) => {
 
 
 const stats = (data) => {
-  debugger
   const totalScores = result(data);
   const quickAnswersTotal = gameState.quickAnswersCount(data);
   const slowAnswersTotal = gameState.slowAnswersCount(data);
