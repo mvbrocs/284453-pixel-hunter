@@ -4,9 +4,8 @@ import {
   answers,
 } from './data/game-data';
 import {
-  makeScreenWithData,
-  gameScreens
-} from './data/game-screens';
+  gameState
+} from './data/game-state';
 import {
   showScreen
 } from './utils';
@@ -20,13 +19,13 @@ const switchScreens = () => {
   if (game.lives < 0) {
     return showScreen(stats(Answer));
   }
-  if (game.level < gameScreens.length - 1) {
+  if (game.level < gameState.gameScreens.length - 1) {
     game.level += 1;
   } else {
     return showScreen(stats(Answer));
   }
 
-  return makeScreenWithData(gameScreens[game.level], game);
+  return gameState.showScreenWithData(gameState.gameScreens[game.level], game);
 };
 
 export {
