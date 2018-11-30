@@ -8,6 +8,14 @@ import {
   showScreen
 } from "../utils";
 
+/* {
+  level: 0,
+  lives: 3,
+  time: 30,
+  gameScreens: Array(10),
+  answers
+} */
+
 const gameScreens = [{
   type: `tinder-like`,
   question: `Угадай, фото или рисунок?`,
@@ -164,13 +172,13 @@ const gameState = {
     return gamePlay;
   },
   showScreenWithData(data) {
-    if (data.type === `two-of-two`) {
+    if (data.gameScreens[data.level].type === `two-of-two`) {
       return showScreen(game1(data));
     }
-    if (data.type === `tinder-like`) {
+    if (data.gameScreens[data.level].type === `tinder-like`) {
       return showScreen(game2(data));
     }
-    if (data.type === `one-of-three`) {
+    if (data.gameScreens[data.level].type === `one-of-three`) {
       return showScreen(game3(data));
     } return null;
   },
