@@ -6,22 +6,24 @@ import headerTemplate from '../templates/header-template';
 import statsTemplate from '../templates/stats-template';
 import greeting from "./greeting";
 import {
-  switchScreens
-} from "../switch-screens";
-import {
-  answers
-} from '../data/game-data';
+  gameState
+} from "../data/game-state";
+// import {
+//   switchScreens
+// } from "../switch-screens";
+// import {
+//   answers
+// } from '../data/game-data';
 
 const game1 = (data) => {
-  const gameTask = `<p class="game__task">${data.question}</p>`;
-
+  const gameTask = `<p class="game__task">${data.gameScreens[data.level].question}</p>`;
   const game1Html = `
     ${headerTemplate(data)}
     <section class="game">
     ${gameTask}
       <form class="game__content">
         <div class="game__option">
-          <img src="${data.answers[0].image.url}" alt="Option 1" width="468" height="458">
+          <img src="${data.gameScreens[data.level].question.answers[0].image.url}" alt="Option 1" width="468" height="458">
           <label class="game__answer game__answer--photo">
             <input class="visually-hidden" name="question1" type="radio" value="photo">
             <span>Фото</span>
@@ -32,7 +34,7 @@ const game1 = (data) => {
           </label>
         </div>
         <div class="game__option">
-          <img src="${data.answers[1].image.url}" alt="Option 2" width="468" height="458">
+          <img src="${data.gameScreens[data.level].question.answers[1].image.url}" alt="Option 2" width="468" height="458">
           <label class="game__answer  game__answer--photo">
             <input class="visually-hidden" name="question2" type="radio" value="photo">
             <span>Фото</span>
@@ -58,8 +60,10 @@ const game1 = (data) => {
 
   const compareChecked = () => {
     if (isLeftPictureSelected && isRightPictureSelected) {
-      answers.push([true, 15000]);
-      switchScreens();
+      console.log('первый экран')
+      // gameState.addAnswer(true, 15000);
+			// console.log("​compareChecked -> gameState.addAnswer", gameState.addAnswer);
+      // switchScreens();
     }
   };
 

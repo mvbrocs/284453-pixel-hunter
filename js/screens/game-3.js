@@ -5,29 +5,29 @@ import {
 import greeting from "./greeting";
 import statsTemplate from '../templates/stats-template';
 import headerTemplate from "../templates/header-template";
-import {
-  switchScreens
-} from "../switch-screens";
-import {
-  answers
-} from "../data/game-data";
+// import {
+//   switchScreens
+// } from "../switch-screens";
+// import {
+//   answers
+// } from "../data/game-data";
 
-const game3 = (state, gameStatus) => {
-  const gameTask = `<p class="game__task">${state.question}</p>`;
+const game3 = (data) => {
+  const gameTask = `<p class="game__task">${data.gameScreens[data.level].question}</p>`;
 
   const game3Html = `
-  ${headerTemplate(gameStatus)}
+  ${headerTemplate(data)}
   <section class="game">
     ${gameTask}
     <form class="game__content  game__content--triple">
       <div class="game__option">
-        <img src="${state.answers[0].image.url}" alt="Option 1" width="304" height="455">
+        <img src="${data.gameScreens[data.level].question.answers[0].image.url}" alt="Option 1" width="304" height="455">
       </div>
       <div class="game__option  game__option--selected">
-        <img src="${state.answers[1].image.url}" alt="Option 2" width="304" height="455">
+        <img src="${data.gameScreens[data.level].question.answers[0].image.url}" alt="Option 2" width="304" height="455">
       </div>
       <div class="game__option">
-        <img src="${state.answers[2].image.url}" alt="Option 3" width="304" height="455">
+        <img src="${data.gameScreens[data.level].question.answers[0].image.url}" alt="Option 3" width="304" height="455">
       </div>
     </form>
   </section>
@@ -42,8 +42,8 @@ const game3 = (state, gameStatus) => {
 
   gameOptions.forEach((el) => {
     el.addEventListener(`click`, () => {
-      answers.push([true, 150000]);
-      switchScreens();
+      // answers.push([true, 150000]);
+      // switchScreens();
     });
   });
 
