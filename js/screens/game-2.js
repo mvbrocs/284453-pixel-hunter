@@ -8,12 +8,6 @@ import statsTemplate from "../templates/stats-template";
 import {
   gameState
 } from "../data/game-state";
-// import {
-//   switchScreens
-// } from "../switch-screens";
-// import {
-//   answers
-// } from "../data/game-data";
 
 const game2 = (data) => {
   const gameTask = `<p class="game__task">${data.gameScreens[data.level].question}</p>`;
@@ -48,6 +42,7 @@ const game2 = (data) => {
     gameState.addAnswer(true, 150000);
     gameState.checkLivesCount(data);
     gameState.changeGameLevel();
+    gameState.checkGameOver(data);
     gameState.showScreenWithData(data);
   });
   backBtn.addEventListener(`click`, () => showScreen(greeting()));

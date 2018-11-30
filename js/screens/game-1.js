@@ -8,12 +8,6 @@ import greeting from "./greeting";
 import {
   gameState
 } from "../data/game-state";
-// import {
-//   switchScreens
-// } from "../switch-screens";
-// import {
-//   answers
-// } from '../data/game-data';
 
 const game1 = (data) => {
   const gameTask = `<p class="game__task">${data.gameScreens[data.level].question}</p>`;
@@ -63,6 +57,7 @@ const game1 = (data) => {
       gameState.addAnswer(true, 1500);
       gameState.checkLivesCount(data);
       gameState.changeGameLevel();
+      gameState.checkGameOver(data);
       gameState.showScreenWithData(data);
     }
   };

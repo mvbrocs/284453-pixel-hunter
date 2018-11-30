@@ -6,50 +6,53 @@ import greeting from "./greeting";
 import statsTemplate from "../templates/stats-template";
 import backBtnTemplate from "../templates/back-btn-template";
 import {
-  answers,
-  gameData,
-  quickAnswersCount,
-  slowAnswersCount
+  // answers,
+  gameData, Answer,
 } from "../data/game-data";
+// import {
+//   // game
+// } from "../switch-screens";
 import {
-  game
-} from "../switch-screens";
+  gameState
+} from "../data/game-state";
 
-const result = () => {
-  const scores = gameData(answers, game.lives);
+const result = (data) => {
+  const scores = gameData(data);
   return (scores > 0) ? scores : false;
 };
 
 
-const stats = (state) => {
-  const totalScores = result();
-  const quickAnswersTotal = quickAnswersCount(answers);
-  const slowAnswersTotal = slowAnswersCount(answers);
+const stats = (data) => {
+  debugger
+  const totalScores = result(data);
+  const quickAnswersTotal = gameState.quickAnswersCount(data);
+  const slowAnswersTotal = gameState.slowAnswersCount(data);
 
-  const bonuses = (scores) => {
-    const bonusesHtml = `<tr>
-    <td></td>
-    <td class="result__extra">Бонус за скорость:</td>
-    <td class="result__extra">${quickAnswersTotal} <span class="stats__result stats__result--fast"></span></td>
-    <td class="result__points">× ${state.QUICK}</td>
-    <td class="result__total">${quickAnswersTotal * state.QUICK}</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td class="result__extra">Бонус за жизни:</td>
-    <td class="result__extra">${game.lives} <span class="stats__result stats__result--alive"></span></td>
-    <td class="result__points">× ${state.BONUS_FOR_LIVES}</td>
-    <td class="result__total">${game.lives * state.BONUS_FOR_LIVES}</td>
-  </tr>
-  <tr>
-    <td></td>
-    <td class="result__extra">Штраф за медлительность:</td>
-    <td class="result__extra">${slowAnswersTotal} <span class="stats__result stats__result--slow"></span></td>
-    <td class="result__points">× ${state.SLOW}</td>
-    <td class="result__total">-${slowAnswersTotal * state.SLOW}</td>
-  </tr>`;
+  const bonusesEl = () => {
+    const bonusesHtml = `
+    <tr>
+      <td></td>
+      <td class="result__extra">Бонус за скорость:</td>
+      <td class="result__extra">${quickAnswersTotal} <span class="stats__result stats__result--fast"></span></td>
+      <td class="result__points">× ${Answer.QUICK}</td>
+      <td class="result__total">${quickAnswersTotal * Answer.QUICK}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="result__extra">Бонус за жизни:</td>
+      <td class="result__extra">${data.lives} <span class="stats__result stats__result--alive"></span></td>
+      <td class="result__points">× ${Answer.BONUS_FOR_LIVES}</td>
+      <td class="result__total">${data.lives * Answer.BONUS_FOR_LIVES}</td>
+    </tr>
+    <tr>
+      <td></td>
+      <td class="result__extra">Штраф за медлительность:</td>
+      <td class="result__extra">${slowAnswersTotal} <span class="stats__result stats__result--slow"></span></td>
+      <td class="result__points">× ${Answer.SLOW}</td>
+      <td class="result__total">-${slowAnswersTotal * Answer.SLOW}</td>
+    </tr>`;
 
-    if (scores) {
+    if (totalScores) {
       return bonusesHtml;
     }
     return ``;
@@ -71,7 +74,7 @@ const stats = (state) => {
         <td class="result__points">× 100</td>
         <td class="result__total">900</td>
       </tr>
-      ${bonuses(result)}
+      ${bonusesEl()}
       <tr>
         <td colspan="5" class="result__total  result__total--final">${totalScores}</td>
       </tr>
@@ -82,7 +85,7 @@ const stats = (state) => {
   const backBtn = statsEl.querySelector(`.back`);
 
   const resultStats = statsEl.querySelector(`.result__stats`);
-  resultStats.insertAdjacentElement(`afterbegin`, statsTemplate());
+  resultStats.insertAdjacentElement(`afterbegin`, statsTemplate(data));
 
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 

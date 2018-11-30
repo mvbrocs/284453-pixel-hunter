@@ -1,9 +1,4 @@
 import {
-  answers,
-  SLOW_ANSWER,
-  QUICK_ANSWER
-} from "../data/game-data";
-import {
   makeElement
 } from "../utils";
 import {
@@ -23,31 +18,8 @@ const results = [
   `stats__result--unknown`
 ];
 
-const addClassOfResult = (data) => {
-  if (!data.answers.length) {
-    return results;
-  }
-  for (let i = 0; i < results.length; i += 1) {
-    if (data.answers[i]) {
-      if (data.answers[i][0] && (data.answers[i][1] > QUICK_ANSWER && data.answers[i][1] < SLOW_ANSWER)) {
-        results[i] = `stats__result--correct`;
-      }
-      if (data.answers[i][0] && data.answers[i][1] > SLOW_ANSWER) {
-        results[i] = `stats__result--slow`;
-      }
-      if (data.answers[i][0] && data.answers[i][1] < QUICK_ANSWER) {
-        results[i] = `stats__result--fast`;
-      }
-      if (!data.answers[i][0]) {
-        results[i] = `stats__result--wrong`;
-      }
-    }
-  }
-  return results;
-};
-
-const statsTemplate = () => {
-  addClassOfResult(gameState);
+const statsTemplate = (data) => {
+  gameState.addClassOfResult(data, results);
 
   const statsHtml = `
   <ul class="stats">

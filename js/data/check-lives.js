@@ -1,5 +1,5 @@
-const checkLives = (data, dataInit) => {
-  let lives = dataInit.lives;
+const checkLives = (data) => {
+  let lives = data.lives;
   const arr = data.answers;
 
   arr.forEach((el) => {

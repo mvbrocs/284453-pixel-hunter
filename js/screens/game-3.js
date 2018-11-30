@@ -5,13 +5,9 @@ import {
 import greeting from "./greeting";
 import statsTemplate from '../templates/stats-template';
 import headerTemplate from "../templates/header-template";
-import { gameState } from "../data/game-state";
-// import {
-//   switchScreens
-// } from "../switch-screens";
-// import {
-//   answers
-// } from "../data/game-data";
+import {
+  gameState
+} from "../data/game-state";
 
 const game3 = (data) => {
   const gameTask = `<p class="game__task">${data.gameScreens[data.level].question}</p>`;
@@ -43,9 +39,10 @@ const game3 = (data) => {
 
   gameOptions.forEach((el) => {
     el.addEventListener(`click`, () => {
-      gameState.addAnswer(false, 15000);
+      gameState.addAnswer(true, 15000);
       gameState.checkLivesCount(data);
       gameState.changeGameLevel();
+      gameState.checkGameOver(data);
       gameState.showScreenWithData(data);
     });
   });
