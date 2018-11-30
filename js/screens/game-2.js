@@ -45,7 +45,8 @@ const game2 = (data) => {
   // gameSection.appendChild(statsTemplate(data));
 
   form.addEventListener(`change`, () => {
-    gameState.addAnswer(true, 1500);
+    gameState.addAnswer(false, 1500);
+    gameState.checkLivesCount(data);
     gameState.changeGameLevel();
     gameState.showScreenWithData(data);
   });

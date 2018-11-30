@@ -6,7 +6,9 @@ import {
 import {
   makeElement
 } from "../utils";
-import { gameState } from "../data/game-state";
+import {
+  gameState
+} from "../data/game-state";
 
 const results = [
   `stats__result--unknown`,
@@ -40,7 +42,8 @@ const addClassOfResult = (data) => {
         results[i] = `stats__result--wrong`;
       }
     }
-  } return results;
+  }
+  return results;
 };
 
 const statsTemplate = () => {

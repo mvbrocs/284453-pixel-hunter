@@ -7,6 +7,7 @@ import game3 from "../screens/game-3";
 import {
   showScreen
 } from "../utils";
+import checkLives from "./check-lives";
 
 /* {
   level: 0,
@@ -170,6 +171,9 @@ const gameState = {
   },
   getState() {
     return gamePlay;
+  },
+  checkLivesCount(data) {
+    gamePlay.lives = checkLives(data, INITIAL_STATE);
   },
   showScreenWithData(data) {
     if (data.gameScreens[data.level].type === `two-of-two`) {

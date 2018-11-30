@@ -60,7 +60,8 @@ const game1 = (data) => {
 
   const compareChecked = () => {
     if (isLeftPictureSelected && isRightPictureSelected) {
-      gameState.addAnswer(true, 1500);
+      gameState.addAnswer(false, 1500);
+      gameState.checkLivesCount(data);
       gameState.changeGameLevel();
       gameState.showScreenWithData(data);
     }
