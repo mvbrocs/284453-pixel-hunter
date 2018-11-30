@@ -3,9 +3,6 @@ import {
   showScreen
 } from "../utils";
 import rules from "./rules";
-import {
-  gameState
-} from "../data/game-state";
 
 const greeting = () => {
   const greetingHtml = `
@@ -32,8 +29,6 @@ const greeting = () => {
 
   const greetingEl = makeElement(greetingHtml);
   const arrowRight = greetingEl.querySelector(`.greeting__continue`);
-
-  gameState.resetGame();
 
   arrowRight.addEventListener(`click`, () => showScreen(rules()));
   return greetingEl;

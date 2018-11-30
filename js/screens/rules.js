@@ -5,7 +5,13 @@ import {
 // import game1 from "./game-1";
 import greeting from "./greeting";
 import backBtnTemplate from "../templates/back-btn-template";
-import startGame from "../start-game";
+// import startGame from "../start-game";
+import {
+  gameState
+} from "../data/game-state";
+// import {
+//   gameState
+// } from "../data/game-state";
 
 const rules = () => {
   const rulesHtml = `
@@ -38,8 +44,11 @@ const rules = () => {
     goBtn.disabled = (inputName.value < 1);
   });
 
-  // goBtn.addEventListener(`click`, () => showScreen(game1(state)));
-  goBtn.addEventListener(`click`, () => startGame());
+  goBtn.addEventListener(`click`, () => {
+    gameState.resetGame();
+    const data = gameState.getState();
+    gameState.showScreenWithData(data);
+  });
   backBtn.addEventListener(`click`, () => showScreen(greeting()));
 
   return rulesEl;
