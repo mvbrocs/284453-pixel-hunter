@@ -58,7 +58,6 @@ const game1 = (data) => {
       gameState.checkLivesCount(data);
       gameState.changeGameLevel();
       gameState.checkGameOver(data);
-      gameState.showScreenWithData(data);
     }
   };
 

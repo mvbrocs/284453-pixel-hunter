@@ -165,7 +165,7 @@ let gamePlay;
 
 const gameState = {
   resetGame() {
-    gamePlay = Object.assign({}, INITIAL_STATE);
+    gamePlay = Object.assign({}, INITIAL_STATE, {answers: []});
     gamePlay.gameScreens = gameScreens;
   },
   changeGameLevel() {
@@ -185,7 +185,7 @@ const gameState = {
     const level = data.level;
     if (level === 10 || lives < 0) {
       return showScreen(stats(data));
-    } return ``;
+    } return this.showScreenWithData(data);
   },
   showScreenWithData(data) {
     if (data.gameScreens[data.level].type === `two-of-two`) {
@@ -197,34 +197,36 @@ const gameState = {
     if (data.gameScreens[data.level].type === `one-of-three`) {
       return showScreen(game3(data));
     }
-    return null;
+    return ``;
   },
   addClassOfResult(dataArr, sourceArr) {
+    const resultArr = [...sourceArr];
+
     if (dataArr.answers.length < 1) {
-      return sourceArr;
+      return resultArr;
     }
-    for (let i = 0; i < sourceArr.length; i += 1) {
+    for (let i = 0; i < resultArr.length; i += 1) {
       if (dataArr.answers[i]) {
         if (dataArr.answers[i][0] && (dataArr.answers[i][1] > QUICK_ANSWER && dataArr.answers[i][1] < SLOW_ANSWER)) {
-          sourceArr[i] = `stats__result--correct`;
+          resultArr[i] = `stats__result--correct`;
         }
         if (dataArr.answers[i][0] && dataArr.answers[i][1] > SLOW_ANSWER) {
-          sourceArr[i] = `stats__result--slow`;
+          resultArr[i] = `stats__result--slow`;
         }
         if (dataArr.answers[i][0] && dataArr.answers[i][1] < QUICK_ANSWER) {
-          sourceArr[i] = `stats__result--fast`;
+          resultArr[i] = `stats__result--fast`;
         }
         if (!dataArr.answers[i][0]) {
-          sourceArr[i] = `stats__result--wrong`;
+          resultArr[i] = `stats__result--wrong`;
         }
       }
     }
-    return sourceArr;
+    return resultArr;
   },
   quickAnswersCount(data) {
     let acc = 0;
     data.answers.forEach((el) => {
-      if (el[1] < QUICK_ANSWER) {
+      if (el[0] && el[1] < QUICK_ANSWER) {
         acc += 1;
       }
     });
@@ -233,7 +235,16 @@ const gameState = {
   slowAnswersCount(data) {
     let acc = 0;
     data.answers.forEach((el) => {
-      if (el[1] > SLOW_ANSWER) {
+      if (el[0] && el[1] > SLOW_ANSWER) {
+        acc += 1;
+      }
+    });
+    return acc;
+  },
+  correctAnswersCount(data) {
+    let acc = 0;
+    data.answers.forEach((el) => {
+      if (el[0]) {
         acc += 1;
       }
     });

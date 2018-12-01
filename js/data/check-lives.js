@@ -1,5 +1,9 @@
+import {
+  INITIAL_STATE
+} from "./game-data";
+
 const checkLives = (data) => {
-  let lives = data.lives;
+  let lives = INITIAL_STATE.lives;
   const arr = data.answers;
 
   arr.forEach((el) => {

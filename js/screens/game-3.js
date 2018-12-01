@@ -39,11 +39,10 @@ const game3 = (data) => {
 
   gameOptions.forEach((el) => {
     el.addEventListener(`click`, () => {
-      gameState.addAnswer(true, 15000);
+      gameState.addAnswer(true, 150000);
       gameState.checkLivesCount(data);
       gameState.changeGameLevel();
       gameState.checkGameOver(data);
-      gameState.showScreenWithData(data);
     });
   });
 

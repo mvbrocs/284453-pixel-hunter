@@ -23,6 +23,7 @@ const stats = (data) => {
   const totalScores = result(data);
   const quickAnswersTotal = gameState.quickAnswersCount(data);
   const slowAnswersTotal = gameState.slowAnswersCount(data);
+  const correctAnswersTotal = gameState.correctAnswersCount(data);
 
   const bonusesEl = () => {
     const bonusesHtml = `
@@ -67,8 +68,8 @@ const stats = (data) => {
       <tr>
         <td class="result__number">1.</td>
         <td colspan="2" class="result__stats"></td>
-        <td class="result__points">× 100</td>
-        <td class="result__total">900</td>
+        <td class="result__points">× ${Answer.RIGHT}</td>
+        <td class="result__total">${correctAnswersTotal * Answer.RIGHT}</td>
       </tr>
       ${bonusesEl()}
       <tr>
