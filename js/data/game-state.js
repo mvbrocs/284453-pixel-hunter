@@ -163,6 +163,7 @@ const gameScreens = [{
 
 let gamePlay;
 
+// TODO: Структура должна определять правильный ответ. Сделать метод проверки правильного ответа
 const gameState = {
   resetGame() {
     gamePlay = Object.assign({}, INITIAL_STATE, {answers: []});
@@ -223,6 +224,7 @@ const gameState = {
     }
     return resultArr;
   },
+  // FIXME: переделать на reduce
   quickAnswersCount(data) {
     let acc = 0;
     data.answers.forEach((el) => {
@@ -232,6 +234,7 @@ const gameState = {
     });
     return acc;
   },
+  // FIXME: переделать на reduce
   slowAnswersCount(data) {
     let acc = 0;
     data.answers.forEach((el) => {
@@ -241,6 +244,7 @@ const gameState = {
     });
     return acc;
   },
+  // FIXME: переделать на reduce
   correctAnswersCount(data) {
     let acc = 0;
     data.answers.forEach((el) => {

@@ -1,6 +1,8 @@
 const QUICK_ANSWER = 10000;
 const SLOW_ANSWER = 20000;
 
+// FIXME: сделать константу с количеством вопросов
+// TODO: проверить есть ли где еще завязки на жесткое число
 const INITIAL_STATE = Object.freeze({
   level: 0,
   lives: 3,
@@ -41,7 +43,7 @@ const gameData = (data) => {
       scores -= Answer.SLOW;
     }
   });
-
+  // FIXME: убрать магическое число
   if (acc < 7) {
     return -1;
   }
