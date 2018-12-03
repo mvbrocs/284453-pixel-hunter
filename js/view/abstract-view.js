@@ -1,4 +1,4 @@
-class AbstractView {
+export default class AbstractView {
   get template() {
     // Возвращает строку, содержащую разметку
     // переопределяется в наследнике
@@ -18,5 +18,3 @@ class AbstractView {
     // переопределяется в наследнике
   }
 }
-
-export default AbstractView;
