@@ -1,20 +1,24 @@
 export default class AbstractView {
+  constructor() {
+    if (new.target === AbstractView) {
+      throw new Error(`Can't instantiate AbstractView, only concrete one`);
+    }
+  }
   get template() {
-    // Возвращает строку, содержащую разметку
-    // переопределяется в наследнике
+    throw new Error(`Template is required`);
   }
   get element() {
-    // ?????????????
-    // Возвращает DOM-элемент, соответствующий представлению
+    if (this._element) {
+      return this._element;
+    }
+    this._element = this.render();
+    this.bind(this._element);
+    return this._element;
   }
-  render(str) {
-    // создает DOM элемент на основе шаблона геттера template
+  render() {
     const div = document.createElement(`div`);
-    div.innerHTML = str.trim();
+    div.innerHTML = this.template.trim();
     return div;
   }
-  bind() {
-    // добавляет обработчики событий
-    // переопределяется в наследнике
-  }
+  bind() {}
 }
