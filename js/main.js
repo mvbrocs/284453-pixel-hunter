@@ -3,4 +3,4 @@ import {
 } from "./utils/utils";
 import intro from './screens/intro';
 
-showScreen(intro());
+showScreen(intro().element());
