@@ -2,11 +2,15 @@ import Rules from '../view/rules-view';
 import {
   showScreen
 } from '../utils/utils';
+import greeting from './greeting';
 
 const rules = new Rules();
 rules.onButtonClick = () => {
-  // showScreen()
   console.log('показываем игровой экран');
+};
+
+rules.onBackButtonClick = () => {
+  showScreen(greeting.element);
 };
 
 export default rules;

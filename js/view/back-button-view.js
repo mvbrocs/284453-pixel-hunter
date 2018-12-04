@@ -16,13 +16,5 @@ export default class BackButton extends AbstractView {
     </svg>
     </button>`;
   }
-  bind() {
-    this.element.addEventListener(`click`, (e) => {
-      e.preventDefault();
-      this.onBackButtonClick();
-    });
-  }
-
-  onBackButtonClick() {}
 }
 
