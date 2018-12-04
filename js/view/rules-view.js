@@ -1,6 +1,7 @@
 import AbstractView from './abstract-view';
+import backBtn from '../screens/back-btn';
 
-export default class View extends AbstractView {
+export default class Rules extends AbstractView {
   constructor() {
     super();
   }
@@ -40,7 +41,7 @@ export default class View extends AbstractView {
   }
   onButtonClick() {}
   // render() {
-  //   const header = this.element.querySelector(`.header`);
-  //   console.log("​View -> render -> header", header);
+  //   const elem = super.render();
+	// 	console.log("​Rules -> render -> elem", elem);
   // }
 }

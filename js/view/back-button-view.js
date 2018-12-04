@@ -1,6 +1,6 @@
 import AbstractView from './abstract-view';
 
-export default class BackButtonView extends AbstractView {
+export default class BackButton extends AbstractView {
   constructor() {
     super();
   }
@@ -19,10 +19,10 @@ export default class BackButtonView extends AbstractView {
   bind() {
     this.element.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onclick();
+      this.onBackButtonClick();
     });
   }
 
-  onclick() {}
+  onBackButtonClick() {}
 }
 
