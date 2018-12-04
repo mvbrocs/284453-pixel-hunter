@@ -6,7 +6,7 @@ import game2 from "../screens/game-2";
 import game3 from "../screens/game-3";
 import {
   showScreen
-} from "../utils";
+} from "../utils/utils";
 import checkLives from "./check-lives";
 import {
   SLOW_ANSWER,

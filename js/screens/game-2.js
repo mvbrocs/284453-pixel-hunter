@@ -1,7 +1,7 @@
 import {
   makeElement,
   showScreen,
-} from "../utils";
+} from "../utils/utils";
 import greeting from "./greeting";
 import headerTemplate from "../templates/header-template";
 import statsTemplate from "../templates/stats-template";

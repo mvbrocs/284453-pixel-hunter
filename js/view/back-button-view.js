@@ -1,14 +1,13 @@
 import AbstractView from './abstract-view';
 
 export default class BackButtonView extends AbstractView {
-  constructor(title = `Вернуться к началу`) {
+  constructor() {
     super();
-    this.title = title;
   }
 
   get template() {
     return `<button class="back">
-    <span class="visually-hidden">${this.title}</span>
+    <span class="visually-hidden">Вернуться к началу</span>
     <svg class="icon" width="45" height="45" viewBox="0 0 45 45" fill="#000000">
       <use xlink:href="img/sprite.svg#arrow-left"></use>
     </svg>
@@ -18,10 +17,10 @@ export default class BackButtonView extends AbstractView {
     </button>`;
   }
   bind() {
-    this.element.onclick = (e) => {
+    this.element.addEventListener(`click`, (e) => {
       e.preventDefault();
       this.onclick();
-    };
+    });
   }
 
   onclick() {}

@@ -1,7 +1,7 @@
 import {
   makeElement,
   showScreen,
-} from "../utils";
+} from "../utils/utils";
 import greeting from "./greeting";
 
 const intro = () => {

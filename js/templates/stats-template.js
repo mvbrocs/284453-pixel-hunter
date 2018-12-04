@@ -1,6 +1,6 @@
 import {
   makeElement
-} from "../utils";
+} from "../utils/utils";
 import {
   gameState
 } from "../data/game-state";

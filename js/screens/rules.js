@@ -1,7 +1,7 @@
 import {
   makeElement,
   showScreen,
-} from "../utils";
+} from "../utils/utils";
 // import game1 from "./game-1";
 import greeting from "./greeting";
 import backBtnTemplate from "../templates/back-btn-template";

@@ -1,6 +1,6 @@
 import {
   showScreen
-} from "./utils";
+} from "./utils/utils";
 import intro from './screens/intro';
 
 showScreen(intro());
