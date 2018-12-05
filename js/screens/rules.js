@@ -3,10 +3,17 @@ import {
   showScreen
 } from '../utils/utils';
 import greeting from './greeting';
+import game1 from './game-1';
+import {
+  gameState
+} from '../data/game-state';
 
 const rules = new Rules();
 rules.onButtonClick = () => {
-  console.log('показываем игровой экран');
+  // FIXME: непонятно где должен быть сброс состояния
+  gameState.resetGame();
+  showScreen(game1.element);
+
 };
 
 rules.onBackButtonClick = () => {
