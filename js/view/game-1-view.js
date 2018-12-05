@@ -9,7 +9,6 @@ export default class Game1 extends AbstractView {
   constructor(data) {
     super();
     this.data = data;
-    this.reset = data.resetGame();
     this.state = data.getState();
   }
 
