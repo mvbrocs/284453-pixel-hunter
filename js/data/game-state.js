@@ -2,8 +2,8 @@ import {
   INITIAL_STATE
 } from "./game-data";
 import game1 from "../screens/game-1";
-import game2 from "../screens/game-2";
-import game3 from "../screens/game-3";
+// import game2 from "../screens/game-2";
+// import game3 from "../screens/game-3";
 import {
   showScreen
 } from "../utils/utils";
@@ -12,7 +12,7 @@ import {
   SLOW_ANSWER,
   QUICK_ANSWER
 } from "../data/game-data";
-import stats from "../screens/stats";
+// import stats from "../screens/stats";
 
 /* {
   level: 0,
@@ -185,18 +185,18 @@ const gameState = {
     const lives = checkLives(data);
     const level = data.level;
     if (level === 10 || lives < 0) {
-      return showScreen(stats(data));
-    } return this.showScreenWithData(data);
+      // return showScreen(stats(data));
+    } /* return this.showScreenWithData(data); */
   },
   showScreenWithData(data) {
     if (data.gameScreens[data.level].type === `two-of-two`) {
       return showScreen(game1(data));
     }
     if (data.gameScreens[data.level].type === `tinder-like`) {
-      return showScreen(game2(data));
+      // return showScreen(game2(data));
     }
     if (data.gameScreens[data.level].type === `one-of-three`) {
-      return showScreen(game3(data));
+      // return showScreen(game3(data));
     }
     return ``;
   },
