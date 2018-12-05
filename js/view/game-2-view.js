@@ -11,7 +11,7 @@ export default class Game2 extends AbstractView {
     this.data = data;
     this.state = data.getState();
   }
-  template() {
+  get template() {
     const gameTask = `<p class="game__task">${this.state.gameScreens[this.state.level].question}</p>`;
 
     return `
