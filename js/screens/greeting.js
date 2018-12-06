@@ -6,5 +6,7 @@ import rules from './rules';
 
 export default () => {
   const greeting = new Greeting();
-  greeting.onButtonClick = () => showScreen(rules.element);
+  greeting.onButtonClick = () => showScreen(rules().element);
+
+  return greeting;
 };

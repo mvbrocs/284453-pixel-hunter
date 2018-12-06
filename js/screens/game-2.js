@@ -13,6 +13,8 @@ export default () => {
   game2.onBackButtonClick = () => {
     showScreen(greeting.element);
   };
+
+  return game2;
 }
 
 

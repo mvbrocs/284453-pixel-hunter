@@ -6,5 +6,7 @@ import greeting from './greeting';
 
 export default () => {
   const intro = new Intro();
-  intro.onButtonClick = () => showScreen(greeting.element);
+  intro.onButtonClick = () => showScreen(greeting().element);
+
+  return intro;
 };

@@ -16,4 +16,6 @@ export default () => {
     gameState.changeGameLevel();
     gameState.checkGameOver(gameState.getState());
   };
+
+  return game1;
 };

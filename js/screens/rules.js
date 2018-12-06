@@ -15,6 +15,8 @@ export default () => {
   rules.onBackButtonClick = () => {
     showScreen(greeting.element);
   };
+
+  return rules;
 };
 
 // import {
