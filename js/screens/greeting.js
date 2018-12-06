@@ -4,9 +4,7 @@ import {
 } from '../utils/utils';
 import rules from './rules';
 
-const greeting = new Greeting();
-greeting.onButtonClick = () => {
-  showScreen(rules.element);
+export default () => {
+  const greeting = new Greeting();
+  greeting.onButtonClick = () => showScreen(rules.element);
 };
-
-export default greeting;

@@ -3,24 +3,21 @@ import {
   showScreen
 } from '../utils/utils';
 import greeting from './greeting';
-import game1 from './game-1';
 import {
   gameState
 } from '../data/game-state';
 
-const rules = new Rules();
-rules.onButtonClick = () => {
-  // FIXME: непонятно где должен быть сброс состояния
-  gameState.resetGame();
-  showScreen(game1.element);
+export default () => {
+  const rules = new Rules();
+  rules.onButtonClick = () => {
+    gameState.resetGame();
+    gameState.showScreenWithData(gameState);
+  };
 
+  rules.onBackButtonClick = () => {
+    showScreen(greeting.element);
+  };
 };
-
-rules.onBackButtonClick = () => {
-  showScreen(greeting.element);
-};
-
-export default rules;
 
 // import {
 //   makeElement,
