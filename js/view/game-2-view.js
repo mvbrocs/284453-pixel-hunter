@@ -4,6 +4,7 @@ import {
   Timer,
   Lives
 } from './header-view';
+import statsBar from '../screens/stats-bar';
 
 export default class Game2 extends AbstractView {
   constructor(state) {
@@ -41,7 +42,7 @@ export default class Game2 extends AbstractView {
     const backButton = this.element.querySelector(`.back`);
     const gameSection = this.element.querySelector(`.game`);
 
-    // gameSection.appendChild(statsTemplate(data));
+    gameSection.appendChild(statsBar().element);
 
     form.addEventListener(`change`, (e) => {
       e.preventDefault();

@@ -4,6 +4,7 @@ import {
   Timer,
   Lives
 } from './header-view';
+import statsBar from '../screens/stats-bar';
 
 export default class Game1 extends AbstractView {
   constructor(state) {
@@ -53,11 +54,11 @@ export default class Game1 extends AbstractView {
     const leftRadioGroup = [...this.element.querySelectorAll(`input[name=question1]`)];
     const rightRadioGroup = [...this.element.querySelectorAll(`input[name=question2]`)];
     const backButton = this.element.querySelector(`.back`);
-    // const gameSection = this.element.querySelector(`.game`);
+    const gameSection = this.element.querySelector(`.game`);
     let isLeftPictureSelected = false;
     let isRightPictureSelected = false;
 
-    // gameSection.appendChild(statsTemplate(data));
+    gameSection.appendChild(statsBar().element);
 
     const compareChecked = () => {
       if (isLeftPictureSelected && isRightPictureSelected) {

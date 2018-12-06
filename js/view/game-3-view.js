@@ -4,6 +4,7 @@ import {
   Timer,
   Lives
 } from './header-view';
+import statsBar from '../screens/stats-bar';
 
 export default class Game3 extends AbstractView {
   constructor(state) {
@@ -38,9 +39,9 @@ export default class Game3 extends AbstractView {
   bind() {
     const gameOptions = [...this.element.querySelectorAll(`.game__option`)];
     const backButton = this.element.querySelector(`.back`);
-    // const gameSection = this.element.querySelector(`.game`);
+    const gameSection = this.element.querySelector(`.game`);
 
-    // gameSection.appendChild(statsTemplate(data));
+    gameSection.appendChild(statsBar().element);
 
     gameOptions.forEach((el) => {
       el.addEventListener(`click`, () => {
