@@ -6,30 +6,30 @@ import {
 } from './header-view';
 
 export default class Game3 extends AbstractView {
-  constructor(data) {
+  constructor(state) {
     super();
-    this.data = data;
+    this.state = state;
   }
   get template() {
-    const gameTask = `<p class="game__task">${this.data.gameScreens[this.data.level].question}</p>`;
+    const gameTask = `<p class="game__task">${this.state.gameScreens[this.state.level].question}</p>`;
 
     return `
       <header class="header">
         ${new BackButton().template}
-        ${new Timer(this.data.time).template}
-        ${new Lives(this.data.lives).template}
+        ${new Timer(this.state.time).template}
+        ${new Lives(this.state.lives).template}
       </header>
       <section class="game">
         ${gameTask}
         <form class="game__content  game__content--triple">
           <div class="game__option">
-            <img src="${this.data.gameScreens[this.data.level].answers[0].image.url}" alt="Option 1" width="304" height="455">
+            <img src="${this.state.gameScreens[this.state.level].answers[0].image.url}" alt="Option 1" width="304" height="455">
           </div>
           <div class="game__option  game__option--selected">
-            <img src="${this.data.gameScreens[this.data.level].answers[1].image.url}" alt="Option 2" width="304" height="455">
+            <img src="${this.state.gameScreens[this.state.level].answers[1].image.url}" alt="Option 2" width="304" height="455">
           </div>
           <div class="game__option">
-            <img src="${this.data.gameScreens[this.data.level].answers[2].image.url}" alt="Option 3" width="304" height="455">
+            <img src="${this.state.gameScreens[this.state.level].answers[2].image.url}" alt="Option 3" width="304" height="455">
           </div>
         </form>
       </section>
