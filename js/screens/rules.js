@@ -9,11 +9,11 @@ export default () => {
   const rules = new Rules();
   rules.onButtonClick = () => {
     gameState.resetGame();
-    gameState.showScreenWithData(gameState);
+    gameState.showScreenWithData(gameState.getState());
   };
 
   rules.onBackButtonClick = () => {
-    showScreen(greeting.element);
+    showScreen(greeting().element);
   };
 
   return rules;

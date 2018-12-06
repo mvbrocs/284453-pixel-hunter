@@ -6,12 +6,15 @@ import {
 import gameState from "../data/game-state";
 
 export default () => {
-  const game2 = new Game2(gameState);
+  const game2 = new Game2(gameState.getState());
   game2.onFormChange = () => {
-    console.log('game2 form changed');
+    gameState.addAnswer(true, 15000);
+    gameState.checkLivesCount(gameState.getState());
+    gameState.changeGameLevel();
+    gameState.checkGameOver(gameState.getState());
   };
   game2.onBackButtonClick = () => {
-    showScreen(greeting.element);
+    showScreen(greeting().element);
   };
 
   return game2;

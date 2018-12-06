@@ -6,9 +6,9 @@ import {
 } from "../utils/utils";
 
 export default () => {
-  const game1 = new Game1(gameState);
+  const game1 = new Game1(gameState.getState());
   game1.onBackButtonClick = () => {
-    showScreen(greeting.element);
+    showScreen(greeting().element);
   };
   game1.compareChecking = () => {
     gameState.addAnswer(true, 1500);

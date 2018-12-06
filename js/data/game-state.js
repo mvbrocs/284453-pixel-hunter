@@ -190,8 +190,6 @@ const gameState = {
     } return this.showScreenWithData(data);
   },
   showScreenWithData(data) {
-		console.log("​showScreenWithData -> data", data);
-    console.log("​showScreenWithData -> data.gameScreens[data.level].type", data.gameScreens[data.level].type);
     if (data.gameScreens[data.level].type === `two-of-two`) {
       return showScreen(game1(data).element);
     }

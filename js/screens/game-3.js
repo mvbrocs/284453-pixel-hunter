@@ -6,9 +6,15 @@ import {
 } from "../utils/utils";
 
 export default () => {
-  const game3 = new Game3(gameState);
+  const game3 = new Game3(gameState.getState());
+  game3.onImageClick = () => {
+    gameState.addAnswer(true, 150000);
+    gameState.checkLivesCount(gameState.getState());
+    gameState.changeGameLevel();
+    gameState.checkGameOver(gameState.getState());
+  };
   game3.onBackButtonClick = () => {
-    showScreen(greeting.element);
+    showScreen(greeting().element);
   };
 
   return game3;
