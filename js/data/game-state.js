@@ -2,8 +2,8 @@ import {
   INITIAL_STATE
 } from "./game-data";
 import game1 from "../screens/game-1";
-import game2 from "../screens/game-2";
-import game3 from "../screens/game-3";
+// import game2 from "../screens/game-2";
+// import game3 from "../screens/game-3";
 import {
   showScreen
 } from "../utils/utils";
@@ -22,7 +22,7 @@ import {
   answers
 } */
 
-const gameScreens = [{
+const gameScreens = [/* {
   type: `tinder-like`,
   question: `Угадай, фото или рисунок?`,
   answers: [{
@@ -31,7 +31,7 @@ const gameScreens = [{
     },
     type: `painting`
   }]
-}, {
+}, */ {
   type: `two-of-two`,
   question: `Угадайте для каждого изображения фото или рисунок?`,
   answers: [{
