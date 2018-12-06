@@ -12,19 +12,19 @@ export default class Game2 extends AbstractView {
     this.state = data.getState();
   }
   get template() {
-    const gameTask = `<p class="game__task">${this.state.gameScreens[this.state.level].question}</p>`;
+    const gameTask = `<p class="game__task">${this.data.getState().gameScreens[this.data.getState().level].question}</p>`;
 
     return `
       <header class="header">
         ${new BackButton().template}
-        ${new Timer(this.state.time).template}
-        ${new Lives(this.state.lives).template}
+        ${new Timer(this.data.getState().time).template}
+        ${new Lives(this.data.getState().lives).template}
       </header>
       <section class="game">
         ${gameTask}
         <form class="game__content  game__content--wide">
           <div class="game__option">
-            <img src="${this.state.gameScreens[this.state.level].answers[0].image.url}" alt="Option 1" width="705" height="455">
+            <img src="${this.data.getState().gameScreens[this.data.getState().level].answers[0].image.url}" alt="Option 1" width="705" height="455">
             <label class="game__answer  game__answer--photo">
               <input class="visually-hidden" name="question1" type="radio" value="photo">
               <span>Фото</span>
@@ -44,7 +44,8 @@ export default class Game2 extends AbstractView {
 
     // gameSection.appendChild(statsTemplate(data));
 
-    form.addEventListener(`change`, () => {
+    form.addEventListener(`change`, (e) => {
+      e.preventDefault();
       this.onFormChange();
     });
 
