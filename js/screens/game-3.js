@@ -7,8 +7,8 @@ import {
   showScreen
 } from "../utils/utils";
 
-const game1 = new Game3(gameState);
-game1.onBackButtonClick = () => {
+const game3 = new Game3(gameState);
+game3.onBackButtonClick = () => {
   showScreen(greeting.element);
 };
 
