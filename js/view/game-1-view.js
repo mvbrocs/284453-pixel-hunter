@@ -9,7 +9,7 @@ export default class Game1 extends AbstractView {
   constructor(data) {
     super();
     this.data = data;
-    this.state = this.data.getState();
+    this.state = this.data.getState(); // почему не работает?
   }
 
   get template() {
@@ -66,10 +66,10 @@ export default class Game1 extends AbstractView {
 
     const compareChecked = () => {
       if (isLeftPictureSelected && isRightPictureSelected) {
-        // this.data.addAnswer(true, 1500);
-        // this.data.checkLivesCount(this.data);
-        // this.data.changeGameLevel();
-        // this.data.checkGameOver(this.data);
+        this.data.addAnswer(true, 1500);
+        this.data.checkLivesCount(this.data.getState());
+        this.data.changeGameLevel();
+        this.data.checkGameOver(this.data.getState());
       }
     };
 
