@@ -18,10 +18,7 @@ export default () => {
   };
 
   return game2;
-}
-
-
-
+};
 
 // import {
 //   makeElement,
