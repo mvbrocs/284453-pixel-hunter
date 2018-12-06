@@ -1,18 +1,21 @@
 import Game2 from "../view/game-2-view";
-import {
-  gameState
-} from "../data/game-state";
 import greeting from "./greeting";
 import {
   showScreen
 } from "../utils/utils";
+import gameState from "../data/game-state";
 
-const game2 = new Game2(gameState);
-game2.onBackButtonClick = () => {
-  showScreen(greeting.element);
-};
+export default () => {
+  const game2 = new Game2(gameState);
+  game2.onFormChange = () => {
+    console.log('game2 form changed');
+  };
+  game2.onBackButtonClick = () => {
+    showScreen(greeting.element);
+  };
+}
 
-export default game2;
+
 
 
 // import {

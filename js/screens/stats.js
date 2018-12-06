@@ -9,9 +9,7 @@ import {
   gameData,
   Answer,
 } from "../data/game-data";
-import {
-  gameState
-} from "../data/game-state";
+import gameState from "../data/game-state";
 
 const result = (data) => {
   const scores = gameData(data);

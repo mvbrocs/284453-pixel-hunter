@@ -1,9 +1,7 @@
 import {
   makeElement
 } from "../utils/utils";
-import {
-  gameState
-} from "../data/game-state";
+import gameState from "../data/game-state";
 
 const results = [
   `stats__result--unknown`,

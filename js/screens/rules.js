@@ -3,9 +3,7 @@ import {
   showScreen
 } from '../utils/utils';
 import greeting from './greeting';
-import {
-  gameState
-} from '../data/game-state';
+import gameState from '../data/game-state';
 
 export default () => {
   const rules = new Rules();

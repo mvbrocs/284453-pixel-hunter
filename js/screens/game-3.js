@@ -1,19 +1,16 @@
 import Game3 from "../view/game-3-view";
-import {
-  gameState
-} from "../data/game-state";
+import gameState from "../data/game-state";
 import greeting from "./greeting";
 import {
   showScreen
 } from "../utils/utils";
 
-const game3 = new Game3(gameState);
-game3.onBackButtonClick = () => {
-  showScreen(greeting.element);
+export default () => {
+  const game3 = new Game3(gameState);
+  game3.onBackButtonClick = () => {
+    showScreen(greeting.element);
+  };
 };
-
-export default game3;
-
 
 // import {
 //   makeElement,

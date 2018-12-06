@@ -2,8 +2,8 @@ import {
   INITIAL_STATE
 } from "./game-data";
 import game1 from "../screens/game-1";
-// import game2 from "../screens/game-2";
-// import game3 from "../screens/game-3";
+import game2 from "../screens/game-2";
+import game3 from "../screens/game-3";
 import {
   showScreen
 } from "../utils/utils";
@@ -22,16 +22,7 @@ import {
   answers
 } */
 
-const gameScreens = [/* {
-  type: `tinder-like`,
-  question: `Угадай, фото или рисунок?`,
-  answers: [{
-    image: {
-      url: `https://k42.kn3.net/CF42609C8.jpg`
-    },
-    type: `painting`
-  }]
-}, */ {
+const gameScreens = [{
   type: `two-of-two`,
   question: `Угадайте для каждого изображения фото или рисунок?`,
   answers: [{
@@ -39,6 +30,16 @@ const gameScreens = [/* {
       url: `https://k42.kn3.net/D2F0370D6.jpg`
     },
     type: `photo`
+  },
+  {
+    type: `tinder-like`,
+    question: `Угадай, фото или рисунок?`,
+    answers: [{
+      image: {
+        url: `https://k42.kn3.net/CF42609C8.jpg`
+      },
+      type: `painting`
+    }]
   },
   {
     image: {
@@ -257,6 +258,4 @@ const gameState = {
   },
 };
 
-export {
-  gameState
-};
+export default gameState;
