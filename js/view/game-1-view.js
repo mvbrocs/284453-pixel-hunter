@@ -66,10 +66,7 @@ export default class Game1 extends AbstractView {
 
     const compareChecked = () => {
       if (isLeftPictureSelected && isRightPictureSelected) {
-        this.data.addAnswer(true, 1500);
-        this.data.checkLivesCount(this.data.getState());
-        this.data.changeGameLevel();
-        this.data.checkGameOver(this.data.getState());
+        this.compareChecking();
       }
     };
 
@@ -97,6 +94,7 @@ export default class Game1 extends AbstractView {
     });
   }
   onBackButtonClick() {}
+  compareChecking() {}
 }
 
 /* `
