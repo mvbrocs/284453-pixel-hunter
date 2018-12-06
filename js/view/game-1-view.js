@@ -13,10 +13,6 @@ export default class Game1 extends AbstractView {
   }
 
   get template() {
-    console.log(this.data.gameScreens[this.data.level].answers);
-    console.log(this.data.gameScreens[this.data.level].answers[0].image.url);
-    console.log(this.data.gameScreens[this.data.level].answers[1].image.url);
-
     const gameTask = `<p class="game__task">${this.data.gameScreens[this.data.level].question}</p>`;
 
     return `
