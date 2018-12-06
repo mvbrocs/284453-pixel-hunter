@@ -27,27 +27,26 @@ const gameScreens = [{
   question: `Угадайте для каждого изображения фото или рисунок?`,
   answers: [{
     image: {
-      url: `https://k42.kn3.net/D2F0370D6.jpg`
+      url: `http://i.imgur.com/DKR1HtB.jpg`
     },
     type: `photo`
   },
   {
-    type: `tinder-like`,
-    question: `Угадай, фото или рисунок?`,
-    answers: [{
-      image: {
-        url: `https://k42.kn3.net/CF42609C8.jpg`
-      },
-      type: `painting`
-    }]
-  },
-  {
     image: {
-      url: `https://k32.kn3.net/5C7060EC5.jpg`
+      url: `https://k42.kn3.net/CF42609C8.jpg`
     },
     type: `photo`
   }
   ]
+}, {
+  type: `tinder-like`,
+  question: `Угадай, фото или рисунок?`,
+  answers: [{
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `painting`
+  }]
 }, {
   type: `tinder-like`,
   question: `Угадай, фото или рисунок?`,
@@ -191,14 +190,16 @@ const gameState = {
     } return this.showScreenWithData(data);
   },
   showScreenWithData(data) {
+		console.log("​showScreenWithData -> data", data);
+    console.log("​showScreenWithData -> data.gameScreens[data.level].type", data.gameScreens[data.level].type);
     if (data.gameScreens[data.level].type === `two-of-two`) {
-      return showScreen(game1(data));
+      return showScreen(game1(data).element);
     }
     if (data.gameScreens[data.level].type === `tinder-like`) {
-      return showScreen(game2(data));
+      return showScreen(game2(data).element);
     }
     if (data.gameScreens[data.level].type === `one-of-three`) {
-      return showScreen(game3(data));
+      return showScreen(game3(data).element);
     }
     return ``;
   },
