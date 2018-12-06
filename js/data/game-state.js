@@ -164,6 +164,7 @@ const gameScreens = [{
 let gamePlay;
 
 // TODO: Структура должна определять правильный ответ. Сделать метод проверки правильного ответа
+// TODO: должно храниться 3 состояния игры
 const gameState = {
   resetGame() {
     gamePlay = Object.assign({}, INITIAL_STATE, {answers: []});
