@@ -56,7 +56,6 @@ export default class StatsBar extends AbstractView {
 // const statsTemplate = (data) => {
 //   const gameStatus = gameState.addClassOfResult(data, results);
 
-//   // FIXME: переделать на цикл
 //   const statsHtml = `
 //   <ul class="stats">
 //     <li class="stats__result ${gameStatus[0]}"></li>
