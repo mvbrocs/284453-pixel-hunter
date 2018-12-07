@@ -17,6 +17,7 @@ export default class Stats extends AbstractView {
     const quickAnswersTotal = this.data.quickAnswersCount(this.state);
     const slowAnswersTotal = this.data.slowAnswersCount(this.state);
     const correctAnswersTotal = this.data.correctAnswersCount(this.state);
+    const livesTotal = this.data.negativeLivesChecker(this.state.lives);
 
     const getBonusHtml = () => {
       const bonusesHtml = `
@@ -30,9 +31,9 @@ export default class Stats extends AbstractView {
           <tr>
             <td></td>
             <td class="result__extra">Бонус за жизни:</td>
-            <td class="result__extra">${this.state.lives} <span class="stats__result stats__result--alive"></span></td>
+            <td class="result__extra">${livesTotal} <span class="stats__result stats__result--alive"></span></td>
             <td class="result__points">× ${Answer.BONUS_FOR_LIVES}</td>
-            <td class="result__total">${this.state.lives * Answer.BONUS_FOR_LIVES}</td>
+            <td class="result__total">${livesTotal * Answer.BONUS_FOR_LIVES}</td>
           </tr>
           <tr>
             <td></td>
@@ -84,6 +85,9 @@ export default class Stats extends AbstractView {
   }
   onBackButtonClick() {}
   insertStatsBar() {}
+  livesCheck() {
+
+  }
 }
 
 // import {
