@@ -9,7 +9,9 @@ export default class Stats extends AbstractView {
     this.data = data;
   }
   get template() {
-
+    return `
+      <b>Привет!</b>
+    `;
   }
 }
 
