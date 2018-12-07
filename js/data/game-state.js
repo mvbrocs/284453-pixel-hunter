@@ -1,5 +1,5 @@
 import {
-  INITIAL_STATE
+  INITIAL_STATE, gameData
 } from "./game-data";
 import game1 from "../screens/game-1";
 import game2 from "../screens/game-2";
@@ -186,8 +186,7 @@ const gameState = {
     const lives = checkLives(state);
     const level = state.level;
     if (level === 10 || lives < 0) {
-      // return showScreen(stats(state).element);
-      return showScreen(stats().element);
+      return showScreen(stats(state).element);
     } return this.showScreenWithData(state);
   },
   showScreenWithData(state) {
@@ -256,6 +255,9 @@ const gameState = {
     });
     return acc;
   },
+  totalScores(state) {
+    return gameData(state);
+  }
 };
 
 export default gameState;
