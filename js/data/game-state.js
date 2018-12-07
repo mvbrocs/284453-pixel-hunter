@@ -189,6 +189,7 @@ const gameState = {
     const lives = checkLives(state);
     const level = state.level;
     if (level === INITIAL_STATE.questions || lives < 0) {
+      this.saveGameStats(state);
       return showScreen(stats(state).element);
     }
     return this.showScreenWithData(state);
@@ -258,6 +259,24 @@ const gameState = {
   },
   negativeLivesChecker(lives) {
     return (lives < 0) ? 0 : lives;
+  },
+  saveGameStats(state) {
+		console.log("​saveGameStats -> state", state);
+
+    const currentGameStats = {
+      quickAnswersTotal: this.quickAnswersCount(state),
+      slowAnswersTotal: this.slowAnswersCount(state),
+      correctAnswersTotal: this.correctAnswersCount(state),
+      livesTotal: this.negativeLivesChecker(state.lives),
+      totalScores: this.totalScores(state),
+    };
+
+    if (state.playedGames.length === INITIAL_STATE.savedGamesCount) {
+      state.playedGames.pop(INITIAL_STATE.savedGamesCount);
+      state.playedGames.unshift(currentGameStats);
+    } else {
+      state.playedGames.unshift(currentGameStats);
+    }
   }
 };
 

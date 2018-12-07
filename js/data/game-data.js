@@ -6,7 +6,9 @@ const INITIAL_STATE = Object.freeze({
   lives: 3,
   time: 30,
   questions: 10,
-  answers: []
+  savedGamesCount: 3,
+  answers: [],
+  playedGames: []
 });
 
 const Answer = {

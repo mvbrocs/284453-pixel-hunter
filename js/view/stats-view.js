@@ -11,13 +11,19 @@ export default class Stats extends AbstractView {
     super();
     this.data = data;
     this.state = state;
-    this.totalScores = this.data.totalScores(this.state);
   }
   get template() {
+
+    this.state.playedGames.forEach((el) => {
+      console.log(el);
+    });
+
+
     const quickAnswersTotal = this.data.quickAnswersCount(this.state);
     const slowAnswersTotal = this.data.slowAnswersCount(this.state);
     const correctAnswersTotal = this.data.correctAnswersCount(this.state);
     const livesTotal = this.data.negativeLivesChecker(this.state.lives);
+    const totalScores = this.data.totalScores(this.state);
 
     const getBonusHtml = () => {
       const bonusesHtml = `
@@ -43,15 +49,27 @@ export default class Stats extends AbstractView {
             <td class="result__total">-${slowAnswersTotal * Answer.SLOW}</td>
           </tr>`;
 
-      if (this.totalScores) {
+      if (totalScores) {
         return bonusesHtml;
       }
       return ``;
     };
 
     const result = () => {
-      return (this.totalScores > 0) ? this.totalScores : false;
+      return (totalScores > 0) ? totalScores : false;
     };
+
+    const tableContent = `
+      <tr>
+        <td class="result__number">1.</td>
+        <td colspan="2" class="result__stats">${this.insertStatsBar()}</td>
+        <td class="result__points">× ${Answer.RIGHT}</td>
+        <td class="result__total">${correctAnswersTotal * Answer.RIGHT}</td>
+      </tr>
+        ${getBonusHtml()}
+      <tr>
+        <td colspan="5" class="result__total  result__total--final">${result()}</td>
+      </tr>`;
 
     const statsHtml = `
       <header class="header">
@@ -60,16 +78,7 @@ export default class Stats extends AbstractView {
       <section class="result">
         <h2 class="result__title">Победа!</h2>
         <table class="result__table">
-          <tr>
-            <td class="result__number">1.</td>
-            <td colspan="2" class="result__stats">${this.insertStatsBar()}</td>
-            <td class="result__points">× ${Answer.RIGHT}</td>
-            <td class="result__total">${correctAnswersTotal * Answer.RIGHT}</td>
-          </tr>
-          ${getBonusHtml()}
-          <tr>
-            <td colspan="5" class="result__total  result__total--final">${result()}</td>
-          </tr>
+         ${tableContent}
         </table>
       </section>`;
 
@@ -85,10 +94,113 @@ export default class Stats extends AbstractView {
   }
   onBackButtonClick() {}
   insertStatsBar() {}
-  livesCheck() {
+  livesCheck() {}
+  saveGameStats() {
 
   }
 }
+
+
+
+// import AbstractView from './abstract-view';
+// import {
+//   BackButton
+// } from './header-view';
+// import {
+//   Answer
+// } from '../data/game-data';
+
+// export default class Stats extends AbstractView {
+//   constructor(data, state) {
+//     super();
+//     this.data = data;
+//     this.state = state;
+//   }
+//   get template() {
+//     // this.state.games.forEach(el => {
+
+//     // });
+
+//     const quickAnswersTotal = this.data.quickAnswersCount(this.state);
+//     const slowAnswersTotal = this.data.slowAnswersCount(this.state);
+//     const correctAnswersTotal = this.data.correctAnswersCount(this.state);
+//     const livesTotal = this.data.negativeLivesChecker(this.state.lives);
+//     const totalScores = this.data.totalScores(this.state);
+
+//     const getBonusHtml = () => {
+//       const bonusesHtml = `
+//           <tr>
+//             <td></td>
+//             <td class="result__extra">Бонус за скорость:</td>
+//             <td class="result__extra">${quickAnswersTotal} <span class="stats__result stats__result--fast"></span></td>
+//             <td class="result__points">× ${Answer.QUICK}</td>
+//             <td class="result__total">${quickAnswersTotal * Answer.QUICK}</td>
+//           </tr>
+//           <tr>
+//             <td></td>
+//             <td class="result__extra">Бонус за жизни:</td>
+//             <td class="result__extra">${livesTotal} <span class="stats__result stats__result--alive"></span></td>
+//             <td class="result__points">× ${Answer.BONUS_FOR_LIVES}</td>
+//             <td class="result__total">${livesTotal * Answer.BONUS_FOR_LIVES}</td>
+//           </tr>
+//           <tr>
+//             <td></td>
+//             <td class="result__extra">Штраф за медлительность:</td>
+//             <td class="result__extra">${slowAnswersTotal} <span class="stats__result stats__result--slow"></span></td>
+//             <td class="result__points">× ${Answer.SLOW}</td>
+//             <td class="result__total">-${slowAnswersTotal * Answer.SLOW}</td>
+//           </tr>`;
+
+//       if (totalScores) {
+//         return bonusesHtml;
+//       }
+//       return ``;
+//     };
+
+//     const result = () => {
+//       return (totalScores > 0) ? totalScores : false;
+//     };
+
+//     const tableContent = `
+//       <tr>
+//         <td class="result__number">1.</td>
+//         <td colspan="2" class="result__stats">${this.insertStatsBar()}</td>
+//         <td class="result__points">× ${Answer.RIGHT}</td>
+//         <td class="result__total">${correctAnswersTotal * Answer.RIGHT}</td>
+//       </tr>
+//         ${getBonusHtml()}
+//       <tr>
+//         <td colspan="5" class="result__total  result__total--final">${result()}</td>
+//       </tr>`;
+
+//     const statsHtml = `
+//       <header class="header">
+//         ${new BackButton().template}
+//       </header>
+//       <section class="result">
+//         <h2 class="result__title">Победа!</h2>
+//         <table class="result__table">
+//          ${tableContent}
+//         </table>
+//       </section>`;
+
+//     return statsHtml;
+//   }
+//   bind() {
+//     const backButton = this.element.querySelector(`.back`);
+
+//     backButton.addEventListener(`click`, (e) => {
+//       e.preventDefault();
+//       this.onBackButtonClick();
+//     });
+//   }
+//   onBackButtonClick() {}
+//   insertStatsBar() {}
+//   livesCheck() {}
+//   saveGameStats() {
+
+//   }
+// }
 
 // import {
 //   makeElement,
