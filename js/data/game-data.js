@@ -17,9 +17,9 @@ const Answer = {
   BONUS_FOR_LIVES: 50,
 };
 
-const gameData = (data) => {
-  const lives = data.lives;
-  const answers = data.answers;
+const gameData = (state) => {
+  const lives = state.lives;
+  const answers = state.answers;
 
   let acc = 0;
   let scores = 0;
