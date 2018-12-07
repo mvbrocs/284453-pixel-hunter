@@ -185,7 +185,7 @@ const gameState = {
   checkGameOver(state) {
     const lives = checkLives(state);
     const level = state.level;
-    if (level === 10 || lives < 0) {
+    if (level === INITIAL_STATE.questions || lives < 0) {
       return showScreen(stats(state).element);
     } return this.showScreenWithData(state);
   },
@@ -257,6 +257,9 @@ const gameState = {
   },
   totalScores(state) {
     return gameData(state);
+  },
+  negativeLivesChecker(lives) {
+    return (lives < 0) ? 0 : lives;
   }
 };
 
