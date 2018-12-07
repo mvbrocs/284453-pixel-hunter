@@ -12,7 +12,7 @@ import {
   SLOW_ANSWER,
   QUICK_ANSWER
 } from "../data/game-data";
-// import stats from "../screens/stats";
+import stats from "../screens/stats";
 
 /* {
   level: 0,
@@ -179,46 +179,47 @@ const gameState = {
   getState() {
     return gamePlay;
   },
-  checkLivesCount(data) {
-    gamePlay.lives = checkLives(data, INITIAL_STATE);
+  checkLivesCount(state) {
+    gamePlay.lives = checkLives(state, INITIAL_STATE);
   },
-  checkGameOver(data) {
-    const lives = checkLives(data);
-    const level = data.level;
+  checkGameOver(state) {
+    const lives = checkLives(state);
+    const level = state.level;
     if (level === 10 || lives < 0) {
-      return showScreen(stats(data));
-    } return this.showScreenWithData(data);
+      // return showScreen(stats(state).element);
+      return showScreen(stats().element);
+    } return this.showScreenWithData(state);
   },
-  showScreenWithData(data) {
-    if (data.gameScreens[data.level].type === `two-of-two`) {
-      return showScreen(game1(data).element);
+  showScreenWithData(state) {
+    if (state.gameScreens[state.level].type === `two-of-two`) {
+      return showScreen(game1(state).element);
     }
-    if (data.gameScreens[data.level].type === `tinder-like`) {
-      return showScreen(game2(data).element);
+    if (state.gameScreens[state.level].type === `tinder-like`) {
+      return showScreen(game2(state).element);
     }
-    if (data.gameScreens[data.level].type === `one-of-three`) {
-      return showScreen(game3(data).element);
+    if (state.gameScreens[state.level].type === `one-of-three`) {
+      return showScreen(game3(state).element);
     }
     return ``;
   },
-  addClassOfResult(dataArr, sourceArr) {
+  addClassOfResult(state, sourceArr) {
     const resultArr = [...sourceArr];
 
-    if (dataArr.answers.length < 1) {
+    if (state.answers.length < 1) {
       return resultArr;
     }
     for (let i = 0; i < resultArr.length; i += 1) {
-      if (dataArr.answers[i]) {
-        if (dataArr.answers[i][0] && (dataArr.answers[i][1] > QUICK_ANSWER && dataArr.answers[i][1] < SLOW_ANSWER)) {
+      if (state.answers[i]) {
+        if (state.answers[i][0] && (state.answers[i][1] > QUICK_ANSWER && state.answers[i][1] < SLOW_ANSWER)) {
           resultArr[i] = `stats__result--correct`;
         }
-        if (dataArr.answers[i][0] && dataArr.answers[i][1] > SLOW_ANSWER) {
+        if (state.answers[i][0] && state.answers[i][1] > SLOW_ANSWER) {
           resultArr[i] = `stats__result--slow`;
         }
-        if (dataArr.answers[i][0] && dataArr.answers[i][1] < QUICK_ANSWER) {
+        if (state.answers[i][0] && state.answers[i][1] < QUICK_ANSWER) {
           resultArr[i] = `stats__result--fast`;
         }
-        if (!dataArr.answers[i][0]) {
+        if (!state.answers[i][0]) {
           resultArr[i] = `stats__result--wrong`;
         }
       }
@@ -226,9 +227,9 @@ const gameState = {
     return resultArr;
   },
   // FIXME: переделать на reduce
-  quickAnswersCount(data) {
+  quickAnswersCount(state) {
     let acc = 0;
-    data.answers.forEach((el) => {
+    state.answers.forEach((el) => {
       if (el[0] && el[1] < QUICK_ANSWER) {
         acc += 1;
       }
@@ -236,9 +237,9 @@ const gameState = {
     return acc;
   },
   // FIXME: переделать на reduce
-  slowAnswersCount(data) {
+  slowAnswersCount(state) {
     let acc = 0;
-    data.answers.forEach((el) => {
+    state.answers.forEach((el) => {
       if (el[0] && el[1] > SLOW_ANSWER) {
         acc += 1;
       }
@@ -246,9 +247,9 @@ const gameState = {
     return acc;
   },
   // FIXME: переделать на reduce
-  correctAnswersCount(data) {
+  correctAnswersCount(state) {
     let acc = 0;
-    data.answers.forEach((el) => {
+    state.answers.forEach((el) => {
       if (el[0]) {
         acc += 1;
       }
