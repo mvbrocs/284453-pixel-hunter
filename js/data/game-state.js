@@ -1,5 +1,6 @@
 import {
-  INITIAL_STATE, gameData
+  INITIAL_STATE,
+  gameData
 } from "./game-data";
 import game1 from "../screens/game-1";
 import game2 from "../screens/game-2";
@@ -167,7 +168,9 @@ let gamePlay;
 // TODO: должно храниться 3 состояния игры
 const gameState = {
   resetGame() {
-    gamePlay = Object.assign({}, INITIAL_STATE, {answers: []});
+    gamePlay = Object.assign({}, INITIAL_STATE, {
+      answers: []
+    });
     gamePlay.gameScreens = gameScreens;
   },
   changeGameLevel() {
@@ -187,7 +190,8 @@ const gameState = {
     const level = state.level;
     if (level === INITIAL_STATE.questions || lives < 0) {
       return showScreen(stats(state).element);
-    } return this.showScreenWithData(state);
+    }
+    return this.showScreenWithData(state);
   },
   showScreenWithData(state) {
     if (state.gameScreens[state.level].type === `two-of-two`) {
@@ -225,35 +229,29 @@ const gameState = {
     }
     return resultArr;
   },
-  // FIXME: переделать на reduce
   quickAnswersCount(state) {
-    let acc = 0;
-    state.answers.forEach((el) => {
-      if (el[0] && el[1] < QUICK_ANSWER) {
+    return state.answers.reduce((acc, el) => {
+      if (el[0] && (el[1] < QUICK_ANSWER)) {
         acc += 1;
       }
-    });
-    return acc;
+      return acc;
+    }, 0);
   },
-  // FIXME: переделать на reduce
   slowAnswersCount(state) {
-    let acc = 0;
-    state.answers.forEach((el) => {
-      if (el[0] && el[1] > SLOW_ANSWER) {
+    return state.answers.reduce((acc, el) => {
+      if (el[0] && (el[1] > SLOW_ANSWER)) {
         acc += 1;
       }
-    });
-    return acc;
+      return acc;
+    }, 0);
   },
-  // FIXME: переделать на reduce
   correctAnswersCount(state) {
-    let acc = 0;
-    state.answers.forEach((el) => {
+    return state.answers.reduce((acc, el) => {
       if (el[0]) {
         acc += 1;
       }
-    });
-    return acc;
+      return acc;
+    }, 0);
   },
   totalScores(state) {
     return gameData(state);
