@@ -6,6 +6,7 @@ import {
   Answer
 } from '../data/game-data';
 
+// FIXME: сделать сохранение статус бара с предыдущей игры. Сейчас сохраняется статус бар текущей игры
 export default class Stats extends AbstractView {
   constructor(data, state) {
     super();
