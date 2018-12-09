@@ -27,17 +27,17 @@ const gameScreens = [{
   type: `two-of-two`,
   question: `Угадайте для каждого изображения фото или рисунок?`,
   answers: [{
-      image: {
-        url: `http://i.imgur.com/DKR1HtB.jpg`
-      },
-      type: `photo`
+    image: {
+      url: `http://i.imgur.com/DKR1HtB.jpg`
     },
-    {
-      image: {
-        url: `https://k42.kn3.net/CF42609C8.jpg`
-      },
-      type: `photo`
-    }
+    type: `photo`
+  },
+  {
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `photo`
+  }
   ]
 }, {
   type: `tinder-like`,
@@ -61,23 +61,23 @@ const gameScreens = [{
   type: `one-of-three`,
   question: `Найдите рисунок среди изображений`,
   answers: [{
-      image: {
-        url: `https://i.imgur.com/DiHM5Zb.jpg`
-      },
-      type: `painting`
+    image: {
+      url: `https://i.imgur.com/DiHM5Zb.jpg`
     },
-    {
-      image: {
-        url: `http://i.imgur.com/DKR1HtB.jpg`
-      },
-      type: `painting`
+    type: `painting`
+  },
+  {
+    image: {
+      url: `http://i.imgur.com/DKR1HtB.jpg`
     },
-    {
-      image: {
-        url: `https://k42.kn3.net/CF42609C8.jpg`
-      },
-      type: `painting`
-    }
+    type: `painting`
+  },
+  {
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `painting`
+  }
   ]
 }, {
   type: `tinder-like`,
@@ -92,39 +92,39 @@ const gameScreens = [{
   type: `one-of-three`,
   question: `Найдите рисунок среди изображений`,
   answers: [{
-      image: {
-        url: `https://k42.kn3.net/CF42609C8.jpg`
-      },
-      type: `painting`
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
     },
-    {
-      image: {
-        url: `https://k42.kn3.net/D2F0370D6.jpg`
-      },
-      type: `painting`
+    type: `painting`
+  },
+  {
+    image: {
+      url: `https://k42.kn3.net/D2F0370D6.jpg`
     },
-    {
-      image: {
-        url: `https://k42.kn3.net/CF42609C8.jpg`
-      },
-      type: `painting`
-    }
+    type: `painting`
+  },
+  {
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `painting`
+  }
   ]
 }, {
   type: `two-of-two`,
   question: `Угадайте для каждого изображения фото или рисунок?`,
   answers: [{
-      image: {
-        url: `http://i.imgur.com/DKR1HtB.jpg`
-      },
-      type: `photo`
+    image: {
+      url: `http://i.imgur.com/DKR1HtB.jpg`
     },
-    {
-      image: {
-        url: `https://k42.kn3.net/CF42609C8.jpg`
-      },
-      type: `photo`
-    }
+    type: `photo`
+  },
+  {
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `photo`
+  }
   ]
 }, {
   type: `tinder-like`,
@@ -139,17 +139,17 @@ const gameScreens = [{
   type: `two-of-two`,
   question: `Угадайте для каждого изображения фото или рисунок?`,
   answers: [{
-      image: {
-        url: `https://i.imgur.com/DiHM5Zb.jpg`
-      },
-      type: `photo`
+    image: {
+      url: `https://i.imgur.com/DiHM5Zb.jpg`
     },
-    {
-      image: {
-        url: `https://k42.kn3.net/CF42609C8.jpg`
-      },
-      type: `photo`
-    }
+    type: `photo`
+  },
+  {
+    image: {
+      url: `https://k42.kn3.net/CF42609C8.jpg`
+    },
+    type: `photo`
+  }
   ]
 }, {
   type: `tinder-like`,
@@ -163,8 +163,6 @@ const gameScreens = [{
 }];
 
 let gamePlay;
-
-// TODO: View должен отдавать вариант ответа. Сделать метод проверки правильного ответа
 
 const gameState = {
   resetGame() {
@@ -261,8 +259,6 @@ const gameState = {
     return (lives < 0) ? 0 : lives;
   },
   saveGameStats(state) {
-    // console.log("​saveGameStats -> state", state);
-
     const currentGameStats = {
       quickAnswersTotal: this.quickAnswersCount(state),
       slowAnswersTotal: this.slowAnswersCount(state),
