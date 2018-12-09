@@ -261,7 +261,7 @@ const gameState = {
     return (lives < 0) ? 0 : lives;
   },
   saveGameStats(state) {
-		console.log("​saveGameStats -> state", state);
+		// console.log("​saveGameStats -> state", state);
 
     const currentGameStats = {
       quickAnswersTotal: this.quickAnswersCount(state),
