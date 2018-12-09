@@ -11,7 +11,6 @@ export default () => {
     showScreen(greeting().element);
   };
   game1.compareChecking = () => {
-		console.log("​game1.compareChecking -> game1.answer", game1.result);
     gameState.addAnswer(game1.result, 1500);
     gameState.checkLivesCount(gameState.getState());
     gameState.changeGameLevel();
