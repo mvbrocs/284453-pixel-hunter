@@ -8,7 +8,8 @@ import gameState from "../data/game-state";
 export default () => {
   const game2 = new Game2(gameState.getState());
   game2.onFormChange = () => {
-    gameState.addAnswer(true, 15000);
+		console.log("​game2.onFormChange -> game2.result", game2.result);
+    gameState.addAnswer(game2.result, 1500);
     gameState.checkLivesCount(gameState.getState());
     gameState.changeGameLevel();
     gameState.checkGameOver(gameState.getState());

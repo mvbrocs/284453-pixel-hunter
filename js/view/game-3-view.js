@@ -10,6 +10,8 @@ export default class Game3 extends AbstractView {
   constructor(state) {
     super();
     this.state = state;
+    this.__gameAnswer = null;
+    this.__answers = [];
   }
   get template() {
     const gameTask = `<p class="game__task">${this.state.gameScreens[this.state.level].question}</p>`;
@@ -36,6 +38,22 @@ export default class Game3 extends AbstractView {
       </section>
     `;
   }
+  get result() {
+    this.__gameAnswer = (this.__answers[0] === this.__answers[1]);
+    return this.__gameAnswer;
+  }
+  convertAnswer(answer) {
+    const InputToAnswerType = {
+      paint: `painting`,
+      photo: `photo`
+    };
+    return InputToAnswerType[answer];
+  }
+  questionType(question) {
+    if (question === `Найдите рисунок среди изображений`) {
+      return `painting`;
+    } return `photo`;
+  }
   bind() {
     const gameOptions = [...this.element.querySelectorAll(`.game__option`)];
     const backButton = this.element.querySelector(`.back`);
@@ -43,8 +61,12 @@ export default class Game3 extends AbstractView {
 
     gameSection.appendChild(statsBar().element);
 
-    gameOptions.forEach((el) => {
+    gameOptions.forEach((el, i) => {
+      const answerType = this.state.gameScreens[this.state.level].answers[i].type;
+      const imageType = this.questionType(this.state.gameScreens[this.state.level].question);
+
       el.addEventListener(`click`, () => {
+        this.__answers = [answerType, imageType];
         this.onImageClick();
       });
     });

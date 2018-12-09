@@ -59,9 +59,14 @@ export default class Game1 extends AbstractView {
     this.__gameAnswer = (answersTemp[0] === answersTemp[1]);
     return this.__gameAnswer;
   }
+  convertAnswer(answer) {
+    const InputToAnswerType = {
+      paint: `painting`,
+      photo: `photo`
+    };
+    return InputToAnswerType[answer];
+  }
   bind() {
-    // const gameAnswer = [];
-
     const leftRadioGroup = [...this.element.querySelectorAll(`input[name=question1]`)];
     const rightRadioGroup = [...this.element.querySelectorAll(`input[name=question2]`)];
     const backButton = this.element.querySelector(`.back`);
@@ -79,13 +84,7 @@ export default class Game1 extends AbstractView {
 
     leftRadioGroup.forEach((el) => {
       const imageType = this.state.gameScreens[this.state.level].answers[0].type;
-
-      let answerType;
-      if (el.value === `paint`) {
-        answerType = `painting`;
-      } else {
-        answerType = el.value;
-      }
+      const answerType = this.convertAnswer(el.value);
 
       el.addEventListener(`click`, () => {
         if (el.checked) {
@@ -98,13 +97,7 @@ export default class Game1 extends AbstractView {
 
     rightRadioGroup.forEach((el) => {
       const imageType = this.state.gameScreens[this.state.level].answers[1].type;
-
-      let answerType;
-      if (el.value === `paint`) {
-        answerType = `painting`;
-      } else {
-        answerType = el.value;
-      }
+      const answerType = this.convertAnswer(el.value);
 
       el.addEventListener(`click`, () => {
         if (el.checked) {

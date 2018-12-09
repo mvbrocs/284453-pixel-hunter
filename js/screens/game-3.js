@@ -8,7 +8,8 @@ import {
 export default () => {
   const game3 = new Game3(gameState.getState());
   game3.onImageClick = () => {
-    gameState.addAnswer(true, 150000);
+    gameState.addAnswer(game3.result, 1500);
+		console.log("​game3.onImageClick -> game3.result", game3.result);
     gameState.checkLivesCount(gameState.getState());
     gameState.changeGameLevel();
     gameState.checkGameOver(gameState.getState());

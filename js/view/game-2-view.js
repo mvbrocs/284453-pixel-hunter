@@ -10,6 +10,8 @@ export default class Game2 extends AbstractView {
   constructor(state) {
     super();
     this.state = state;
+    this.__gameAnswer = null;
+    this.__answers = [];
   }
   get template() {
     const gameTask = `<p class="game__task">${this.state.gameScreens[this.state.level].question}</p>`;
@@ -37,15 +39,31 @@ export default class Game2 extends AbstractView {
         </form>
       </section>`;
   }
+  get result() {
+    this.__gameAnswer = (this.__answers[0] === this.__answers[1]);
+    return this.__gameAnswer;
+  }
+  convertAnswer(answer) {
+    const InputToAnswerType = {
+      paint: `painting`,
+      photo: `photo`
+    };
+    return InputToAnswerType[answer];
+  }
   bind() {
     const form = this.element.querySelector(`.game__content`);
     const backButton = this.element.querySelector(`.back`);
     const gameSection = this.element.querySelector(`.game`);
 
+    const imageType = this.state.gameScreens[this.state.level].answers[0].type;
+
     gameSection.appendChild(statsBar().element);
 
     form.addEventListener(`change`, (e) => {
       e.preventDefault();
+      const answerType = this.convertAnswer(e.target.value);
+      this.__answers = [answerType, imageType];
+
       this.onFormChange();
     });
 
