@@ -10,7 +10,8 @@ export default class Game1 extends AbstractView {
   constructor(state) {
     super();
     this.state = state;
-    // this.state = this.state.getState(); // почему не работает?
+    this.__gameAnswer = null;
+    this.__answers = [];
   }
 
   get template() {
@@ -50,7 +51,17 @@ export default class Game1 extends AbstractView {
       </form>
     </section>`;
   }
+  get result() {
+    const answersTemp = [];
+    this.__answers.forEach((el) => {
+      answersTemp.push(el[0] === el[1]);
+    });
+    this.__gameAnswer = (answersTemp[0] === answersTemp[1]);
+    return this.__gameAnswer;
+  }
   bind() {
+    // const gameAnswer = [];
+
     const leftRadioGroup = [...this.element.querySelectorAll(`input[name=question1]`)];
     const rightRadioGroup = [...this.element.querySelectorAll(`input[name=question2]`)];
     const backButton = this.element.querySelector(`.back`);
@@ -66,19 +77,39 @@ export default class Game1 extends AbstractView {
       }
     };
 
-    leftRadioGroup.map((el) => {
+    leftRadioGroup.forEach((el) => {
+      const imageType = this.state.gameScreens[this.state.level].answers[0].type;
+
+      let answerType;
+      if (el.value === `paint`) {
+        answerType = `painting`;
+      } else {
+        answerType = el.value;
+      }
+
       el.addEventListener(`click`, () => {
         if (el.checked) {
           isLeftPictureSelected = true;
+          this.__answers[0] = [answerType, imageType];
         }
         compareChecked();
       });
     });
 
     rightRadioGroup.forEach((el) => {
+      const imageType = this.state.gameScreens[this.state.level].answers[1].type;
+
+      let answerType;
+      if (el.value === `paint`) {
+        answerType = `painting`;
+      } else {
+        answerType = el.value;
+      }
+
       el.addEventListener(`click`, () => {
         if (el.checked) {
           isRightPictureSelected = true;
+          this.__answers[1] = [answerType, imageType];
         }
         compareChecked();
       });
