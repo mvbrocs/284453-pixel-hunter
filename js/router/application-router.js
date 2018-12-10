@@ -1,30 +1,29 @@
-import Intro from "../view/intro-view";
 import {
   showScreen
 } from "../utils/utils";
-import Greeting from "../view/greeting-view";
-import Rules from "../view/rules-view";
-import Stats from "../view/stats-view";
+import IntroScreen from "../controller/intro-screen";
+import GreetingScreen from "../controller/greeting-screen";
+import RulesScreen from "../controller/rules-screen";
 
-export default class Application {
+export default class Router {
   static showIntro() {
-    const intro = new Intro();
-    showScreen(intro.element);
+    const introScreen = new IntroScreen();
+    showScreen(introScreen.element);
   }
+
   static showGreeting() {
-    const greeting = new Greeting();
-    showScreen(greeting.element);
+    const greetingScreen = new GreetingScreen();
+    showScreen(greetingScreen.element);
   }
+
   static showRules() {
-    const rules = new Rules();
-    showScreen(rules.element);
+    const rulesScreen = new RulesScreen();
+    showScreen(rulesScreen.element);
   }
+
   static showGame() {
-    // const intro = new Intro();
-    // showScreen(intro.element);
   }
+
   static showStats() {
-    const stats = new Stats();
-    showScreen(stats.element);
   }
 }
