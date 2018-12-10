@@ -1,5 +1,5 @@
 import {
-  INITIAL_STATE
+  INITIAL_STATE, QUICK_ANSWER, SLOW_ANSWER
 } from "../data/game-data";
 import GAME_SCREENS from "../data/game-screens";
 import checkLives from "../data/check-lives";
@@ -35,28 +35,28 @@ export default class GameModel {
     this.gamePlay.lives = checkLives(state, INITIAL_STATE);
   }
 
-  checkGameOver(state) {
-    const lives = checkLives(state);
-    const level = state.level;
-    if (level === INITIAL_STATE.questions || lives < 0) {
-      this.saveGameStats(state);
-      return showScreen(stats(state).element);
-    }
-    return this.showScreenWithData(state);
-  }
+  // checkGameOver(state) {
+  //   const lives = checkLives(state);
+  //   const level = state.level;
+  //   if (level === INITIAL_STATE.questions || lives < 0) {
+  //     this.saveGameStats(state);
+  //     return showScreen(stats(state).element);
+  //   }
+  //   return this.showScreenWithData(state);
+  // }
 
-  showScreenWithData(state) {
-    if (state.gameScreens[state.level].type === `two-of-two`) {
-      return showScreen(game1(state).element);
-    }
-    if (state.gameScreens[state.level].type === `tinder-like`) {
-      return showScreen(game2(state).element);
-    }
-    if (state.gameScreens[state.level].type === `one-of-three`) {
-      return showScreen(game3(state).element);
-    }
-    return ``;
-  }
+  // showScreenWithData(state) {
+  //   if (state.gameScreens[state.level].type === `two-of-two`) {
+  //     return showScreen(game1(state).element);
+  //   }
+  //   if (state.gameScreens[state.level].type === `tinder-like`) {
+  //     return showScreen(game2(state).element);
+  //   }
+  //   if (state.gameScreens[state.level].type === `one-of-three`) {
+  //     return showScreen(game3(state).element);
+  //   }
+  //   return ``;
+  // }
 
   addClassOfResult(state, sourceArr) {
     const resultArr = [...sourceArr];
@@ -111,7 +111,7 @@ export default class GameModel {
   }
 
   totalScores(state) {
-    return gameData(state);
+    return this.gameData(state);
   }
 
   negativeLivesChecker(lives) {
