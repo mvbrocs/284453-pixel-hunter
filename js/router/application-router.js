@@ -4,6 +4,8 @@ import {
 import IntroScreen from "../controller/intro-screen";
 import GreetingScreen from "../controller/greeting-screen";
 import RulesScreen from "../controller/rules-screen";
+import GameModel from "../model/game-model";
+import GameScreen from "../controller/game-screen";
 
 export default class Router {
   static showIntro() {
@@ -22,6 +24,10 @@ export default class Router {
   }
 
   static showGame() {
+    const model = new GameModel();
+    const gameScreen = new GameScreen(model);
+    gameScreen.init();
+    showScreen(gameScreen.element);
   }
 
   static showStats() {
