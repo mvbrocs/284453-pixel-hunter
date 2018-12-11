@@ -68,7 +68,8 @@ export default class GameScreen {
       console.log(`Показываем экран статистики`);
       return showScreen(new Stats(state).element);
     }
-    return this.showScreenWithData(state);
+    return showScreen(this.element);
+    // return this.showScreenWithData(state);
   }
 
   saveGameStats(state) {
