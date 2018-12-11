@@ -9,6 +9,7 @@ import {
 } from "../data/game-data";
 import checkLives from "../data/check-lives";
 import Stats from "../view/stats-view";
+import Router from "../router/application-router";
 
 export default class GameScreen {
   constructor(model) {
@@ -22,7 +23,7 @@ export default class GameScreen {
   init() {
     this.model.resetGame();
   }
-  // FIXME: переделать на Router
+
   showScreenWithData(state) {
     if (state.gameScreens[state.level].type === `two-of-two`) {
       const game1 = new Game1(state);
@@ -30,9 +31,9 @@ export default class GameScreen {
         this.model.addAnswer(game1.result, 15000);
         this.changeLevel(state);
       };
-      // game1.onBackButtonClick = () => {
-      //   showScreen(greeting().element);
-      // };
+      game1.onBackButtonClick = () => {
+        Router.showGreeting();
+      };
       return game1.element;
     }
     if (state.gameScreens[state.level].type === `tinder-like`) {
@@ -41,9 +42,9 @@ export default class GameScreen {
         this.model.addAnswer(game2.result, 15000);
         this.changeLevel(state);
       };
-      // game2.onBackButtonClick = () => {
-      //   showScreen(greeting().element);
-      // };
+      game2.onBackButtonClick = () => {
+        Router.showGreeting();
+      };
       return game2.element;
     }
     if (state.gameScreens[state.level].type === `one-of-three`) {
@@ -52,24 +53,22 @@ export default class GameScreen {
         this.model.addAnswer(game3.result, 15000);
         this.changeLevel(state);
       };
-      // game3.onBackButtonClick = () => {
-      //   showScreen(greeting().element);
-      // };
+      game3.onBackButtonClick = () => {
+        Router.showGreeting();
+      };
       return game3.element;
     }
     return ``;
   }
-  // FIXME: переделать на Router
+
   checkGameOver(state) {
     const lives = checkLives(state);
     const level = state.level;
     if (level === INITIAL_STATE.questions || lives < 0) {
       this.saveGameStats(state);
-      console.log(`Показываем экран статистики`);
-      return showScreen(new Stats(state).element);
+      return Router.showStats(state);
     }
     return showScreen(this.element);
-    // return this.showScreenWithData(state);
   }
 
   saveGameStats(state) {
