@@ -22,7 +22,7 @@ export default class GameScreen {
   init() {
     this.model.resetGame();
   }
-
+  // FIXME: переделать на Router
   showScreenWithData(state) {
     if (state.gameScreens[state.level].type === `two-of-two`) {
       const game1 = new Game1(state);
@@ -59,7 +59,7 @@ export default class GameScreen {
     }
     return ``;
   }
-
+  // FIXME: переделать на Router
   checkGameOver(state) {
     const lives = checkLives(state);
     const level = state.level;
