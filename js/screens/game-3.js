@@ -1,25 +1,25 @@
-import Game3 from "../view/game-3-view";
-import gameState from "../data/game-state";
-import greeting from "./greeting";
-import {
-  showScreen
-} from "../utils/utils";
+// import Game3 from "../view/game-3-view";
+// import gameState from "../data/game-state";
+// import greeting from "./greeting";
+// import {
+//   showScreen
+// } from "../utils/utils";
 
-export default () => {
-  const game3 = new Game3(gameState.getState());
-  game3.onImageClick = () => {
-    gameState.addAnswer(game3.result, 1500);
-		console.log("​game3.onImageClick -> game3.result", game3.result);
-    gameState.checkLivesCount(gameState.getState());
-    gameState.changeGameLevel();
-    gameState.checkGameOver(gameState.getState());
-  };
-  game3.onBackButtonClick = () => {
-    showScreen(greeting().element);
-  };
+// export default () => {
+//   const game3 = new Game3(gameState.getState());
+//   game3.onImageClick = () => {
+//     gameState.addAnswer(game3.result, 1500);
+// 		console.log("​game3.onImageClick -> game3.result", game3.result);
+//     gameState.checkLivesCount(gameState.getState());
+//     gameState.changeGameLevel();
+//     gameState.checkGameOver(gameState.getState());
+//   };
+//   // game3.onBackButtonClick = () => {
+//   //   showScreen(greeting().element);
+//   // };
 
-  return game3;
-};
+//   return game3;
+// };
 
 // import {
 //   makeElement,

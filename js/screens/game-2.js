@@ -1,25 +1,25 @@
-import Game2 from "../view/game-2-view";
-import greeting from "./greeting";
-import {
-  showScreen
-} from "../utils/utils";
-import gameState from "../data/game-state";
+// import Game2 from "../view/game-2-view";
+// import greeting from "./greeting";
+// import {
+//   showScreen
+// } from "../utils/utils";
+// import gameState from "../data/game-state";
 
-export default () => {
-  const game2 = new Game2(gameState.getState());
-  game2.onFormChange = () => {
-		console.log("​game2.onFormChange -> game2.result", game2.result);
-    gameState.addAnswer(game2.result, 1500);
-    gameState.checkLivesCount(gameState.getState());
-    gameState.changeGameLevel();
-    gameState.checkGameOver(gameState.getState());
-  };
-  game2.onBackButtonClick = () => {
-    showScreen(greeting().element);
-  };
+// export default () => {
+//   const game2 = new Game2(gameState.getState());
+//   game2.onFormChange = () => {
+// 		console.log("​game2.onFormChange -> game2.result", game2.result);
+//     gameState.addAnswer(game2.result, 1500);
+//     gameState.checkLivesCount(gameState.getState());
+//     gameState.changeGameLevel();
+//     gameState.checkGameOver(gameState.getState());
+//   };
+//   // game2.onBackButtonClick = () => {
+//   //   showScreen(greeting().element);
+//   // };
 
-  return game2;
-};
+//   return game2;
+// };
 
 // import {
 //   makeElement,

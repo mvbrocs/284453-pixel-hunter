@@ -2,9 +2,9 @@ import {
   INITIAL_STATE,
   gameData
 } from "./game-data";
-import game1 from "../screens/game-1";
-import game2 from "../screens/game-2";
-import game3 from "../screens/game-3";
+// import game1 from "../screens/game-1";
+// import game2 from "../screens/game-2";
+// import game3 from "../screens/game-3";
 import {
   showScreen
 } from "../utils/utils";
@@ -13,7 +13,7 @@ import {
   SLOW_ANSWER,
   QUICK_ANSWER
 } from "../data/game-data";
-import stats from "../screens/stats";
+// import stats from "../screens/stats";
 
 /* {
   level: 0,
