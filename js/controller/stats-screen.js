@@ -1,13 +1,14 @@
 import Stats from "../view/stats-view";
+import Router from "../router/application-router";
 
 export default class StatsScreen {
   get element() {
-    const stats = new Stats();
-    // stats.onBackButtonClick = () => {
-    //   showScreen(greeting().element);
-    // };
-    stats.insertStatsBar = () => {
+    const statsScreen = new Stats();
+    statsScreen.insertStatsBar = () => {
       // return statsBar(gameState.getState()).template;
+    };
+    statsScreen.onBackButtonClick = () => {
+      Router.showGreeting();
     };
   }
 }
