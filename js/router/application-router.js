@@ -31,8 +31,8 @@ export default class Router {
     showScreen(gameScreen.element);
   }
 
-  static showStats() {
-    const statsScreen = new StatsScreen();
+  static showStats(state) {
+    const statsScreen = new StatsScreen(state);
     showScreen(statsScreen.element);
   }
 }
