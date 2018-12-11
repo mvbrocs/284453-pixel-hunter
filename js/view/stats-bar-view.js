@@ -1,9 +1,12 @@
 import AbstractView from './abstract-view';
+import {
+  QUICK_ANSWER,
+  SLOW_ANSWER
+} from '../data/game-data';
 
 export default class StatsBar extends AbstractView {
-  constructor(data, state) {
+  constructor(state) {
     super();
-    this.data = data;
     this.state = state;
     this.questionsCount = this.state.gameScreens.length;
   }
@@ -16,7 +19,7 @@ export default class StatsBar extends AbstractView {
       blankStats.push(`stats__result--unknown`);
     }
 
-    const gameStatus = this.data.addClassOfResult(this.state, blankStats);
+    const gameStatus = this.addClassOfResult(this.state, blankStats);
     for (let i = 0; i < this.questionsCount; i += 1) {
       gameStats.push(`<li class="stats__result ${gameStatus[i]}"></li>`);
     }
@@ -27,6 +30,31 @@ export default class StatsBar extends AbstractView {
       </ul>`;
 
     return statsHtml;
+  }
+
+  addClassOfResult(state, sourceArr) {
+    const resultArr = [...sourceArr];
+
+    if (state.answers.length < 1) {
+      return resultArr;
+    }
+    for (let i = 0; i < resultArr.length; i += 1) {
+      if (state.answers[i]) {
+        if (state.answers[i][0] && (state.answers[i][1] > QUICK_ANSWER && state.answers[i][1] < SLOW_ANSWER)) {
+          resultArr[i] = `stats__result--correct`;
+        }
+        if (state.answers[i][0] && state.answers[i][1] > SLOW_ANSWER) {
+          resultArr[i] = `stats__result--slow`;
+        }
+        if (state.answers[i][0] && state.answers[i][1] < QUICK_ANSWER) {
+          resultArr[i] = `stats__result--fast`;
+        }
+        if (!state.answers[i][0]) {
+          resultArr[i] = `stats__result--wrong`;
+        }
+      }
+    }
+    return resultArr;
   }
 }
 
