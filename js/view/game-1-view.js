@@ -1,10 +1,8 @@
 import AbstractView from './abstract-view';
-import {
-  BackButton,
-  Timer,
-  Lives
-} from './header-view';
 import StatsBar from './stats-bar-view';
+import BackButton from './back-button-view';
+import Timer from './timer-view';
+import Lives from './lives-view';
 
 export default class Game1 extends AbstractView {
   constructor(state) {
