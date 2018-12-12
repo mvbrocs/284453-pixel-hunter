@@ -18,6 +18,8 @@ const Answer = {
   BONUS_FOR_LIVES: 50,
 };
 
+const ONE_SECOND = 1000;
+
 const gameData = (state) => {
   const lives = state.lives;
   const answers = state.answers;
@@ -55,5 +57,6 @@ export {
   SLOW_ANSWER,
   gameData,
   INITIAL_STATE,
+  ONE_SECOND,
   Answer,
 };
