@@ -33,7 +33,7 @@ export default class GameScreen {
     if (state.gameScreens[state.level].type === `two-of-two`) {
       const game1 = new Game1(state);
       game1.compareChecking = () => {
-        this.model.addAnswer(game1.result, state.time);
+        this.model.addAnswer(game1.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
         this.changeLevel(state);
       };
       game1.onBackButtonClick = () => {
@@ -44,7 +44,7 @@ export default class GameScreen {
     if (state.gameScreens[state.level].type === `tinder-like`) {
       const game2 = new Game2(state);
       game2.onFormChange = () => {
-        this.model.addAnswer(game2.result, state.time);
+        this.model.addAnswer(game2.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
         this.changeLevel(state);
       };
       game2.onBackButtonClick = () => {
@@ -55,7 +55,7 @@ export default class GameScreen {
     if (state.gameScreens[state.level].type === `one-of-three`) {
       const game3 = new Game3(state);
       game3.onImageClick = () => {
-        this.model.addAnswer(game3.result, state.time);
+        this.model.addAnswer(game3.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
         this.changeLevel(state);
       };
       game3.onBackButtonClick = () => {
@@ -98,14 +98,16 @@ export default class GameScreen {
     this.model.changeGameLevel(state);
     this.resetTimer();
     this.updateRoot();
-    this.checkGameOver(state);
     this.startTimer();
     this.model.checkLivesCount(state);
+    this.checkGameOver(state);
   }
 
   tick() {
-    this.model.gamePlay.time -= 1;
-    this.updateTimer();
+    if (this.model.gamePlay.time) {
+      this.model.gamePlay.time -= 1;
+      this.updateTimer();
+    }
   }
 
   startTimer() {
