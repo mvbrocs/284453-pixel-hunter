@@ -18,7 +18,6 @@ export default class Game1 extends AbstractView {
     return `
     <header class="header">
       ${new BackButton().template}
-      ${new Timer(this.state.time).template}
       ${new Lives(this.state.lives).template}
     </header>
     <section class="game">
