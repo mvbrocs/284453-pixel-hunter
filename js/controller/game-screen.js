@@ -5,14 +5,16 @@ import {
   showScreen
 } from "../utils/utils";
 import {
-  INITIAL_STATE
+  INITIAL_STATE, ONE_SECOND
 } from "../data/game-data";
 import checkLives from "../data/check-lives";
 import Router from "../router/application-router";
+import Timer from "../view/timer-view";
 
 export default class GameScreen {
   constructor(model) {
     this.model = model;
+    this._timer = null;
   }
 
   get element() {
@@ -21,6 +23,8 @@ export default class GameScreen {
 
   init() {
     this.model.resetGame();
+    this._startTimer(this.model);
+    this.updateRoot();
   }
 
   showScreenWithData(state) {
@@ -91,5 +95,30 @@ export default class GameScreen {
     this.model.checkLivesCount(state);
     this.model.changeGameLevel(state);
     this.checkGameOver(state);
+  }
+
+  tick(state) {
+    state.gamePlay.time -= 1;
+    this.updateRoot();
+  }
+
+  _startTimer(state) {
+    this._timer = setTimeout(() => {
+      this.tick(state);
+      this._startTimer(state);
+    }, ONE_SECOND);
+    // console.log(this.showScreenWithData(this.model.getState));
+  }
+
+  _stopTimer() {
+    clearTimeout(this._timer);
+  }
+
+  updateRoot() {
+    this.root = this.showScreenWithData(this.model.getState);
+    this.rootHeader = this.root.querySelector(`.header`);
+    this.rootLives = this.rootHeader.querySelector(`.game__lives`);
+    const timerElement = new Timer(this.model.getState.time).element;
+    this.rootHeader.insertBefore(timerElement, this.rootLives);
   }
 }
