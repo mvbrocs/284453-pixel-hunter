@@ -28,6 +28,7 @@ export default class Greeting extends AbstractView {
         </button>
       </section>`;
   }
+
   bind() {
     const arrowRight = this.element.querySelector(`.greeting__continue`);
     arrowRight.addEventListener(`click`, (e) => {
@@ -35,5 +36,6 @@ export default class Greeting extends AbstractView {
       this.onButtonClick();
     });
   }
+
   onButtonClick() {}
 }

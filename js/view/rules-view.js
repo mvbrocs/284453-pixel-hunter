@@ -7,6 +7,7 @@ export default class Rules extends AbstractView {
   constructor() {
     super();
   }
+
   get template() {
     return `
       <header class="header">
@@ -29,6 +30,7 @@ export default class Rules extends AbstractView {
         </form>
       </section>`;
   }
+
   bind() {
     const goBtn = this.element.querySelector(`.rules__button`);
     const inputName = this.element.querySelector(`.rules__input`);
@@ -48,6 +50,8 @@ export default class Rules extends AbstractView {
       this.onBackButtonClick();
     });
   }
+
   onButtonClick() {}
+
   onBackButtonClick() {}
 }

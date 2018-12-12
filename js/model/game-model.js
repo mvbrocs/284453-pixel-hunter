@@ -69,6 +69,4 @@ export default class GameModel {
   negativeLivesChecker(lives) {
     return (lives < 0) ? 0 : lives;
   }
-
-
 }

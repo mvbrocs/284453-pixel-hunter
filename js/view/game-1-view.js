@@ -4,7 +4,6 @@ import {
   Timer,
   Lives
 } from './header-view';
-// import statsBar from '../screens/stats-bar';
 import StatsBar from './stats-bar-view';
 
 export default class Game1 extends AbstractView {
@@ -52,6 +51,7 @@ export default class Game1 extends AbstractView {
       </form>
     </section>`;
   }
+
   get result() {
     const answersTemp = [];
     this.__answers.forEach((el) => {
@@ -60,6 +60,7 @@ export default class Game1 extends AbstractView {
     this.__gameAnswer = (answersTemp[0] === answersTemp[1]);
     return this.__gameAnswer;
   }
+
   convertAnswer(answer) {
     const InputToAnswerType = {
       paint: `painting`,
@@ -67,6 +68,7 @@ export default class Game1 extends AbstractView {
     };
     return InputToAnswerType[answer];
   }
+
   bind() {
     const leftRadioGroup = [...this.element.querySelectorAll(`input[name=question1]`)];
     const rightRadioGroup = [...this.element.querySelectorAll(`input[name=question2]`)];
@@ -114,6 +116,8 @@ export default class Game1 extends AbstractView {
       this.onBackButtonClick();
     });
   }
+
   onBackButtonClick() {}
+
   compareChecking() {}
 }

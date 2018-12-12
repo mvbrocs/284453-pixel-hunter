@@ -8,7 +8,6 @@ import {
   INITIAL_STATE
 } from "../data/game-data";
 import checkLives from "../data/check-lives";
-import Stats from "../view/stats-view";
 import Router from "../router/application-router";
 
 export default class GameScreen {
@@ -92,6 +91,5 @@ export default class GameScreen {
     this.model.checkLivesCount(state);
     this.model.changeGameLevel(state);
     this.checkGameOver(state);
-    // showScreen(this.element);
   }
 }

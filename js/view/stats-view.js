@@ -51,7 +51,7 @@ export default class Stats extends AbstractView {
       };
 
       const tableContent = `
-        <tr>
+      <tr>
           <td class="result__number">${this.state.playedGames.indexOf(el) + 1}</td>
           <td colspan="2" class="result__stats">${this.insertStatsBar()}</td>
           <td class="result__points">× ${Answer.RIGHT}</td>
@@ -78,6 +78,7 @@ export default class Stats extends AbstractView {
 
     return statsHtml;
   }
+
   bind() {
     const backButton = this.element.querySelector(`.back`);
 
@@ -86,10 +87,12 @@ export default class Stats extends AbstractView {
       this.onBackButtonClick();
     });
   }
-  onBackButtonClick() {}
-  insertStatsBar() {}
-  livesCheck() {}
-  saveGameStats() {
 
-  }
+  onBackButtonClick() {}
+
+  insertStatsBar() {}
+
+  // livesCheck() {}
+
+  // saveGameStats() {}
 }

@@ -4,7 +4,6 @@ import {
   Timer,
   Lives
 } from './header-view';
-// import statsBar from '../screens/stats-bar';
 import StatsBar from './stats-bar-view';
 
 export default class Game3 extends AbstractView {
@@ -14,6 +13,7 @@ export default class Game3 extends AbstractView {
     this.__gameAnswer = null;
     this.__answers = [];
   }
+
   get template() {
     const gameTask = `<p class="game__task">${this.state.gameScreens[this.state.level].question}</p>`;
 
@@ -39,10 +39,12 @@ export default class Game3 extends AbstractView {
       </section>
     `;
   }
+
   get result() {
     this.__gameAnswer = (this.__answers[0] === this.__answers[1]);
     return this.__gameAnswer;
   }
+
   convertAnswer(answer) {
     const InputToAnswerType = {
       paint: `painting`,
@@ -50,11 +52,14 @@ export default class Game3 extends AbstractView {
     };
     return InputToAnswerType[answer];
   }
+
   questionType(question) {
     if (question === `Найдите рисунок среди изображений`) {
       return `painting`;
-    } return `photo`;
+    }
+    return `photo`;
   }
+
   bind() {
     const gameOptions = [...this.element.querySelectorAll(`.game__option`)];
     const backButton = this.element.querySelector(`.back`);
@@ -77,6 +82,8 @@ export default class Game3 extends AbstractView {
       this.onBackButtonClick();
     });
   }
+
   onBackButtonClick() {}
+
   onImageClick() {}
 }

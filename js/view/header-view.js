@@ -8,6 +8,7 @@ class Timer extends AbstractView {
     super();
     this.time = time;
   }
+
   get template() {
     return `<div class="game__timer">${this.time}</div>`;
   }
@@ -17,6 +18,7 @@ class BackButton extends AbstractView {
   constructor() {
     super();
   }
+
   get template() {
     return `<button class="back">
     <span class="visually-hidden">Вернуться к началу</span>
@@ -35,6 +37,7 @@ class Lives extends AbstractView {
     super();
     this.lives = lives;
   }
+
   get template() {
     const missedLives = new Array(INITIAL_STATE.lives - this.lives)
       .fill(`<img src="img/heart__empty.svg" class="game__heart" alt=" Missed Life" width="31" height="27">`)

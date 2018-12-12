@@ -4,7 +4,6 @@ import {
   Timer,
   Lives
 } from './header-view';
-// import statsBar from '../screens/stats-bar';
 import StatsBar from './stats-bar-view';
 
 export default class Game2 extends AbstractView {
@@ -14,6 +13,7 @@ export default class Game2 extends AbstractView {
     this.__gameAnswer = null;
     this.__answers = [];
   }
+
   get template() {
     const gameTask = `<p class="game__task">${this.state.gameScreens[this.state.level].question}</p>`;
 
@@ -40,10 +40,12 @@ export default class Game2 extends AbstractView {
         </form>
       </section>`;
   }
+
   get result() {
     this.__gameAnswer = (this.__answers[0] === this.__answers[1]);
     return this.__gameAnswer;
   }
+
   convertAnswer(answer) {
     const InputToAnswerType = {
       paint: `painting`,
@@ -51,6 +53,7 @@ export default class Game2 extends AbstractView {
     };
     return InputToAnswerType[answer];
   }
+
   bind() {
     const form = this.element.querySelector(`.game__content`);
     const backButton = this.element.querySelector(`.back`);
@@ -73,6 +76,8 @@ export default class Game2 extends AbstractView {
       this.onBackButtonClick();
     });
   }
+
   onFormChange() {}
+
   onBackButtonClick() {}
 }

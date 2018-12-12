@@ -4,6 +4,7 @@ export default class Intro extends AbstractView {
   constructor() {
     super();
   }
+
   get template() {
     return `
       <section class="intro">
@@ -12,6 +13,7 @@ export default class Intro extends AbstractView {
         <p class="intro__motto"><sup>*</sup> Это не фото. Это рисунок маслом нидерландского художника-фотореалиста Tjalf Sparnaay.</p>
       </section>`;
   }
+
   bind() {
     const asterisk = this.element.querySelector(`.intro__asterisk`);
     asterisk.addEventListener(`click`, (e) => {
@@ -19,5 +21,6 @@ export default class Intro extends AbstractView {
       this.onButtonClick();
     });
   }
+
   onButtonClick() {}
 }
