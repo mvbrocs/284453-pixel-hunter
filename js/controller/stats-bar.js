@@ -6,7 +6,7 @@ export default class StatsBarTemplate {
   }
   get template() {
     const statsBar = new StatsBar(this.model).template;
-    
+
     return statsBar;
   }
 }
