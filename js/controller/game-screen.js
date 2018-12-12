@@ -5,7 +5,8 @@ import {
   showScreen
 } from "../utils/utils";
 import {
-  INITIAL_STATE, ONE_SECOND
+  INITIAL_STATE,
+  ONE_SECOND
 } from "../data/game-data";
 import checkLives from "../data/check-lives";
 import Router from "../router/application-router";
@@ -14,24 +15,25 @@ import Timer from "../view/timer-view";
 export default class GameScreen {
   constructor(model) {
     this.model = model;
-    this._timer = null;
+    this.timerElement = null;
   }
 
   get element() {
-    return this.showScreenWithData(this.model.getState);
+    return this.root;
   }
 
   init() {
     this.model.resetGame();
-    this._startTimer(this.model);
     this.updateRoot();
+    this.startTimer();
   }
 
   showScreenWithData(state) {
+    this.stopTimer();
     if (state.gameScreens[state.level].type === `two-of-two`) {
       const game1 = new Game1(state);
       game1.compareChecking = () => {
-        this.model.addAnswer(game1.result, 15000);
+        this.model.addAnswer(game1.result, state.time);
         this.changeLevel(state);
       };
       game1.onBackButtonClick = () => {
@@ -42,7 +44,7 @@ export default class GameScreen {
     if (state.gameScreens[state.level].type === `tinder-like`) {
       const game2 = new Game2(state);
       game2.onFormChange = () => {
-        this.model.addAnswer(game2.result, 15000);
+        this.model.addAnswer(game2.result, state.time);
         this.changeLevel(state);
       };
       game2.onBackButtonClick = () => {
@@ -53,7 +55,7 @@ export default class GameScreen {
     if (state.gameScreens[state.level].type === `one-of-three`) {
       const game3 = new Game3(state);
       game3.onImageClick = () => {
-        this.model.addAnswer(game3.result, 15000);
+        this.model.addAnswer(game3.result, state.time);
         this.changeLevel(state);
       };
       game3.onBackButtonClick = () => {
@@ -67,6 +69,7 @@ export default class GameScreen {
   checkGameOver(state) {
     const lives = checkLives(state);
     const level = state.level;
+
     if (level === INITIAL_STATE.questions || lives < 0) {
       this.saveGameStats(state);
       return Router.showStats(state);
@@ -92,33 +95,44 @@ export default class GameScreen {
   }
 
   changeLevel(state) {
-    this.model.checkLivesCount(state);
     this.model.changeGameLevel(state);
-    this.checkGameOver(state);
-  }
-
-  tick(state) {
-    state.gamePlay.time -= 1;
+    this.resetTimer();
     this.updateRoot();
+    this.checkGameOver(state);
+    this.startTimer();
+    this.model.checkLivesCount(state);
   }
 
-  _startTimer(state) {
-    this._timer = setTimeout(() => {
-      this.tick(state);
-      this._startTimer(state);
+  tick() {
+    this.model.gamePlay.time -= 1;
+    this.updateTimer();
+  }
+
+  startTimer() {
+    this.timer = setTimeout(() => {
+      this.tick();
+      this.startTimer();
     }, ONE_SECOND);
-    // console.log(this.showScreenWithData(this.model.getState));
   }
 
-  _stopTimer() {
-    clearTimeout(this._timer);
+  stopTimer() {
+    clearTimeout(this.timer);
+  }
+
+  updateTimer() {
+    const timerElement = new Timer(this.model.getState.time).element;
+    this.rootHeader.replaceChild(timerElement, this.rootHeader.children[1]);
   }
 
   updateRoot() {
+    const timerElement = new Timer(this.model.getState.time).element;
+    this.timerElement = timerElement;
     this.root = this.showScreenWithData(this.model.getState);
     this.rootHeader = this.root.querySelector(`.header`);
-    this.rootLives = this.rootHeader.querySelector(`.game__lives`);
-    const timerElement = new Timer(this.model.getState.time).element;
-    this.rootHeader.insertBefore(timerElement, this.rootLives);
+    this.rootHeader.insertBefore(timerElement, this.rootHeader.children[1]);
+  }
+
+  resetTimer() {
+    this.model.gamePlay.time = INITIAL_STATE.time;
   }
 }
