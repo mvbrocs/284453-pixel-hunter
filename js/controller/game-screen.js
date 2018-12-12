@@ -30,6 +30,7 @@ export default class GameScreen {
 
   showScreenWithData(state) {
     this.stopTimer();
+    // const answerTime = (INITIAL_STATE.time - state.time) * ONE_SECOND; // не работает
     if (state.gameScreens[state.level].type === `two-of-two`) {
       const game1 = new Game1(state);
       game1.compareChecking = () => {
