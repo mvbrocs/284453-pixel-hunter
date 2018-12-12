@@ -7,6 +7,7 @@ import RulesScreen from "../controller/rules-screen";
 import GameModel from "../model/game-model";
 import GameScreen from "../controller/game-screen";
 import StatsScreen from "../controller/stats-screen";
+import StatsBarTemplate from "../controller/stats-bar";
 
 export default class Router {
   static showIntro() {
@@ -34,5 +35,10 @@ export default class Router {
   static showStats(state) {
     const statsScreen = new StatsScreen(state);
     showScreen(statsScreen.element);
+  }
+
+  static showStatsBar(state) {
+    const statsBar = new StatsBarTemplate(state);
+    return statsBar.template;
   }
 }
