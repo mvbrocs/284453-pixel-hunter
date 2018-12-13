@@ -32,7 +32,7 @@ export default class GameModel {
   }
 
   checkLivesCount(state) {
-    this.gamePlay.lives = checkLives(state, INITIAL_STATE);
+    this.gamePlay.lives = checkLives(state);
   }
 
   quickAnswersCount(state) {
