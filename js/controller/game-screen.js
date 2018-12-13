@@ -107,8 +107,6 @@ export default class GameScreen {
     }
   }
 
-  // FIXME: сделать вычет жизни при времени === 0
-
   tick() {
     console.log("​GameScreen -> tick -> this.model.getState", this.model.getState);
     if (this.model.getState.time) {
