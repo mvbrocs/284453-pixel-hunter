@@ -78,7 +78,7 @@ export default class GameScreen {
     const level = state.level;
 
     if (level === INITIAL_STATE.questions || lives < 0) {
-			console.log("​GameScreen -> checkGameOver -> level === INITIAL_STATE.questions || lives < 0", level === INITIAL_STATE.questions || lives < 0);
+      console.log("​GameScreen -> checkGameOver -> level === INITIAL_STATE.questions || lives < 0", level === INITIAL_STATE.questions || lives < 0);
       this.stopTimer();
       this.saveGameStats(state);
       return Router.showStats(state);
@@ -114,6 +114,8 @@ export default class GameScreen {
     if (this.model.getState.time) {
       this.model.getState.time -= 1;
       this.updateTimer();
+      this.blinking();
+
     } else {
       this.model.addAnswer(false, 0);
       this.changeLevel(this.model.getState);
@@ -128,7 +130,7 @@ export default class GameScreen {
   }
 
   stopTimer() {
-		console.log("​GameScreen -> stopTimer -> clearTimeout(this.timer);", this.timer);
+    console.log("​GameScreen -> stopTimer -> clearTimeout(this.timer);", this.timer);
     clearInterval(this.timer);
   }
 
@@ -144,5 +146,11 @@ export default class GameScreen {
   updateRoot() {
     this.root = this.showScreenWithData(this.model.getState);
     this.rootTimer = this.root.querySelector(`.game__timer`);
+  }
+
+  blinking() {
+    if (this.model.getState.time <= 5) {
+      this.rootTimer.classList.add(`blink`);
+    }
   }
 }

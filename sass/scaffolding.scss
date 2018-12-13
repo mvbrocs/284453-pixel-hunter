@@ -125,3 +125,18 @@ a {
     transform: rotate(360deg);
   }
 }
+
+// Анимация для таймера
+.blink {
+  animation: blink 0.3s infinite;
+}
+
+@keyframes blink {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
