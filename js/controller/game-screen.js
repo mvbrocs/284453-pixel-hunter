@@ -10,7 +10,6 @@ import {
 } from "../data/game-data";
 import checkLives from "../data/check-lives";
 import Router from "../router/application-router";
-import Timer from "../view/timer-view";
 
 export default class GameScreen {
   constructor(model) {
@@ -104,10 +103,13 @@ export default class GameScreen {
     this.checkGameOver(state);
   }
 
+  // FIXME: сделать вычет жизни при времени === 0
   tick() {
     if (this.model.gamePlay.time) {
       this.model.gamePlay.time -= 1;
       this.updateTimer();
+    } else {
+      this.changeLevel(this.model.gamePlay);
     }
   }
 
@@ -123,16 +125,13 @@ export default class GameScreen {
   }
 
   updateTimer() {
-    const timerElement = new Timer(this.model.getState.time).element;
-    this.rootHeader.replaceChild(timerElement, this.rootHeader.children[1]);
+    this.rootTimer.innerText = ``;
+    this.rootTimer.innerText = this.model.getState.time;
   }
 
   updateRoot() {
-    const timerElement = new Timer(this.model.getState.time).element;
-    this.timerElement = timerElement;
     this.root = this.showScreenWithData(this.model.getState);
-    this.rootHeader = this.root.querySelector(`.header`);
-    this.rootHeader.insertBefore(timerElement, this.rootHeader.children[1]);
+    this.rootTimer = this.root.querySelector(`.game__timer`);
   }
 
   resetTimer() {
