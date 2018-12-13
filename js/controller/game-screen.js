@@ -28,7 +28,6 @@ export default class GameScreen {
   }
 
   showScreenWithData(state) {
-    // const answerTime = (INITIAL_STATE.time - state.time) * ONE_SECOND; // не работает
     if (state.gameScreens[state.level].type === `two-of-two`) {
       const game1 = new Game1(state);
       game1.compareChecking = () => {
@@ -78,13 +77,11 @@ export default class GameScreen {
     const level = state.level;
 
     if (level === INITIAL_STATE.questions || lives < 0) {
-      console.log("​GameScreen -> checkGameOver -> level === INITIAL_STATE.questions || lives < 0", level === INITIAL_STATE.questions || lives < 0);
       this.stopTimer();
       this.saveGameStats(state);
       return Router.showStats(state);
     } else {
       this.updateRoot();
-      // this.resetTimer();
       this.startTimer();
       return showScreen(this.element);
     }
@@ -108,28 +105,28 @@ export default class GameScreen {
   }
 
   tick() {
-    console.log("​GameScreen -> tick -> this.model.getState", this.model.getState);
     if (this.model.getState.time) {
       this.model.getState.time -= 1;
       this.updateTimer();
       this.blinking();
-
     } else {
       this.model.addAnswer(false, 0);
       this.changeLevel(this.model.getState);
+      return true;
     }
+    return false;
   }
 
   startTimer() {
     this.timer = setTimeout(() => {
-      this.tick();
-      this.startTimer();
+      if (!this.tick()) {
+        this.startTimer();
+      }
     }, ONE_SECOND);
   }
 
   stopTimer() {
-    console.log("​GameScreen -> stopTimer -> clearTimeout(this.timer);", this.timer);
-    clearInterval(this.timer);
+    clearTimeout(this.timer);
   }
 
   resetTimer() {
