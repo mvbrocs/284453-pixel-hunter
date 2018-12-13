@@ -4,7 +4,6 @@ import {
   Answer
 } from '../data/game-data';
 
-// FIXME: сделать сохранение статус бара с предыдущей игры. Сейчас сохраняется статус бар текущей игры
 export default class Stats extends AbstractView {
   constructor(state) {
     super();
@@ -54,7 +53,7 @@ export default class Stats extends AbstractView {
       const tableContent = `
       <tr>
           <td class="result__number">${this.state.playedGames.indexOf(el) + 1}</td>
-          <td colspan="2" class="result__stats">${this.insertStatsBar()}</td>
+          <td colspan="2" class="result__stats">${el.statsBarHtml}</td>
           <td class="result__points">× ${Answer.RIGHT}</td>
           <td class="result__total">${el.correctAnswersTotal * Answer.RIGHT}</td>
         </tr>
@@ -90,6 +89,4 @@ export default class Stats extends AbstractView {
   }
 
   onBackButtonClick() {}
-
-  insertStatsBar() {}
 }

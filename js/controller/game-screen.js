@@ -94,6 +94,7 @@ export default class GameScreen {
       correctAnswersTotal: this.model.correctAnswersCount(state),
       livesTotal: this.model.negativeLivesChecker(state.lives),
       totalScores: this.model.totalScores(state),
+      statsBarHtml: Router.showStatsBar(state)
     };
 
     if (state.playedGames.length === INITIAL_STATE.savedGamesCount) {

@@ -7,9 +7,7 @@ export default class StatsScreen {
   }
   get element() {
     const statsScreen = new Stats(this.model);
-    statsScreen.insertStatsBar = () => {
-      return Router.showStatsBar(this.model);
-    };
+
     statsScreen.onBackButtonClick = () => {
       Router.showGreeting();
     };
