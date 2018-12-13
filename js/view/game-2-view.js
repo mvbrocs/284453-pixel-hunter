@@ -2,13 +2,14 @@ import AbstractView from './abstract-view';
 import BackButton from './back-button-view';
 import Lives from './lives-view';
 import StatsBar from './stats-bar-view';
+import Timer from './timer-view';
 
 export default class Game2 extends AbstractView {
   constructor(state) {
     super();
     this.state = state;
-    this.__gameAnswer = null;
-    this.__answers = [];
+    this._gameAnswer = null;
+    this._answers = [];
   }
 
   get template() {
@@ -17,6 +18,7 @@ export default class Game2 extends AbstractView {
     return `
       <header class="header">
         ${new BackButton().template}
+        ${new Timer(this.state.time).template}
         ${new Lives(this.state.lives).template}
       </header>
       <section class="game">
@@ -38,8 +40,8 @@ export default class Game2 extends AbstractView {
   }
 
   get result() {
-    this.__gameAnswer = (this.__answers[0] === this.__answers[1]);
-    return this.__gameAnswer;
+    this._gameAnswer = (this._answers[0] === this._answers[1]);
+    return this._gameAnswer;
   }
 
   convertAnswer(answer) {
@@ -62,7 +64,7 @@ export default class Game2 extends AbstractView {
     form.addEventListener(`change`, (e) => {
       e.preventDefault();
       const answerType = this.convertAnswer(e.target.value);
-      this.__answers = [answerType, imageType];
+      this._answers = [answerType, imageType];
 
       this.onFormChange();
     });

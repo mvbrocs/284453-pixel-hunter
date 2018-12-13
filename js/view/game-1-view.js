@@ -2,13 +2,14 @@ import AbstractView from './abstract-view';
 import StatsBar from './stats-bar-view';
 import BackButton from './back-button-view';
 import Lives from './lives-view';
+import Timer from './timer-view';
 
 export default class Game1 extends AbstractView {
   constructor(state) {
     super();
     this.state = state;
-    this.__gameAnswer = null;
-    this.__answers = [];
+    this._gameAnswer = null;
+    this._answers = [];
   }
 
   get template() {
@@ -17,6 +18,7 @@ export default class Game1 extends AbstractView {
     return `
     <header class="header">
       ${new BackButton().template}
+      ${new Timer(this.state.time).template}
       ${new Lives(this.state.lives).template}
     </header>
     <section class="game">
@@ -50,11 +52,11 @@ export default class Game1 extends AbstractView {
 
   get result() {
     const answersTemp = [];
-    this.__answers.forEach((el) => {
+    this._answers.forEach((el) => {
       answersTemp.push(el[0] === el[1]);
     });
-    this.__gameAnswer = (answersTemp[0] === answersTemp[1]);
-    return this.__gameAnswer;
+    this._gameAnswer = (answersTemp[0] === answersTemp[1]);
+    return this._gameAnswer;
   }
 
   convertAnswer(answer) {
@@ -88,7 +90,7 @@ export default class Game1 extends AbstractView {
       el.addEventListener(`click`, () => {
         if (el.checked) {
           isLeftPictureSelected = true;
-          this.__answers[0] = [answerType, imageType];
+          this._answers[0] = [answerType, imageType];
         }
         compareChecked();
       });
@@ -101,7 +103,7 @@ export default class Game1 extends AbstractView {
       el.addEventListener(`click`, () => {
         if (el.checked) {
           isRightPictureSelected = true;
-          this.__answers[1] = [answerType, imageType];
+          this._answers[1] = [answerType, imageType];
         }
         compareChecked();
       });
@@ -116,4 +118,10 @@ export default class Game1 extends AbstractView {
   onBackButtonClick() {}
 
   compareChecking() {}
+
+  // updateTimer() {
+  //   const timer = this.element.querySelector(`.game__timer`);
+  //   timer.innerText = ``;
+  //   timer.innerText = this.model.getState.time;
+  // }
 }
