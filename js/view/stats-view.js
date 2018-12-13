@@ -10,7 +10,9 @@ export default class Stats extends AbstractView {
     super();
     this.state = state;
   }
+
   get template() {
+
     const tableHtml = [];
 
     this.state.playedGames.forEach((el) => {
@@ -38,10 +40,11 @@ export default class Stats extends AbstractView {
               <td class="result__total">-${el.slowAnswersTotal * Answer.SLOW}</td>
             </tr>`;
 
-        if (el.totalScores) {
+        if (el.totalScores > 0) {
           return bonusesHtml;
+        } else {
+          return ``;
         }
-        return ``;
       };
 
       const result = () => {
@@ -89,8 +92,4 @@ export default class Stats extends AbstractView {
   onBackButtonClick() {}
 
   insertStatsBar() {}
-
-  // livesCheck() {}
-
-  // saveGameStats() {}
 }
