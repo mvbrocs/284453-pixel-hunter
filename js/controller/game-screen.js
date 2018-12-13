@@ -28,7 +28,6 @@ export default class GameScreen {
   }
 
   showScreenWithData(state) {
-    this.stopTimer();
     // const answerTime = (INITIAL_STATE.time - state.time) * ONE_SECOND; // не работает
     if (state.gameScreens[state.level].type === `two-of-two`) {
       const game1 = new Game1(state);
@@ -73,8 +72,12 @@ export default class GameScreen {
     if (level === INITIAL_STATE.questions || lives < 0) {
       this.saveGameStats(state);
       return Router.showStats(state);
+    } else {
+      this.updateRoot();
+      this.resetTimer();
+      this.startTimer();
+      return showScreen(this.element);
     }
-    return showScreen(this.element);
   }
 
   saveGameStats(state) {
@@ -95,10 +98,9 @@ export default class GameScreen {
   }
 
   changeLevel(state) {
-    this.model.changeGameLevel(state);
+    this.stopTimer();
     this.resetTimer();
-    this.updateRoot();
-    this.startTimer();
+    this.model.changeGameLevel(state);
     this.model.checkLivesCount(state);
     this.checkGameOver(state);
   }
