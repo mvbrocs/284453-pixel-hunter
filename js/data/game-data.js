@@ -4,7 +4,7 @@ const SLOW_ANSWER = 20000;
 const INITIAL_STATE = Object.freeze({
   level: 0,
   lives: 3,
-  time: 30,
+  time: 5,
   questions: 10,
   savedGamesCount: 3,
   answers: [],
