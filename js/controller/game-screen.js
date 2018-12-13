@@ -14,7 +14,7 @@ import Router from "../router/application-router";
 export default class GameScreen {
   constructor(model) {
     this.model = model;
-    this.timerElement = null;
+    this.timer = null;
   }
 
   get element() {
@@ -65,16 +65,26 @@ export default class GameScreen {
     return ``;
   }
 
+  changeLevel(state) {
+    this.stopTimer();
+    this.resetTimer();
+    this.model.changeGameLevel(state);
+    this.model.checkLivesCount(state);
+    this.checkGameOver(state);
+  }
+
   checkGameOver(state) {
     const lives = checkLives(state);
     const level = state.level;
 
     if (level === INITIAL_STATE.questions || lives < 0) {
+			console.log("​GameScreen -> checkGameOver -> level === INITIAL_STATE.questions || lives < 0", level === INITIAL_STATE.questions || lives < 0);
+      this.stopTimer();
       this.saveGameStats(state);
       return Router.showStats(state);
     } else {
       this.updateRoot();
-      this.resetTimer();
+      // this.resetTimer();
       this.startTimer();
       return showScreen(this.element);
     }
@@ -97,21 +107,16 @@ export default class GameScreen {
     }
   }
 
-  changeLevel(state) {
-    this.stopTimer();
-    this.resetTimer();
-    this.model.changeGameLevel(state);
-    this.model.checkLivesCount(state);
-    this.checkGameOver(state);
-  }
-
   // FIXME: сделать вычет жизни при времени === 0
+
   tick() {
-    if (this.model.gamePlay.time) {
-      this.model.gamePlay.time -= 1;
+    console.log("​GameScreen -> tick -> this.model.getState", this.model.getState);
+    if (this.model.getState.time) {
+      this.model.getState.time -= 1;
       this.updateTimer();
     } else {
-      this.changeLevel(this.model.gamePlay);
+      this.model.addAnswer(false, 0);
+      this.changeLevel(this.model.getState);
     }
   }
 
@@ -123,7 +128,12 @@ export default class GameScreen {
   }
 
   stopTimer() {
-    clearTimeout(this.timer);
+		console.log("​GameScreen -> stopTimer -> clearTimeout(this.timer);", this.timer);
+    clearInterval(this.timer);
+  }
+
+  resetTimer() {
+    this.model.getState.time = INITIAL_STATE.time;
   }
 
   updateTimer() {
@@ -134,9 +144,5 @@ export default class GameScreen {
   updateRoot() {
     this.root = this.showScreenWithData(this.model.getState);
     this.rootTimer = this.root.querySelector(`.game__timer`);
-  }
-
-  resetTimer() {
-    this.model.gamePlay.time = INITIAL_STATE.time;
   }
 }
