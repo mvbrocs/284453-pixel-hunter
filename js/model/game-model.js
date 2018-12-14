@@ -4,12 +4,12 @@ import {
   SLOW_ANSWER,
   gameData
 } from "../data/game-data";
-import GAME_SCREENS from "../data/game-screens";
 import checkLives from "../data/check-lives";
 
 export default class GameModel {
-  constructor() {
+  constructor(screens) {
     this.gamePlay = null;
+    this.gameScreens = screens;
   }
 
   get getState() {
@@ -20,7 +20,7 @@ export default class GameModel {
     this.gamePlay = Object.assign({}, INITIAL_STATE, {
       answers: []
     });
-    this.gamePlay.gameScreens = GAME_SCREENS;
+    this.gamePlay.gameScreens = this.gameScreens;
   }
 
   changeGameLevel() {
