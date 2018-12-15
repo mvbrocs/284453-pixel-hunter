@@ -9,6 +9,7 @@ import GameScreen from "../controller/game-screen";
 import StatsScreen from "../controller/stats-screen";
 import StatsBarTemplate from "../controller/stats-bar";
 import ErrorScreen from "../controller/error-screen";
+import SplashScreen from "../controller/loader-element";
 
 const checkStatus = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -27,12 +28,16 @@ const getData = (data) => {
 
 export default class Router {
   static start() {
+    const splash = new SplashScreen();
+    showScreen(splash.element);
+    splash.start();
     window.fetch(`https://es.dump.academy/pixel-hunter/questions`).
-    then(checkStatus).
-    then((_response) => _response.json()).
-    then((data) => getData(data)).
-    then((_response) => this.showIntro()).
-    catch(this.showError);
+      then(checkStatus).
+      then((_response) => _response.json()).
+      then((data) => getData(data)).
+      then((_response) => this.showIntro()).
+      catch(this.showError).
+      then(() => splash.stop());
   }
 
   static showIntro() {
