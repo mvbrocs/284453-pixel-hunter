@@ -8,8 +8,11 @@ export default class ErrorScreen extends AbstractView {
 
   get template() {
     return `
-    <div class="end">
-      <p>Произошла ошибка: ${this.error.message}</p>
-    </div>`;
+    <section class="modal">
+    <div class="modal__inner">
+      <h2 class="modal__title">Произошла ошибка!</h2>
+      <p class="modal__text modal__text--error">Статус: 404. Пожалуйста, перезагрузите страницу.</p>
+    </div>
+  </section>`;
   }
 }
