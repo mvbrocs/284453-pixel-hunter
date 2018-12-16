@@ -11,7 +11,7 @@ export default class RulesScreen {
       this.playerName = rulesScreen.getPlayerName();
       Router.showGame(this.playerName);
     };
-    rulesScreen.onBackButtonClick = () => Router.showGreeting();
+    rulesScreen.onBackButtonClick = () => Router.exitModalWindow();
 
     return rulesScreen.element;
   }

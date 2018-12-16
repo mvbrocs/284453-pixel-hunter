@@ -35,7 +35,7 @@ export default class GameScreen {
         this.changeLevel(state);
       };
       game1.onBackButtonClick = () => {
-        Router.showGreeting();
+        Router.exitModalWindow();
       };
       return game1.element;
     }
@@ -46,7 +46,7 @@ export default class GameScreen {
         this.changeLevel(state);
       };
       game2.onBackButtonClick = () => {
-        Router.showGreeting();
+        Router.exitModalWindow();
       };
       return game2.element;
     }
@@ -57,7 +57,7 @@ export default class GameScreen {
         this.changeLevel(state);
       };
       game3.onBackButtonClick = () => {
-        Router.showGreeting();
+        Router.exitModalWindow();
       };
       return game3.element;
     }

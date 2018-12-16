@@ -5,7 +5,12 @@ const showScreen = (e) => {
   main.appendChild(e);
 };
 
+const showModal = (e) => {
+  main.appendChild(e);
+};
+
 export {
   main,
-  showScreen
+  showScreen,
+  showModal
 };

@@ -1,5 +1,6 @@
 import {
-  showScreen
+  showScreen,
+  showModal
 } from "../utils/utils";
 import IntroScreen from "../controller/intro-screen";
 import GreetingScreen from "../controller/greeting-screen";
@@ -10,6 +11,7 @@ import StatsScreen from "../controller/stats-screen";
 import StatsBarTemplate from "../controller/stats-bar";
 import ErrorScreen from "../controller/error-screen";
 import SplashScreen from "../controller/loader-element";
+import ExitModal from "../controller/exit-modal";
 
 const checkStatus = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -32,12 +34,12 @@ export default class Router {
     showScreen(splash.element);
     splash.start();
     window.fetch(`https://es.dump.academy/pixel-hunter/questions`).
-      then(checkStatus).
-      then((_response) => _response.json()).
-      then((data) => getData(data)).
-      then((_response) => this.showIntro()).
-      catch(this.showError).
-      then(() => splash.stop());
+    then(checkStatus).
+    then((_response) => _response.json()).
+    then((data) => getData(data)).
+    then((_response) => this.showIntro()).
+    catch(this.showError).
+    then(() => splash.stop());
   }
 
   static showIntro() {
@@ -62,6 +64,21 @@ export default class Router {
     showScreen(gameScreen.element);
   }
 
+  static showStatsBar(state) {
+    const statsBar = new StatsBarTemplate(state);
+    return statsBar.template;
+  }
+
+  static exitModalWindow() {
+    const exitModal = new ExitModal();
+    showModal(exitModal.element);
+  }
+
+  static showError(error) {
+    const errorScreen = new ErrorScreen(error);
+    showScreen(errorScreen.element);
+  }
+
   static showStats(state) {
     const player = state.playerName;
     const appID = 112233;
@@ -78,15 +95,5 @@ export default class Router {
 
     const statsScreen = new StatsScreen(state);
     showScreen(statsScreen.element);
-  }
-
-  static showStatsBar(state) {
-    const statsBar = new StatsBarTemplate(state);
-    return statsBar.template;
-  }
-
-  static showError(error) {
-    const errorScreen = new ErrorScreen(error);
-    showScreen(errorScreen.element);
   }
 }
