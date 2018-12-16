@@ -63,6 +63,19 @@ export default class Router {
   }
 
   static showStats(state) {
+    const player = state.playerName;
+    const appID = 112233;
+    const requestSettings = {
+      body: JSON.stringify(state),
+      headres: {
+        'Content-Type': `application/json`
+      },
+      method: `POST`
+    };
+    window.fetch(`https://es.dump.academy/pixel-hunter/stats/:${appID}-:${player}`, requestSettings).
+    then(checkStatus).
+    catch(this.showError);
+
     const statsScreen = new StatsScreen(state);
     showScreen(statsScreen.element);
   }
