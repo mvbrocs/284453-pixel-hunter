@@ -55,8 +55,8 @@ export default class Router {
     showScreen(rulesScreen.element);
   }
 
-  static showGame() {
-    const model = new GameModel(GAME_SCREENS);
+  static showGame(player) {
+    const model = new GameModel(player, GAME_SCREENS);
     const gameScreen = new GameScreen(model);
     gameScreen.init();
     showScreen(gameScreen.element);

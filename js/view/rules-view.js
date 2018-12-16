@@ -41,6 +41,7 @@ export default class Rules extends AbstractView {
     goBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
       this.onButtonClick();
+      this.getPlayerName();
     });
 
     backButton.addEventListener(`click`, (e) => {
@@ -52,4 +53,9 @@ export default class Rules extends AbstractView {
   onButtonClick() {}
 
   onBackButtonClick() {}
+
+  getPlayerName() {
+    const inputName = this.element.querySelector(`.rules__input`);
+    return inputName.value;
+  }
 }

@@ -7,9 +7,10 @@ import {
 import checkLives from "../data/check-lives";
 
 export default class GameModel {
-  constructor(screens) {
+  constructor(player, screens) {
     this.gamePlay = null;
     this.gameScreens = screens;
+    this.player = player;
   }
 
   get getState() {
@@ -21,6 +22,7 @@ export default class GameModel {
       answers: []
     });
     this.gamePlay.gameScreens = this.gameScreens;
+    this.gamePlay.playerName = this.player;
   }
 
   changeGameLevel() {
