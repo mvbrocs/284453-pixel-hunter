@@ -118,10 +118,4 @@ export default class Game1 extends AbstractView {
   onBackButtonClick() {}
 
   compareChecking() {}
-
-  // updateTimer() {
-  //   const timer = this.element.querySelector(`.game__timer`);
-  //   timer.innerText = ``;
-  //   timer.innerText = this.model.getState.time;
-  // }
 }
