@@ -14,14 +14,6 @@ import SplashScreen from "../controller/loader-element";
 import ExitModal from "../controller/exit-modal";
 import Loader from "../utils/loader";
 
-const checkStatus = (response) => {
-  if (response.status >= 200 && response.status < 300) {
-    return response;
-  } else {
-    throw new Error(`${response.status}: ${response.statusText}`);
-  }
-};
-
 let GAME_SCREENS;
 
 const getData = (data) => {
