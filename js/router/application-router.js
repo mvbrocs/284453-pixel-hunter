@@ -12,6 +12,7 @@ import StatsBarTemplate from "../controller/stats-bar";
 import ErrorScreen from "../controller/error-screen";
 import SplashScreen from "../controller/loader-element";
 import ExitModal from "../controller/exit-modal";
+import Loader from "../utils/loader";
 
 const checkStatus = (response) => {
   if (response.status >= 200 && response.status < 300) {
@@ -33,13 +34,11 @@ export default class Router {
     const splash = new SplashScreen();
     showScreen(splash.element);
     splash.start();
-    window.fetch(`https://es.dump.academy/pixel-hunter/questions`).
-    then(checkStatus).
-    then((_response) => _response.json()).
-    then((data) => getData(data)).
-    then((_response) => this.showIntro()).
-    catch(this.showError).
-    then(() => splash.stop());
+    Loader.loadData().
+      then((data) => getData(data)).
+      then((_response) => this.showIntro()).
+      catch(this.showError).
+      then(() => splash.stop());
   }
 
   static showIntro() {
@@ -80,17 +79,7 @@ export default class Router {
   }
 
   static showStats(state) {
-    const player = state.playerName;
-    const appID = 112233;
-    const requestSettings = {
-      body: JSON.stringify(state),
-      headres: {
-        'Content-Type': `application/json`
-      },
-      method: `POST`
-    };
-    window.fetch(`https://es.dump.academy/pixel-hunter/stats/:${appID}-:${player}`, requestSettings).
-    then(checkStatus).
+    Loader.saveResults(state).
     catch(this.showError);
 
     const statsScreen = new StatsScreen(state);
