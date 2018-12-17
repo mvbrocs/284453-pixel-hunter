@@ -1,4 +1,4 @@
-const SERVER_URL = `https://es.dump.academy/pixel-hunter/`;
+const SERVER_URL = `https://es.dump.academy/pixel-hunter`;
 const APP_ID = 123321;
 
 const checkStatus = (response) => {
@@ -20,11 +20,11 @@ class Loader {
 
   static loadResults(name) {
     return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${name}`).
-    then(checkStatus).
-    then(toJSON);
+      then(checkStatus).
+      then(toJSON);
   }
 
-  static saveResults(data) {
+  static saveResults(data, name) {
     const requestSettings = {
       body: JSON.stringify(data),
       headers: {
@@ -34,7 +34,7 @@ class Loader {
     };
 
     return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${name}`, requestSettings).
-    then(checkStatus);
+      then(checkStatus);
   }
 }
 
