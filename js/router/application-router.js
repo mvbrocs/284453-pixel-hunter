@@ -95,5 +95,6 @@ export default class Router {
 
     const statsScreen = new StatsScreen(state);
     showScreen(statsScreen.element);
+    statsScreen.showScoreBoard(state);
   }
 }
