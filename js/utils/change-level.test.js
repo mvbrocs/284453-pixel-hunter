@@ -6,7 +6,7 @@ import {
 } from './change-level';
 import {
   INITIAL_STATE
-} from './game-data';
+} from '../data/game-data';
 
 describe(`Проверка функции смены уровней`, () => {
   it(`Уровень игры должен совпадать с переданным значением`, () => {

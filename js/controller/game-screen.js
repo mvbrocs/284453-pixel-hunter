@@ -8,7 +8,7 @@ import {
   INITIAL_STATE,
   ONE_SECOND
 } from "../data/game-data";
-import checkLives from "../data/check-lives";
+import checkLives from "../utils/check-lives";
 import Router from "../router/application-router";
 
 export default class GameScreen {

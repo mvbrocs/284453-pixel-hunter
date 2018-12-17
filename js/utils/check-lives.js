@@ -1,6 +1,6 @@
 import {
   INITIAL_STATE
-} from "./game-data";
+} from "../data/game-data";
 
 const checkLives = (data) => {
   let lives = INITIAL_STATE.lives;

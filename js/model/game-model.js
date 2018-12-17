@@ -4,7 +4,7 @@ import {
   SLOW_ANSWER,
   gameData
 } from "../data/game-data";
-import checkLives from "../data/check-lives";
+import checkLives from "../utils/check-lives";
 
 export default class GameModel {
   constructor(player, screens) {
