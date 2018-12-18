@@ -71,13 +71,11 @@ export default class Router {
   }
 
   static showStats(state) {
-		console.log("​Router -> staticshowStats -> state", state);
-    const statsScreen = new StatsScreen(state);
-    showScreen(statsScreen.element);
+    const statsScreen = (data) => new StatsScreen(data);
 
-    Loader.saveResults(state.answers, state.playerName).
+    Loader.saveResults(state.playedGames, state.playerName).
       then(() => Loader.loadResults(state.playerName)).
-      then((data) => statsScreen.showScoreBoard(data)).
+      then((data) => showScreen(statsScreen(data).element)).
       catch(this.showError);
   }
 }

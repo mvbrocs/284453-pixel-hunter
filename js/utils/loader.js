@@ -20,8 +20,8 @@ class Loader {
 
   static loadResults(name) {
     return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${name}`).
-      then(checkStatus).
-      then(toJSON);
+    then(checkStatus).
+    then(toJSON);
   }
 
   static saveResults(data, name) {
@@ -34,7 +34,7 @@ class Loader {
     };
 
     return fetch(`${SERVER_URL}/stats/:${APP_ID}-:${name}`, requestSettings).
-      then(checkStatus);
+    then(checkStatus);
   }
 }
 

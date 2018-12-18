@@ -97,12 +97,7 @@ export default class GameScreen {
       statsBarHtml: Router.showStatsBar(state)
     };
 
-    if (state.playedGames.length === INITIAL_STATE.savedGamesCount) {
-      state.playedGames.pop(INITIAL_STATE.savedGamesCount);
-      state.playedGames.unshift(currentGameStats);
-    } else {
-      state.playedGames.unshift(currentGameStats);
-    }
+    state.playedGames = currentGameStats;
   }
 
   tick() {
