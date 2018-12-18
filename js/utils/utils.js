@@ -1,4 +1,5 @@
 const main = document.querySelector(`#main`);
+const body = document.querySelector(`body`);
 
 const showScreen = (e) => {
   main.innerHTML = ``;
@@ -6,11 +7,16 @@ const showScreen = (e) => {
 };
 
 const showModal = (e) => {
-  main.appendChild(e);
+  body.appendChild(e);
+};
+
+const removeModal = (e) => {
+  body.removeChild(e);
 };
 
 export {
   main,
   showScreen,
-  showModal
+  showModal,
+  removeModal
 };
