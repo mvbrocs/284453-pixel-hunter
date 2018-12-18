@@ -67,7 +67,7 @@ export default class Router {
 
   static showError(error) {
     const errorScreen = new ErrorScreen(error);
-    showScreen(errorScreen.element);
+    showModal(errorScreen.element);
   }
 
   static showStats(state) {
