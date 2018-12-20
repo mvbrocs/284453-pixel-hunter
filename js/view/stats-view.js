@@ -1,13 +1,14 @@
 import AbstractView from './abstract-view';
 import BackBtn from './back-btn-view';
 import {
-  Answer
+  Answer,
+  INITIAL_STATE
 } from '../data/game-data';
 
 export default class Stats extends AbstractView {
   constructor(state) {
     super();
-    this.state = state.slice(-3);
+    this.state = state.slice(-INITIAL_STATE.savedGamesCount);
   }
 
   get template() {
