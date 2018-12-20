@@ -1,6 +1,6 @@
 import AbstractView from './abstract-view';
 import StatsBar from './stats-bar-view';
-import BackButton from './back-button-view';
+import BackBtn from './back-btn-view';
 import Lives from './lives-view';
 import Timer from './timer-view';
 
@@ -17,7 +17,7 @@ export default class Game1 extends AbstractView {
 
     return `
     <header class="header">
-      ${new BackButton().template}
+      ${new BackBtn().template}
       ${new Timer(this.state.time).template}
       ${new Lives(this.state.lives).template}
     </header>
@@ -70,7 +70,7 @@ export default class Game1 extends AbstractView {
   bind() {
     const leftRadioGroup = [...this.element.querySelectorAll(`input[name=question1]`)];
     const rightRadioGroup = [...this.element.querySelectorAll(`input[name=question2]`)];
-    const backButton = this.element.querySelector(`.back`);
+    const backBtn = this.element.querySelector(`.back`);
     const gameSection = this.element.querySelector(`.game`);
     let isLeftPictureSelected = false;
     let isRightPictureSelected = false;
@@ -109,13 +109,13 @@ export default class Game1 extends AbstractView {
       });
     });
 
-    backButton.addEventListener(`click`, (e) => {
+    backBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onBackButtonClick();
+      this.onBackBtnClick();
     });
   }
 
-  onBackButtonClick() {}
+  onBackBtnClick() {}
 
   compareChecking() {}
 }

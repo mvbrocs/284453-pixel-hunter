@@ -4,7 +4,7 @@ import Router from "../router/application-router";
 export default class IntroScreen {
   get element() {
     const intro = new Intro();
-    intro.onButtonClick = () => Router.showGreeting();
+    intro.onBtnClick = () => Router.showGreeting();
 
     return intro.element;
   }

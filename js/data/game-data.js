@@ -25,11 +25,11 @@ const gameData = (state) => {
   const answers = state.answers;
 
   let acc = 0;
-  let scores = 0;
+  let score = 0;
   const livesBonus = Answer.BONUS_FOR_LIVES * lives;
 
   if (livesBonus) {
-    scores += livesBonus;
+    score += livesBonus;
   }
 
   answers.forEach((el) => {
@@ -37,19 +37,19 @@ const gameData = (state) => {
 
     if (answer) {
       acc += 1;
-      scores += Answer.RIGHT;
+      score += Answer.RIGHT;
     }
     if (answer && (time < QUICK_ANSWER)) {
-      scores += Answer.QUICK;
+      score += Answer.QUICK;
     }
     if (answer && (time > SLOW_ANSWER)) {
-      scores -= Answer.SLOW;
+      score -= Answer.SLOW;
     }
   });
   if (acc < INITIAL_STATE.questions - INITIAL_STATE.lives) {
     return -1;
   }
-  return scores;
+  return score;
 };
 
 export {

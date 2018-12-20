@@ -29,37 +29,37 @@ export default class GameScreen {
 
   showScreenWithData(state) {
     if (state.gameScreens[state.level].type === `two-of-two`) {
-      const game1 = new Game1(state);
-      game1.compareChecking = () => {
-        this.model.addAnswer(game1.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
+      const gameFirst = new Game1(state);
+      gameFirst.compareChecking = () => {
+        this.model.addAnswer(gameFirst.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
         this.changeLevel(state);
       };
-      game1.onBackButtonClick = () => {
+      gameFirst.onBackBtnClick = () => {
         Router.exitModalWindow();
       };
-      return game1.element;
+      return gameFirst.element;
     }
     if (state.gameScreens[state.level].type === `tinder-like`) {
-      const game2 = new Game2(state);
-      game2.onFormChange = () => {
-        this.model.addAnswer(game2.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
+      const gameSecond = new Game2(state);
+      gameSecond.onFormChange = () => {
+        this.model.addAnswer(gameSecond.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
         this.changeLevel(state);
       };
-      game2.onBackButtonClick = () => {
+      gameSecond.onBackBtnClick = () => {
         Router.exitModalWindow();
       };
-      return game2.element;
+      return gameSecond.element;
     }
     if (state.gameScreens[state.level].type === `one-of-three`) {
-      const game3 = new Game3(state);
-      game3.onImageClick = () => {
-        this.model.addAnswer(game3.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
+      const gameThree = new Game3(state);
+      gameThree.onImageClick = () => {
+        this.model.addAnswer(gameThree.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
         this.changeLevel(state);
       };
-      game3.onBackButtonClick = () => {
+      gameThree.onBackBtnClick = () => {
         Router.exitModalWindow();
       };
-      return game3.element;
+      return gameThree.element;
     }
     return ``;
   }

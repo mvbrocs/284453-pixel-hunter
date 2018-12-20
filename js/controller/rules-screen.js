@@ -7,11 +7,11 @@ export default class RulesScreen {
   }
   get element() {
     const rulesScreen = new Rules();
-    rulesScreen.onButtonClick = () => {
+    rulesScreen.onBtnClick = () => {
       this.playerName = rulesScreen.getPlayerName();
       Router.showGame(this.playerName);
     };
-    rulesScreen.onBackButtonClick = () => Router.exitModalWindow();
+    rulesScreen.onBackBtnClick = () => Router.exitModalWindow();
 
     return rulesScreen.element;
   }

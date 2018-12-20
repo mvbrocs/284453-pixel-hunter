@@ -1,6 +1,6 @@
 import AbstractView from './abstract-view';
 
-export default class BackButton extends AbstractView {
+export default class BackBtn extends AbstractView {
   constructor() {
     super();
   }

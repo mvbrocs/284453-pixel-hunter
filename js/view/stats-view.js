@@ -1,5 +1,5 @@
 import AbstractView from './abstract-view';
-import BackButton from './back-button-view';
+import BackBtn from './back-btn-view';
 import {
   Answer
 } from '../data/game-data';
@@ -62,7 +62,7 @@ export default class Stats extends AbstractView {
 
     const statsHtml = `
       <header class="header">
-        ${new BackButton().template}
+        ${new BackBtn().template}
       </header>
       <section class="result">
         <h2 class="result__title">${this.getHeader(this.state)}!</h2>
@@ -79,13 +79,13 @@ export default class Stats extends AbstractView {
   }
 
   bind() {
-    const backButton = this.element.querySelector(`.back`);
+    const backBtn = this.element.querySelector(`.back`);
 
-    backButton.addEventListener(`click`, (e) => {
+    backBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onBackButtonClick();
+      this.onBackBtnClick();
     });
   }
 
-  onBackButtonClick() {}
+  onBackBtnClick() {}
 }
