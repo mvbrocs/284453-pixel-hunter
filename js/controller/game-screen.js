@@ -80,11 +80,10 @@ export default class GameScreen {
       this.stopTimer();
       this.saveGameStats(state);
       return Router.showStats(state);
-    } else {
-      this.updateRoot();
-      this.startTimer();
-      return showScreen(this.element);
     }
+    this.updateRoot();
+    this.startTimer();
+    return showScreen(this.element);
   }
 
   saveGameStats(state) {
@@ -105,12 +104,11 @@ export default class GameScreen {
       this.model.getState.time -= 1;
       this.updateTimer();
       this.blinking();
-    } else {
-      this.model.addAnswer(false, 0);
-      this.changeLevel(this.model.getState);
-      return true;
+      return false;
     }
-    return false;
+    this.model.addAnswer(false, 0);
+    this.changeLevel(this.model.getState);
+    return true;
   }
 
   startTimer() {
