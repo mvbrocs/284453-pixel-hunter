@@ -11,7 +11,7 @@ export default class Stats extends AbstractView {
   }
 
   get template() {
-    const tableHtml = [];
+    const statsTemplates = [];
 
     this.state.forEach((el) => {
       const getBonusHtml = () => {
@@ -57,7 +57,7 @@ export default class Stats extends AbstractView {
         return (el.totalScores > 0) ? bonusesHtml : failHtml;
       };
 
-      tableHtml.push(getBonusHtml());
+      statsTemplates.push(getBonusHtml());
     });
 
     const statsHtml = `
@@ -67,7 +67,7 @@ export default class Stats extends AbstractView {
       <section class="result">
         <h2 class="result__title">${this.getHeader(this.state)}!</h2>
         <table class="result__table">
-         ${tableHtml.join(``)}
+         ${statsTemplates.join(``)}
         </table>
       </section>`;
 
