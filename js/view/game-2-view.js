@@ -10,6 +10,10 @@ export default class Game2 extends AbstractView {
     this.state = state;
     this._gameAnswer = null;
     this._answers = [];
+    this._InputToAnswerType = {
+      paint: `painting`,
+      photo: `photo`
+    };
   }
 
   get template() {
@@ -45,11 +49,7 @@ export default class Game2 extends AbstractView {
   }
 
   convertAnswer(answer) {
-    const InputToAnswerType = {
-      paint: `painting`,
-      photo: `photo`
-    };
-    return InputToAnswerType[answer];
+    return this._InputToAnswerType[answer];
   }
 
   bind() {

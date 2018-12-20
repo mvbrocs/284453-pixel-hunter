@@ -43,14 +43,6 @@ export default class Game3 extends AbstractView {
     return this._gameAnswer;
   }
 
-  convertAnswer(answer) {
-    const InputToAnswerType = {
-      paint: `painting`,
-      photo: `photo`
-    };
-    return InputToAnswerType[answer];
-  }
-
   questionType(question) {
     if (question === `Найдите рисунок среди изображений`) {
       return `painting`;

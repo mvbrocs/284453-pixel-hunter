@@ -28,7 +28,7 @@ export default class Router {
     splash.start();
     Loader.loadData().
       then((data) => getData(data)).
-      then((_response) => this.showIntro()).
+      then(() => this.showIntro()).
       catch(this.showError).
       then(() => splash.stop());
   }
