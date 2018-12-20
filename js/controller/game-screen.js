@@ -27,41 +27,53 @@ export default class GameScreen {
     this.startTimer();
   }
 
+  createFirstGameType(state) {
+    const firstGameType = new Game1(state);
+    firstGameType.compareChecking = () => {
+      this.model.addAnswer(firstGameType.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
+      this.changeLevel(state);
+    };
+    firstGameType.onBackBtnClick = () => {
+      Router.exitModalWindow();
+    };
+    return firstGameType.element;
+  }
+
+  createSecondGameType(state) {
+    const secondGameType = new Game2(state);
+    secondGameType.onFormChange = () => {
+      this.model.addAnswer(secondGameType.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
+      this.changeLevel(state);
+    };
+    secondGameType.onBackBtnClick = () => {
+      Router.exitModalWindow();
+    };
+    return secondGameType.element;
+  }
+
+  createThirdGameType(state) {
+    const thirdGameType = new Game3(state);
+    thirdGameType.onImageClick = () => {
+      this.model.addAnswer(thirdGameType.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
+      this.changeLevel(state);
+    };
+    thirdGameType.onBackBtnClick = () => {
+      Router.exitModalWindow();
+    };
+    return thirdGameType.element;
+  }
+
   showScreenWithData(state) {
-    if (state.gameScreens[state.level].type === `two-of-two`) {
-      const gameFirst = new Game1(state);
-      gameFirst.compareChecking = () => {
-        this.model.addAnswer(gameFirst.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
-        this.changeLevel(state);
-      };
-      gameFirst.onBackBtnClick = () => {
-        Router.exitModalWindow();
-      };
-      return gameFirst.element;
+    switch (state.gameScreens[state.level].type) {
+      case `two-of-two`:
+        return this.createFirstGameType(state);
+      case `tinder-like`:
+        return this.createSecondGameType(state);
+      case `one-of-three`:
+        return this.createThirdGameType(state);
+      default:
+        return ``;
     }
-    if (state.gameScreens[state.level].type === `tinder-like`) {
-      const gameSecond = new Game2(state);
-      gameSecond.onFormChange = () => {
-        this.model.addAnswer(gameSecond.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
-        this.changeLevel(state);
-      };
-      gameSecond.onBackBtnClick = () => {
-        Router.exitModalWindow();
-      };
-      return gameSecond.element;
-    }
-    if (state.gameScreens[state.level].type === `one-of-three`) {
-      const gameThree = new Game3(state);
-      gameThree.onImageClick = () => {
-        this.model.addAnswer(gameThree.result, (INITIAL_STATE.time - state.time) * ONE_SECOND);
-        this.changeLevel(state);
-      };
-      gameThree.onBackBtnClick = () => {
-        Router.exitModalWindow();
-      };
-      return gameThree.element;
-    }
-    return ``;
   }
 
   changeLevel(state) {
