@@ -1,17 +1,18 @@
 import AbstractView from './abstract-view';
-import BackButton from './back-button-view';
+import BackBtn from './back-btn-view';
 import {
-  Answer
+  Answer,
+  INITIAL_STATE
 } from '../data/game-data';
 
 export default class Stats extends AbstractView {
   constructor(state) {
     super();
-    this.state = state.slice(-3);
+    this.state = state.slice(-INITIAL_STATE.savedGamesCount);
   }
 
   get template() {
-    const tableHtml = [];
+    const statsTemplates = [];
 
     this.state.forEach((el) => {
       const getBonusHtml = () => {
@@ -57,17 +58,17 @@ export default class Stats extends AbstractView {
         return (el.totalScores > 0) ? bonusesHtml : failHtml;
       };
 
-      tableHtml.push(getBonusHtml());
+      statsTemplates.push(getBonusHtml());
     });
 
     const statsHtml = `
       <header class="header">
-        ${new BackButton().template}
+        ${new BackBtn().template}
       </header>
       <section class="result">
         <h2 class="result__title">${this.getHeader(this.state)}!</h2>
         <table class="result__table">
-         ${tableHtml.join(``)}
+         ${statsTemplates.join(``)}
         </table>
       </section>`;
 
@@ -79,13 +80,13 @@ export default class Stats extends AbstractView {
   }
 
   bind() {
-    const backButton = this.element.querySelector(`.back`);
+    const backBtn = this.element.querySelector(`.back`);
 
-    backButton.addEventListener(`click`, (e) => {
+    backBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onBackButtonClick();
+      this.onBackBtnClick();
     });
   }
 
-  onBackButtonClick() {}
+  onBackBtnClick() {}
 }

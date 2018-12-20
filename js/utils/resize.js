@@ -1,11 +1,11 @@
 const resize = (frame, image) => {
   const multiplicator = Math.floor(image.width / frame.width);
-  const expected = {
+  const expectedSize = {
     width: Math.floor(image.width / multiplicator),
     height: Math.floor(image.height / multiplicator)
   };
 
-  return expected;
+  return expectedSize;
 };
 
 export default resize;

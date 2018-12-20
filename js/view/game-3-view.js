@@ -1,5 +1,5 @@
 import AbstractView from './abstract-view';
-import BackButton from './back-button-view';
+import BackBtn from './back-btn-view';
 import Lives from './lives-view';
 import StatsBar from './stats-bar-view';
 import Timer from './timer-view';
@@ -17,7 +17,7 @@ export default class Game3 extends AbstractView {
 
     return `
       <header class="header">
-        ${new BackButton().template}
+        ${new BackBtn().template}
         ${new Timer(this.state.time).template}
         ${new Lives(this.state.lives).template}
       </header>
@@ -43,14 +43,6 @@ export default class Game3 extends AbstractView {
     return this._gameAnswer;
   }
 
-  convertAnswer(answer) {
-    const InputToAnswerType = {
-      paint: `painting`,
-      photo: `photo`
-    };
-    return InputToAnswerType[answer];
-  }
-
   questionType(question) {
     if (question === `Найдите рисунок среди изображений`) {
       return `painting`;
@@ -60,7 +52,7 @@ export default class Game3 extends AbstractView {
 
   bind() {
     const gameOptions = [...this.element.querySelectorAll(`.game__option`)];
-    const backButton = this.element.querySelector(`.back`);
+    const backBtn = this.element.querySelector(`.back`);
     const gameSection = this.element.querySelector(`.game`);
 
     gameSection.appendChild(new StatsBar(this.state).element);
@@ -75,13 +67,13 @@ export default class Game3 extends AbstractView {
       });
     });
 
-    backButton.addEventListener(`click`, (e) => {
+    backBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onBackButtonClick();
+      this.onBackBtnClick();
     });
   }
 
-  onBackButtonClick() {}
+  onBackBtnClick() {}
 
   onImageClick() {}
 }

@@ -1,5 +1,5 @@
 import AbstractView from './abstract-view';
-import BackButton from './back-button-view';
+import BackBtn from './back-btn-view';
 
 export default class Rules extends AbstractView {
   constructor() {
@@ -9,7 +9,7 @@ export default class Rules extends AbstractView {
   get template() {
     return `
       <header class="header">
-      ${new BackButton().template}
+      ${new BackBtn().template}
       </header>
       <section class="rules">
         <h2 class="rules__title">Правила</h2>
@@ -32,7 +32,7 @@ export default class Rules extends AbstractView {
   bind() {
     const goBtn = this.element.querySelector(`.rules__button`);
     const inputName = this.element.querySelector(`.rules__input`);
-    const backButton = this.element.querySelector(`.back`);
+    const backBtn = this.element.querySelector(`.back`);
 
     inputName.addEventListener(`input`, () => {
       goBtn.disabled = (inputName.value < 1);
@@ -40,19 +40,19 @@ export default class Rules extends AbstractView {
 
     goBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onButtonClick();
+      this.onBtnClick();
       this.getPlayerName();
     });
 
-    backButton.addEventListener(`click`, (e) => {
+    backBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
-      this.onBackButtonClick();
+      this.onBackBtnClick();
     });
   }
 
-  onButtonClick() {}
+  onBtnClick() {}
 
-  onBackButtonClick() {}
+  onBackBtnClick() {}
 
   getPlayerName() {
     const inputName = this.element.querySelector(`.rules__input`);

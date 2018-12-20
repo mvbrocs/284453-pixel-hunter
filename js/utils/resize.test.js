@@ -7,17 +7,17 @@ import resize from './resize';
 
 const createTestForFrame = (frame) => {
   const assertRatio = (given, expected) => {
-    const actual = resize(frame, given);
-    assert.deepEqual(actual, expected);
+    const actualSize = resize(frame, given);
+    assert.deepEqual(actualSize, expected);
   };
 
   const createTest = (expected, multiplier) => {
-    const given = {
+    const givenSize = {
       width: Math.floor(expected.width * multiplier),
       height: Math.floor(expected.height * multiplier)
     };
-    it(`shrink ${multiplier}x: ${given.width}x${given.height} => ${expected.width}x${expected.height}`, () => {
-      assertRatio(given, expected);
+    it(`shrink ${multiplier}x: ${givenSize.width}x${givenSize.height} => ${expected.width}x${expected.height}`, () => {
+      assertRatio(givenSize, expected);
     });
   };
 

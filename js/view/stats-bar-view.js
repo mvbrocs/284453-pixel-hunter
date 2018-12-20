@@ -12,17 +12,17 @@ export default class StatsBar extends AbstractView {
   }
 
   get template() {
-    const blankStats = [];
-    const gameStats = [];
-
-    for (let i = 0; i < this.questionsCount; i += 1) {
-      blankStats.push(`stats__result--unknown`);
-    }
+    const blankStats = this.state.gameScreens.map((el) => {
+      el = `stats__result--unknown`;
+      return el;
+    });
 
     const gameStatus = this.addClassOfResult(this.state, blankStats);
-    for (let i = 0; i < this.questionsCount; i += 1) {
-      gameStats.push(`<li class="stats__result ${gameStatus[i]}"></li>`);
-    }
+
+    const gameStats = this.state.gameScreens.map((el, i) => {
+      el = `<li class="stats__result ${gameStatus[i]}"></li>`;
+      return el;
+    });
 
     const statsHtml = `
       <ul class="stats">

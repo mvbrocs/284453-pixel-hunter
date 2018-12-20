@@ -4,9 +4,9 @@ import {
 
 const checkLives = (data) => {
   let lives = INITIAL_STATE.lives;
-  const arr = data.answers;
+  const answers = data.answers;
 
-  arr.forEach((el) => {
+  answers.forEach((el) => {
     if (!el[0] && lives >= 0) {
       lives -= 1;
     }

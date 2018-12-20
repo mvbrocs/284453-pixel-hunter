@@ -23,21 +23,21 @@ export default class ExitView extends AbstractView {
   }
 
   bind() {
-    const submit = this.element.querySelector(`#submit`);
-    const cancel = this.element.querySelector(`#cancel`);
-    const close = this.element.querySelector(`.modal__close`);
+    const submitBtn = this.element.querySelector(`#submit`);
+    const cancelBtn = this.element.querySelector(`#cancel`);
+    const closeBtn = this.element.querySelector(`.modal__close`);
 
-    submit.addEventListener(`click`, (e) => {
+    submitBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
       this.onSubmitClick();
     });
 
-    cancel.addEventListener(`click`, (e) => {
+    cancelBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
       this.onCancelClick();
     });
 
-    close.addEventListener(`click`, (e) => {
+    closeBtn.addEventListener(`click`, (e) => {
       e.preventDefault();
       this.onCancelClick();
     });

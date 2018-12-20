@@ -8,7 +8,7 @@ export default class StatsScreen {
   get element() {
     const statsScreen = new Stats(this.model);
 
-    statsScreen.onBackButtonClick = () => {
+    statsScreen.onBackBtnClick = () => {
       Router.showGreeting();
     };
 
